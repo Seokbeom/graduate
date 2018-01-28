@@ -1,4 +1,4 @@
-1
+ï»¿1
 00:00:00,000 --> 00:00:04,000
 Not Yet Alive
 
@@ -103,7 +103,7 @@ Brew some coffee from the 15th floor.
 
 26
 00:02:14,930 --> 00:02:17,490
-Or you could get them from a café.
+Or you could get them from a caf?
 
 27
 00:02:23,790 --> 00:02:25,070
@@ -2179,7 +2179,7 @@ I'll sell anything for you?
 
 516
 00:35:41,200 --> 00:35:43,330
-Come to that café over there.
+Come to that caf?over there.
 
 517
 00:35:56,960 --> 00:35:58,620
