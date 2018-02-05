@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7078970a-dea0-47f2-b875-54564769dc3e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/misaeng_srt/NN.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/misaeng_srt/word2vec_misaeng.model" afterPath="$PROJECT_DIR$/misaeng_srt/word2vec_misaeng.model" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/misaeng_srt/one_hot_encodding.py" afterPath="$PROJECT_DIR$/misaeng_srt/one_hot_encodding.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/misaeng_srt/practice.py" afterPath="$PROJECT_DIR$/misaeng_srt/practice.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/misaeng_srt/word2vec_embedding.py" afterPath="$PROJECT_DIR$/misaeng_srt/word2vec_embedding.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/misaeng_srt/NN.py" afterPath="$PROJECT_DIR$/misaeng_srt/NN.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -62,11 +57,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NN.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="NN.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/misaeng_srt/NN.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="413">
-              <caret line="74" column="31" lean-forward="true" selection-start-line="74" selection-start-column="31" selection-end-line="74" selection-end-column="31" />
+            <state relative-caret-position="109">
+              <caret line="63" column="18" lean-forward="true" selection-start-line="63" selection-start-column="18" selection-end-line="63" selection-end-column="18" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
                 <element signature="e#144#401#0" expanded="false" />
@@ -75,11 +70,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="keras_example.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="keras_example.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../keras_example/keras_example.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3192">
-              <caret line="168" column="61" lean-forward="true" selection-start-line="168" selection-start-column="61" selection-end-line="168" selection-end-column="61" />
+            <state relative-caret-position="114">
+              <caret line="151" column="37" lean-forward="true" selection-start-line="151" selection-start-column="3" selection-end-line="151" selection-end-column="37" />
               <folding>
                 <element signature="e#80#115#0" expanded="true" />
               </folding>
@@ -144,8 +139,8 @@
       <find>time</find>
       <find>model.wv[fulltext_list[i]]</find>
       <find>result</find>
-      <find>soft</find>
       <find>model</find>
+      <find>soft</find>
     </findStrings>
     <replaceStrings>
       <replace>model</replace>
@@ -749,23 +744,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/misaeng_srt/NN.py">
+    <entry file="file://$PROJECT_DIR$/../keras_example/keras_example.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="413">
-          <caret line="74" column="31" lean-forward="true" selection-start-line="74" selection-start-column="31" selection-end-line="74" selection-end-column="31" />
+        <state relative-caret-position="114">
+          <caret line="151" column="37" lean-forward="true" selection-start-line="151" selection-start-column="3" selection-end-line="151" selection-end-column="37" />
           <folding>
-            <element signature="e#0#11#0" expanded="true" />
-            <element signature="e#144#401#0" expanded="false" />
+            <element signature="e#80#115#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../keras_example/keras_example.py">
+    <entry file="file://$PROJECT_DIR$/misaeng_srt/NN.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3192">
-          <caret line="168" column="61" lean-forward="true" selection-start-line="168" selection-start-column="61" selection-end-line="168" selection-end-column="61" />
+        <state relative-caret-position="109">
+          <caret line="63" column="18" lean-forward="true" selection-start-line="63" selection-start-column="18" selection-end-line="63" selection-end-column="18" />
           <folding>
-            <element signature="e#80#115#0" expanded="true" />
+            <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#144#401#0" expanded="false" />
           </folding>
         </state>
       </provider>

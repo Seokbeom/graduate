@@ -67,9 +67,9 @@ from matplotlib import pyplot as plt
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.metrics import mean_squared_error
 
-
+####keras 공부가 선행되어야 할듯 example과 documentation으로 먼저 해보자
 model4 = Sequential()
-model4.add(LSTM(units=100,input_dim=100, input_length=1, return_sequences=True)) #lstm many to many 로 했음.. input layer = look_back, hidden =64,.... so on
+model4.add(LSTM(units=100,input_shape=(), return_sequences=True)) #lstm many to many 로 했음.. input layer = look_back, hidden =64,.... so on
 model4.add(Dense(units=length_of_ohe, activation='softmax')) # outpt layer???? 결론적으로 나올값은 1개이니까
 model4.compile(loss='mean_squared_error',
               optimizer='adam',
