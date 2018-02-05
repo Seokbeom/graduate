@@ -1,14 +1,18 @@
 
 data = open('misaeng_cleansed.txt', 'r', encoding='utf-8')
 fulltext= data.read()
-fulltext=fulltext.replace('\n',' \n ')
-fulltext_list = fulltext.split(' ')
+fulltext=fulltext.replace('\n',' ') # ' \n ' ??
+fulltext_list = fulltext.split(' ') ### variable (later used in another files)
 seen = set()
 result = [] # every word -> integer  encoding
 for i in fulltext_list:
   if i not in seen:
     seen.add(i)
-    result.append(i)
+    result.append(i) ### variable
+
+length = len(result)### variable
+
+print('number of words : ', length)
 
 '''
 data2 = open('misaeng_one_hot_encoded.txt', 'w', encoding='utf-8')
