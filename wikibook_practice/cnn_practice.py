@@ -32,12 +32,19 @@ model.add(Conv2D(32, (3,3), padding ='same', data_format = 'channels_first', inp
                                                                                                             # #padding은 input과 output이 같게(https://www.coursera.org/learn/convolutional-neural-networks/lecture/o7CWi/padding)
                                                                                                             #  #data_format = 첫 레이어라는건가?
                                                                                                             # input_shpae = 데이터 1개 28*28차원
-
 model.add(Activation('relu')) #해당 layer의 avtivation function
 model.add(Conv2D(32,(3,3))) # filter 한번 더 하기
 model.add(Activation('relu'))
 model.add(MaxPooling2D(pool_size=(2,2))) # 2*2 mask로 max pooling( 4 pixel 값 중 최대치만 대표로 뽑음 )
 model.add(Dropout(0.5)) # overfitting 막기
+
+model.add(Conv2D(64, (3,3), padding ='same', data_format = 'channels_first', input_shape=(1,28,28) ))
+model.add(Activation('relu')) #해당 layer의 avtivation function
+model.add(Conv2D(64,(3,3))) # filter 한번 더 하기
+model.add(Activation('relu'))
+model.add(MaxPooling2D(pool_size=(2,2))) # 2*2 mask로 max pooling( 4 pixel 값 중 최대치만 대표로 뽑음 )
+model.add(Dropout(0.5)) # overfitting 막기
+
 
 #--- 여기서부터 Dense part (사실상 학습이 일어나는 곳 ??) ---#
 model.add(Flatten()) # 2차원 데이터를 1차원으로 쭉 늘림
