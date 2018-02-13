@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7078970a-dea0-47f2-b875-54564769dc3e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wikibook_practice/cnn_practice.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sample_version/NN_1.py" afterPath="$PROJECT_DIR$/sample_version/NN_1.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sample_version/keras_example_from_kim.py" afterPath="$PROJECT_DIR$/sample_version/keras_example_from_kim.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sample_version/keras_numpy_practice.py" afterPath="$PROJECT_DIR$/sample_version/keras_numpy_practice.py" />
-    </list>
+    <list default="true" id="7078970a-dea0-47f2-b875-54564769dc3e" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -41,7 +35,7 @@
             <file leaf-file-name="keras_example_from_kim.py" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/sample_version/keras_example_from_kim.py">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="-19">
+                  <state relative-caret-position="266">
                     <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="18" />
                     <folding>
                       <element signature="e#579#1711#0" expanded="false" />
@@ -938,22 +932,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sample_version/keras_example_from_kim.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-19">
-          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="18" />
-          <folding>
-            <element signature="e#579#1711#0" expanded="false" />
-            <element signature="e#3679#4745#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/wikibook_practice/cnn_practice.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="988">
           <caret line="52" column="53" lean-forward="true" selection-start-line="52" selection-start-column="53" selection-end-line="52" selection-end-column="53" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sample_version/keras_example_from_kim.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="18" />
+          <folding>
+            <element signature="e#579#1711#0" expanded="false" />
+            <element signature="e#3679#4745#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
