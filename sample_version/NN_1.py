@@ -8,7 +8,7 @@ input_data=[]
 output_data=[]
 
 
-with open("input_for_nn.pkl","rb") as fp:
+with open("input_for_nn.pkl","rb") as fp: # input이 단어 하나 당 100차원의 백터인데 n개의 전 단어로 다음 1개의 단어를 예측하려면 600개의 인풋을 주어야 하나????/
     intput_data = pickle.load(input_data)
 
 with open("fulltext_in_OHE.pkl","rb") as fp:

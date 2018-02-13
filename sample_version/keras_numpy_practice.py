@@ -10,8 +10,8 @@ print(c)
 print('-----------------------')
 data = np.array([0, 1, 2, 2])  # hell
 from keras.utils import np_utils
-data = np_utils.to_categorical(data, 4) ## one hot encoding을 이걸로 하는구나...
-data = data.reshape((1, 4, 4))
+data = np_utils.to_categorical(data, 5) ## one hot encoding을 이걸로 하는구나...
+data = data.reshape((1, 4, 5))
 print(data)
 print(type(data))
 
@@ -23,14 +23,15 @@ data = np.array([0, 1, 2, 2])  # hell
 data = np_utils.to_categorical(data, 4)  # one - hot encoding
 data = data.reshape((1, 4, 4))
 
+
 labels = np.array([1, 2, 2, 3])  # ello
 labels = np_utils.to_categorical(labels, 4)
 labels = labels.reshape((1, 4, 4))
 
 model3 = Sequential()
 # RNN option에 대해 설명 필요할듯
-model3.add(SimpleRNN(units=32, input_dim=4, input_length=4,
-                     return_sequences=True))  # units= hidden layer, input_dim= input node,  input_length 인풋의 연속적인 길이 (문맥 파악하는 길이), return_sequences= 다대다인지 다대일인지
+model3.add(SimpleRNN(units=32, input_dim=4, input_length=4, # 해석: 인풋노드는 input_dim 갯수가 들어감,  각 인풋은 input_length차원의 백터임 ??
+                     return_sequences=True))  # units= hidden layer, input_dim= inputnode,  input_length 인풋의 연속적인 길이 (문맥 파악하는 길이), return_sequences= 다대다인지 다대일인지
 model3.add(Dense(units=4, activation='softmax'))  # output layer
 model3.compile(loss='categorical_crossentropy',  # class = H,E,L,O
                optimizer='sgd',

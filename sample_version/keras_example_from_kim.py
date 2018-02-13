@@ -110,7 +110,6 @@ def mnist_example():  # 0~9 숫자 판별 # cnn
     print("accuracy : " + str(float(hit / (y_test.shape[0]))))
 
 
-mnist_example()
 
 """HELLO EXAMPLE"""  # rnn
 
@@ -123,6 +122,7 @@ def hello_example():
     labels = np.array([1, 2, 2, 3])  # ello
     labels = np_utils.to_categorical(labels, 4)
     labels = labels.reshape((1, 4, 4))
+
 
     model3 = Sequential()
     # RNN option에 대해 설명 필요할듯
@@ -171,6 +171,7 @@ def passenger_example():  # lstm
     test_data = data_value[train_size - look_back:]
 
     x_train, y_train = create_dataset(train_data, look_back)
+    print(x_train)
     x_test, y_test = create_dataset(test_data, look_back)
 
     ###  여태까지 데이터 클랜징 지금부터 모델 ##
@@ -200,3 +201,5 @@ def passenger_example():  # lstm
     plt.axvline(x=train_size, color='black')
     plt.legend(loc='upper left')
     plt.show()
+
+passenger_example()
