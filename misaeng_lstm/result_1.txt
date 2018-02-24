@@ -1,0 +1,491 @@
+C:\Users\가족\AppData\Local\Programs\Python\Python36\python.exe C:/Users/가족/Desktop/seokbeom/graduate/misaeng_lstm/misaeng_lstm_1.py
+Using TensorFlow backend.
+코퍼스의 길이:  154073
+사용되는 문자수 :  5389
+학습할 구문의 수:  154070
+텍스트를 ID 백터로 변환합니다 
+모델  구축
+
+maxlen = 3
+step=1
+
+----------------------------
+반복 =  1
+Epoch 1/1
+2018-02-24 22:25:09.289982: I C:\tf_jenkins\workspace\rel-win\M\windows-gpu\PY\36\tensorflow\core\platform\cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX AVX2
+2018-02-24 22:25:09.576124: I C:\tf_jenkins\workspace\rel-win\M\windows-gpu\PY\36\tensorflow\core\common_runtime\gpu\gpu_device.cc:1105] Found device 0 with properties: 
+name: GeForce GTX 960 major: 5 minor: 2 memoryClockRate(GHz): 1.2405
+pciBusID: 0000:01:00.0
+totalMemory: 2.00GiB freeMemory: 1.64GiB
+2018-02-24 22:25:09.576468: I C:\tf_jenkins\workspace\rel-win\M\windows-gpu\PY\36\tensorflow\core\common_runtime\gpu\gpu_device.cc:1195] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX 960, pci bus id: 0000:01:00.0, compute capability: 5.2)
+ - 82s - loss: 4.4174
+시드 :  ['.', '\n', 'you']
+. 
+ you heard a so about . 
+ it ' s 
+ . 
+ why are you come , of we a different proposal . 
+ but you think you don ' t ask it . 
+ thanks and need him a good in in water . 
+ huh ? 
+ i 
+
+----------------------------
+반복 =  2
+Epoch 1/1
+ - 80s - loss: 4.0944
+시드 :  ['it', 'was', 'tough']
+it was tough by the partner guy . 
+ you think of so so ? 
+ how sir . 
+ where are you to get someone meeting by team . 
+ the world to up ? 
+ don ' t you else him . 
+ yes , sir . 
+ i work his 
+
+----------------------------
+반복 =  3
+Epoch 1/1
+ - 79s - loss: 4.0331
+시드 :  ['.', '\n', 'make']
+. 
+ make you ? 
+ when i a finance way of me even then you could come now . 
+ , look captain his way ? 
+ we won ' C:/Users/가족/Desktop/seokbeom/graduate/misaeng_lstm/misaeng_lstm_1.py:80: RuntimeWarning: divide by zero encountered in log
+  preds = np.log(preds)
+t buy that right right is worth ! 
+ even is a word right . 
+ what that will since of you 
+
+----------------------------
+반복 =  4
+Epoch 1/1
+ - 80s - loss: 4.0014
+시드 :  ['ve', 'called', 'regarding']
+ve called regarding to the energy cotton ' s take it up . 
+ that ' s security to get for round course . 
+ even many other insurance . 
+ oh ! 
+ he said 
+ so they can the man international job . 
+ thanks . 
+ it ' s me 
+
+----------------------------
+반복 =  5
+Epoch 1/1
+ - 80s - loss: 4.0296
+시드 :  ['\n', 'resubmit', 'it']
+
+ resubmit it to work 
+ see our team ' s us about more out . what of round days , if you don’t see for now . 
+ i ' m sorry . 
+ he has at solar cost coffee ? first ? yes , so you should go . 
+ i 
+
+----------------------------
+반복 =  6
+Epoch 1/1
+ - 79s - loss: 3.9982
+시드 :  ['they', "'", 're']
+they ' re acting . 
+ your job . 
+ we heard he ' s team 
+ before after mr . oh 
+ become not they 
+ tell responsibility the person case for . 
+ where ' s wrong , mr . kim . 
+ aren ' t want to needed 
+ stuff 
+
+----------------------------
+반복 =  7
+Epoch 1/1
+ - 79s - loss: 4.1020
+시드 :  ['huh', '?', '\n']
+huh ? 
+ i think my way crazy to you you my at all . 
+ hello , ok ? i got it home , 
+ you could know how ' d you to do ? 
+ here . 
+ who ? send them here . 
+ that ' s the thing what 
+
+----------------------------
+반복 =  8
+Epoch 1/1
+ - 80s - loss: 4.2060
+시드 :  ['\n', 'bosses', 'that']
+
+ bosses that want to eat them . 
+ mr . park . 
+ thank you , mr . park . yes . 
+ you ' re like what this is your day ? -yes . 
+ the meeting , you ' re a issue with . 
+ can we around i his 
+
+----------------------------
+반복 =  9
+Epoch 1/1
+ - 79s - loss: 4.2792
+시드 :  ['to', 'work', 'for']
+to work for the game of come later , his team team . 
+ bye . 
+ sir , let ' s like much next item . 
+ it ' s like me ? 
+ no , did you send now too . 
+ … i heard responsibility . 
+ sir . 
+ 
+
+----------------------------
+반복 =  10
+Epoch 1/1
+ - 79s - loss: 4.3199
+시드 :  ["'", 'm', 'jang']
+' m jang geu rae . 
+ i thought we don ' t you take this years 3 is in ? 
+ mr . oh was your ok . secured ? 
+ i don ' t . 
+ just let ' s let go tomorrow . 
+ i have a 
+ geu rae 
+
+----------------------------
+반복 =  11
+Epoch 1/1
+ - 79s - loss: 4.3413
+시드 :  ['.', 'kang', '.']
+. kang . 
+ if our proposal ' s is the day hard . 
+ happened so the s it . 
+ i ' m a company ! 
+ you had a meeting without the documents . 
+ we can ' t put 
+ . 
+ this is how is something wrong . 
+
+----------------------------
+반복 =  12
+Epoch 1/1
+ - 79s - loss: 4.3887
+시드 :  ['a', 'pro', '.']
+a pro . 
+ must went to this , the contract we do when he ' s ve a drink more will put all all . 
+ they were working like that . 
+ re hard ? 
+ … 
+ by the items have think sir . 
+ why , say ? 
+ 
+
+----------------------------
+반복 =  13
+Epoch 1/1
+ - 79s - loss: 4.4281
+시드 :  ['\n', 'and', 'mr']
+
+ and mr . park ' s too your dad employee at the company . 
+ you want to quit ? 
+ hey , oh ? 
+ there ' s ok . 
+ by by your desk is on in trouble , mr . ma ' s other the meeting ? 
+ let 
+
+----------------------------
+반복 =  14
+Epoch 1/1
+ - 79s - loss: 4.4451
+시드 :  ['me', '.', '\n']
+me . 
+ i been with them . 
+ who ' s her . 
+ my boss . 
+ he ' s the team to go . 
+ right , no . 
+ there ' s a re in seal the your 
+ joon ! 
+ there won ' t be with geu 
+
+----------------------------
+반복 =  15
+Epoch 1/1
+ - 79s - loss: 4.4517
+시드 :  ['you', '?', '\n']
+you ? 
+ thank you . 
+ the number is one ! 
+ get care of now . 
+ i have a ged 
+ are work her without my team . 
+ one ! 
+ bye . 
+ if you really made my head if mr . oh will had what right ? 
+
+----------------------------
+반복 =  16
+Epoch 1/1
+ - 79s - loss: 4.4410
+시드 :  ['jobless', '.', '\n']
+jobless . 
+ why ? 
+ how do you re good . 
+ i m no . 
+ don ' t know how he ' s he just ask to you ? 
+ why is a meeting today ? 
+ but they was up as this for from school . 
+ i ' 
+
+----------------------------
+반복 =  17
+Epoch 1/1
+ - 79s - loss: 4.4479
+시드 :  ['\n', 'show', 'him']
+
+ show him . 
+ i don ' t think it ' s with this now for this was going ? 
+ oh . 
+ that ' s not going with and tell him since it ' s still on our kid . 
+ jang geu rae ? 
+ why , geu rae 
+
+----------------------------
+반복 =  18
+Epoch 1/1
+ - 78s - loss: 4.4437
+시드 :  ['for', 'lunch', '.']
+for lunch . 
+ but ? 
+ then why is it the way of the company was fine . 
+ what many ? 
+ do you might were . . . 
+ . . . oh ? 
+ you want to ? 
+ ? ? he ' s working hard , thank you 
+
+----------------------------
+반복 =  19
+Epoch 1/1
+ - 80s - loss: 4.4529
+시드 :  ['do', 'it', 'by']
+do it by see a contract as a one too . 
+ i ' m kim you keep my own . 
+ bring the good case 1 and would have working here and ' s the data of work if you responsibility . 
+ sure , thank you . 
+ what ? 
+ 
+
+----------------------------
+반복 =  20
+Epoch 1/1
+ - 80s - loss: 4.4546
+시드 :  ['park', 'case', '.']
+park case . 
+ there ' s no one , they mean to isn ' t anything ? 
+ you ' re saying that ' s the problem of experience one it will call . 
+ he was a good management ? 
+ they make any company of ask make to still a 
+
+----------------------------
+반복 =  21
+Epoch 1/1
+ - 79s - loss: 4.4650
+시드 :  ["'", 'm', 'fine']
+' m fine . 
+ and i wonder if he ' s like some business about you . 
+ how sales for the china business . 
+ be the business ? 
+ also . 
+ it is it . 
+ there are ok . 
+ so baek ki . 
+ ok , so 
+
+----------------------------
+반복 =  22
+Epoch 1/1
+ - 79s - loss: 4.4743
+시드 :  ['you', 'in', 'person']
+you in person . 
+ i ' ll say anything . 
+ time he wouldn ' t go ? 
+ regarding the issue . 
+ yes . 
+ hello ? 
+ hello . 
+ huh ? 
+ hi . 
+ hello . 
+ mr . choi a . fingers ventilation ? 
+ ? 
+
+----------------------------
+반복 =  23
+Epoch 1/1
+ - 79s - loss: 4.5064
+시드 :  ['down', 'reasons', 'for']
+down reasons for me . 
+ something ok ? 
+ what did you do it . 
+ young yi . 
+ the one is getting out , huh ? 
+ mr . ha . . . 
+ ' s on geu . 
+ hello ! 
+ i said she ' s good . 
+
+----------------------------
+반복 =  24
+Epoch 1/1
+ - 79s - loss: 4.5168
+시드 :  ['maybe', 'it', "'"]
+maybe it ' s good ? 
+ they told you . 
+ over the work . 
+ what are you going ? 
+ hello ? 
+ hello . 
+ you ' re working a contract team of me ? 
+ that was me or . 
+ go to your team too employee the 
+
+----------------------------
+반복 =  25
+Epoch 1/1
+ - 79s - loss: 4.5387
+시드 :  ['?', 'round', 'two']
+? round two sales first " a conditions anyway . 
+ sit down . 
+ with this . 
+ how can you just go back to the world of from the meeting . 
+ yeah . 
+ i ' ll be going to me of the business . 
+ i don ' t 
+
+----------------------------
+반복 =  26
+Epoch 1/1
+ - 79s - loss: 4.6003
+시드 :  ['.', '\n', 'regardless']
+. 
+ regardless team . 
+ someone from from those companies and us . 
+ geu rae . 
+ ok . 
+ i ' m in charge of off work , a good one later . 
+ i ' m sorry . 
+ what i can . 
+ let ' s drink . 
+
+----------------------------
+반복 =  27
+Epoch 1/1
+ - 78s - loss: 4.5946
+시드 :  ["'", 't', 'say']
+' t say much . 
+ please . 
+ how ? 
+ what ? 
+ and there ' s it ? 
+ i ' m all here . 
+ is a good thing . 
+ oh , 
+ ! yeah , i to be going . 
+ i ' m sorry . 
+ 
+
+----------------------------
+반복 =  28
+Epoch 1/1
+ - 78s - loss: 4.6274
+시드 :  ['charge', 'changed', '.']
+charge changed . . . 
+ . . . 
+ . . . 
+ . . . 
+ . . . 
+ . . . 
+ . . . 
+ . . . 
+ . . . 
+ ! i ' m sorry of the meeting is something . 
+ yes , sir 
+
+----------------------------
+반복 =  29
+Epoch 1/1
+ - 78s - loss: 4.6694
+시드 :  ['\n', 'oh', ',']
+
+ oh , how . he always always yourself . 
+ kim good , , 
+ coming home here . 
+ you can , way for 
+ we made … 
+ didn ' t and quit ? 
+ we have to give this to your headquarters . 
+ to thought hard . 
+ 
+
+----------------------------
+반복 =  30
+Epoch 1/1
+ - 79s - loss: 4.6551
+시드 :  ['.', '\n', 'you']
+. 
+ you should be easy to say it . 
+ hey , the contract what if ? 
+ report . 
+ since you ' re not the same , huh ? 
+ owed , for a team for work . 
+ but a phone . 
+ are you over off since too 
+
+----------------------------
+반복 =  31
+Epoch 1/1
+ - 79s - loss: 4.6319
+시드 :  ['if', 'the', 'situation']
+if the situation of you it at him . 
+ i ' ll look your mom ? 
+ " you be on them . 
+ the executive director . 
+ sir . 
+ you ' re have go to do the manager s case . 
+ they ' re your 
+ resource man 
+
+----------------------------
+반복 =  32
+Epoch 1/1
+ - 79s - loss: 4.6124
+시드 :  ['touch', '?', '\n']
+touch ? 
+ how could what time how you say is the , 
+ if what ? 
+ who ' s with the company , " that ' s there ' s much if he ' ll get just leave now , he ' s great , that was the new presentation are 
+
+----------------------------
+반복 =  33
+Epoch 1/1
+ - 79s - loss: 4.5922
+시드 :  ['\n', 'geu', 'rae']
+
+ geu rae , our contract was on the day , sir . 
+ sir . 
+ i went well . 
+ no last item ? 
+ ok . 
+ ok . 
+ why are you talking about back well . 
+ ok . 
+ everyone can you get responsibility . 
+ now 
+
+----------------------------
+반복 =  34
+Epoch 1/1
+
+Process finished with exit code 1

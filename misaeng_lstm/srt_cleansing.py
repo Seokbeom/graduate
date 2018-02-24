@@ -36,7 +36,7 @@ def simplyfi(string):
 
 cleansed = open('cleansed.txt', 'w', encoding='utf-8')
 number=1
-end =1
+end =20
 while number<=end:
 
     filename = 'misaeng (%d).srt'%(number)
