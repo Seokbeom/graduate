@@ -1,7 +1,6 @@
 
 
 def isnum(s):
-
   try:
     int(s)
     return True
@@ -24,17 +23,21 @@ def simplyfi(string):
         # print(string)
         string = string.replace('- ', '')
 
-    string = string.replace('.', ' . ')
+    string = string.replace(".", " . ")
     string = string.replace('?', ' ? ')
     string = string.replace('!', ' ! ')
-    string = string.replace(',', ' , ')
+    string = string.replace('\'', ' \' ')
+    string = string.replace('…', ' … ')
+    string = string.replace(",", " , ")
+    string = string.replace('\"' , ' \" ')
     return string.lower()
 
 
 
-cleansed = open('misaeng_cleansed.txt', 'w', encoding='utf-8')
+cleansed = open('cleansed.txt', 'w', encoding='utf-8')
 number=1
-while number<=20:
+end =1
+while number<=1:
 
     filename = 'misaeng (%d).srt'%(number)
     original = open(filename, 'rt', encoding='UTF8')
