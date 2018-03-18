@@ -49,6 +49,8 @@ next_chars = []
 for i in range(0, len(text) - maxlen, step):
     sentences.append(text[i: i + maxlen])
     next_chars.append(text[i + maxlen])
+
+
 print("학습할 구문의 수: ", len(sentences))
 print("텍스트를 ID 백터로 변환합니다 ")
 X= np.zeros((len(sentences), maxlen, len(chars)), dtype = np.bool)

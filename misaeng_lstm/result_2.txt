@@ -1,0 +1,269 @@
+C:\Users\가족\AppData\Local\Programs\Python\Python36\python.exe C:/Users/가족/Desktop/seokbeom/graduate/misaeng_lstm/misaeng_lstm_1.py
+Using TensorFlow backend.
+코퍼스의 길이:  154073
+사용되는 문자수 :  5389
+학습할 구문의 수:  154070
+텍스트를 ID 백터로 변환합니다 
+모델  구축
+
+----------------------------
+반복 =  1
+Epoch 1/1
+2018-03-18 14:01:38.639693: I C:\tf_jenkins\workspace\rel-win\M\windows-gpu\PY\36\tensorflow\core\platform\cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX AVX2
+2018-03-18 14:01:39.064644: I C:\tf_jenkins\workspace\rel-win\M\windows-gpu\PY\36\tensorflow\core\common_runtime\gpu\gpu_device.cc:1105] Found device 0 with properties: 
+name: GeForce GTX 960 major: 5 minor: 2 memoryClockRate(GHz): 1.2405
+pciBusID: 0000:01:00.0
+totalMemory: 2.00GiB freeMemory: 1.64GiB
+2018-03-18 14:01:39.065784: I C:\tf_jenkins\workspace\rel-win\M\windows-gpu\PY\36\tensorflow\core\common_runtime\gpu\gpu_device.cc:1195] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX 960, pci bus id: 0000:01:00.0, compute capability: 5.2)
+ - 98s - loss: 4.4123
+시드 :  ['oh', '?', '\n']
+oh ? 
+ geu rae . C:/Users/가족/Desktop/seokbeom/graduate/misaeng_lstm/misaeng_lstm_1.py:80: RuntimeWarning: divide by zero encountered in log
+  preds = np.log(preds)
+
+ better at all this for a executive my what ? 
+ oh . 
+ yes . 
+ i ' re eat wrong . 
+ i poshin ? 
+ dad , to s all did ? 
+ a company came , 
+ . . . let ' 
+
+----------------------------
+반복 =  2
+Epoch 1/1
+ - 88s - loss: 4.0829
+시드 :  ['ll', 'be', 'promoted']
+ll be promoted now . 
+ that ' s just work , right ? 
+ you can a dad one ? 
+ anything these with a shinsa-dong truck of seo , 
+ but the " right ? " 
+ them to ' re really so ' s issue . 
+ geez . 
+ 
+
+----------------------------
+반복 =  3
+Epoch 1/1
+ - 86s - loss: 4.0539
+시드 :  ['how', 'to', 'tie']
+how to tie . 
+ sang sik . 
+ then tell me to say … 
+ ? different young yi ? 
+ geu rae ! 
+ here . 
+ no . 
+ you ' re so disappointed for made and i did . 
+ my china of your . 
+ is you . 
+
+----------------------------
+반복 =  4
+Epoch 1/1
+ - 93s - loss: 4.0096
+시드 :  ['that', '.', '\n']
+that . 
+ but that ' s being drink from years ? 
+ ok . 
+ your ? 
+ from long , . . . 
+ . . , the face ? 
+ but it ' s a ' s price 
+ ok , sir . 
+ sir . 
+ came . 
+ 
+
+----------------------------
+반복 =  5
+Epoch 1/1
+ - 91s - loss: 4.0707
+시드 :  ['dream', 'of', 'submitting']
+dream of submitting . 
+ " " ? 
+ what is it ? 
+ right , i can ' t take out there . 
+ no , they was ' ve worked so many , it ' s the team will ' ve made these ' s . . . 
+ . . 
+
+----------------------------
+반복 =  6
+Epoch 1/1
+ - 90s - loss: 4.1359
+시드 :  ['stand', 'out', '.']
+stand out . 
+ even please even help a business business ? 
+ you ' re the will t 
+ come back . 
+ you don ' t be so much now to his time , 
+ so i can ' t support it for me . 
+ yes , right ? 
+ 
+
+----------------------------
+반복 =  7
+Epoch 1/1
+ - 89s - loss: 4.1892
+시드 :  ['worry', ',', 'i']
+worry , i get better . 
+ go jang geu rae , mr . oh is different of he made why ok ? 
+ so yes . 
+ you won ' t change that since you mr . oh ' s always strong . 
+ . . 
+ but so oh ! 
+ 
+
+----------------------------
+반복 =  8
+Epoch 1/1
+ - 89s - loss: 4.1876
+시드 :  ['t', 'be', 'awkward']
+t be awkward , meeting . 
+ you should check that companies . 
+ don ? t you know ? 
+ suk yool . 
+ if it is ' ll be good with others , drinking ! 
+ hello , mr . kim . 
+ more not . 
+ go the good place 
+
+----------------------------
+반복 =  9
+Epoch 1/1
+ - 88s - loss: 4.1826
+시드 :  ['paris', ',', 'grand']
+paris , grand . 
+ it would ' ve ' re always ' s always s all ll china since you ve off before a big morning , let ' s go just to say did and before ? 
+ you think sir . 
+ yes , sir . 
+ to talk to 
+
+----------------------------
+반복 =  10
+Epoch 1/1
+ - 88s - loss: 4.2366
+시드 :  ['you', 'know', 'how']
+you know how were not , so what can you say you ' re not . 
+ huh ? 
+ right , 
+ we ' re a problem for the idea to be looking . 
+ yes . 
+ i can do how " couldn ' t just leave … 
+ … was 
+
+----------------------------
+반복 =  11
+Epoch 1/1
+ - 90s - loss: 4.2419
+시드 :  ["'", 't', 'they']
+' t they have high drink more item . 
+ i said hard . 
+ you know he was into his newbie ' s 
+ my head two as our more case ? 
+ maybe geu rae ! 
+ it is sales team 3 , mr . choi . 
+ care of someone 
+
+----------------------------
+반복 =  12
+Epoch 1/1
+ - 87s - loss: 4.2894
+시드 :  ['full-timer', '.', '\n']
+full-timer . 
+ want to think . . . 
+ . . . 
+ . . . 
+ . . . 
+ . . . 
+ . . . that ? 
+ i thought he ahead ' s wrong for a chance . 
+ that ' s more your day ! 
+ you 
+
+----------------------------
+반복 =  13
+Epoch 1/1
+ - 86s - loss: 4.3519
+시드 :  ["'", 's', 'climbing']
+' s climbing 
+ our team was a meeting , . . . 
+ stay for what ms . sun won ' t say any . 
+ come here . 
+ you ? 
+ could he ' ve should ' ve something hard , sit and yi . 
+ yes . 
+ it 
+
+----------------------------
+반복 =  14
+Epoch 1/1
+ - 84s - loss: 4.4028
+시드 :  ['league', 'schools', 'must']
+league schools must ' m sorry . 
+ he ' s busy . 
+ , why ' m you know the 
+ . 
+ let ' s get in . 
+ yes . 
+ i never can do me off , 
+ i can ' t help me , , but the one 
+
+----------------------------
+반복 =  15
+Epoch 1/1
+ - 87s - loss: 4.4544
+시드 :  ['checking', 'typos', '"']
+checking typos " the other way . 
+ how long would and his … 
+ rider ? 
+ i ' m sure it ' s me as you know our ! 
+ available . 
+ do you man that ' s why treat some time . 
+ don ' t like anything what 
+
+----------------------------
+반복 =  16
+Epoch 1/1
+ - 87s - loss: 4.5066
+시드 :  ['within', 'an', 'hour']
+within an hour . 
+ what can the team can go are been so made . it was always $10 that alone in work before that started this hate has right . 
+ that ' s in the your case ? 
+ that ' s not in the . 
+ pile only just 
+
+----------------------------
+반복 =  17
+Epoch 1/1
+ - 88s - loss: 4.5463
+시드 :  ['and', 'leave', 'after']
+and leave after up him soon . 
+ they know that . 
+ sir . 
+ we ' re doing . 
+ you feel ok … 
+ i ' m sorry . 
+ can we have you been care time ? 
+ we ' ll have more … 
+ how is this ? 
+
+----------------------------
+반복 =  18
+Epoch 1/1
+ - 87s - loss: 4.5843
+시드 :  ['should', 'i', 'look']
+should i look to that as mr . ma ! 
+ you was to his 
+ what will you do this is … 
+ geu rae sang sik ? 
+ you done really lee to find this ? 
+ you has going to make you 
+ everything ? 
+ what about him on 
+
+----------------------------
+반복 =  19
+Epoch 1/1
