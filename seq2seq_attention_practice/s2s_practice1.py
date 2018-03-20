@@ -1,3 +1,5 @@
+#https://machinelearningmastery.com/encoder-decoder-attention-sequence-to-sequence-prediction-keras/
+
 from random import randint
 from numpy import array
 from numpy import argmax
