@@ -16,6 +16,7 @@ from keras.layers import Dense, Activation, Dropout
 from keras.layers import LSTM
 from keras.optimizers import RMSprop # what is it
 
+
 import numpy as np
 import random, sys # sys 알기
 
@@ -39,10 +40,9 @@ print('코퍼스의 길이: ', len(text))
 
 
 #문자를 하나하나 읽어 들이고 ID 붙이기
+#모든 단어들을 중복 없이 딕셔너리에 숫자로 코딩해서 넣음
 chars =sorted(list(set(text)))
-#chars =set(text)
 print('사용되는 문자수 : ', len(chars))
-#print(chars)
 char_indices = dict((c,i) for i, c in enumerate(chars))
 indices_char = dict((i ,c ) for i, c in enumerate(chars))
 

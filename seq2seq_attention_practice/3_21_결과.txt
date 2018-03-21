@@ -1,0 +1,47 @@
+C:\Users\seok0\AppData\Local\Programs\Python\Python36\python.exe "C:/Users/seok0/Desktop/graduate_project/graduate/seq2seq_attention_practice/Neural Machine Translation?_Using seq2seq with Keras.py"
+C:\Users\seok0\AppData\Roaming\Python\Python36\site-packages\h5py\__init__.py:36: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+사용되는 단어수(중복 제거) :  5275
+사용되는 단어수(중복 제거) :  5275
+Train on 15948 samples, validate on 3988 samples
+Epoch 1/50
+2018-03-21 20:39:08.137219: I C:\tf_jenkins\workspace\rel-win\M\windows-gpu\PY\36\tensorflow\core\platform\cpu_feature_guard.cc:140] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2
+2018-03-21 20:39:09.102511: I C:\tf_jenkins\workspace\rel-win\M\windows-gpu\PY\36\tensorflow\core\common_runtime\gpu\gpu_device.cc:1212] Found device 0 with properties: 
+name: GeForce GTX 1060 major: 6 minor: 1 memoryClockRate(GHz): 1.6705
+pciBusID: 0000:01:00.0
+totalMemory: 6.00GiB freeMemory: 4.96GiB
+2018-03-21 20:39:09.102999: I C:\tf_jenkins\workspace\rel-win\M\windows-gpu\PY\36\tensorflow\core\common_runtime\gpu\gpu_device.cc:1312] Adding visible gpu devices: 0
+2018-03-21 20:39:09.693811: I C:\tf_jenkins\workspace\rel-win\M\windows-gpu\PY\36\tensorflow\core\common_runtime\gpu\gpu_device.cc:993] Creating TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 4734 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1060, pci bus id: 0000:01:00.0, compute capability: 6.1)
+ - 57s - loss: 1.5933 - val_loss: 1.4841
+Epoch 2/50
+ - 54s - loss: 1.1162 - val_loss: 0.9672
+Epoch 3/50
+ - 54s - loss: 0.7459 - val_loss: 0.7224
+Epoch 4/50
+ - 54s - loss: 0.5818 - val_loss: 0.6195
+Epoch 5/50
+ - 54s - loss: 0.4926 - val_loss: 0.5480
+Epoch 6/50
+ - 54s - loss: 0.4303 - val_loss: 0.5036
+Epoch 7/50
+ - 58s - loss: 0.3826 - val_loss: 0.4606
+Epoch 8/50
+ - 53s - loss: 0.3452 - val_loss: 0.4243
+Epoch 9/50
+ - 53s - loss: 0.3142 - val_loss: 0.4035
+Epoch 10/50
+ - 53s - loss: 0.2881 - val_loss: 0.3795
+Epoch 11/50
+ - 53s - loss: 0.2643 - val_loss: 0.3610
+Epoch 12/50
+ - 53s - loss: 0.2426 - val_loss: 0.3426
+Epoch 13/50
+ - 53s - loss: 0.2227 - val_loss: 0.3302
+Epoch 14/50
+ - 53s - loss: 0.2049 - val_loss: 0.3301
+Epoch 15/50
+ - 53s - loss: 0.1890 - val_loss: 0.3211
+Epoch 16/50
+
+Process finished with exit code 1
