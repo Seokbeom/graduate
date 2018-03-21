@@ -57,15 +57,15 @@ def read_data(file_name):
     return (encoding_input, decoding_input, decoding_output)
 
 
-def convert_3d_shape_onehotencode(word2one, sentence_list):
-    max=22 # 0으로해놔야함 원래
-    for s in sentence_list:
+def convert_3d_shape_onehotencode(word2one, sentences_list):
+    max=22 # 0 으로해놔야함 원래
+    for s in sentences_list:
         length = len(s)
         if max < length:
             max = length
 
-    X = np.zeros((len(sentence_list), max, len(word2one)), dtype=np.bool)
-    for i, sentence in enumerate(sentence_list):  # 명확한 이해 필요 #sentense = list ##########이 훈련 ,검증 셋트를 문장단위로 만들어야 함....
+    X = np.zeros((len(sentences_list), max, len(word2one)), dtype=np.bool)
+    for i, sentence in enumerate(sentences_list):  # 명확한 이해 필요 #sentense = list ##########이 훈련 ,검증 셋트를 문장단위로 만들어야 함....
         for j, word in enumerate(sentence):  # char = string
             X[i, j, word2one[word]] = 1
 
@@ -102,6 +102,7 @@ def main():
     encoder_outputs, encoder_h, encoder_c = encoder_LSTM (encoder_input)
     encoder_states = [encoder_h, encoder_c]
 
+
     # Decoder model
     decoder_input = Input(shape=(None, total_words))
     decoder_LSTM = LSTM(256, return_state=True, return_sequences=True)
@@ -115,13 +116,75 @@ def main():
     model.fit(x=[encode_input, decode_input],
               y=decode_ouput,
               batch_size=64,
-              epochs=50,
+              epochs=20,
               validation_split=0.2,
               verbose=2)
 
-    model.save('seq2seq_no_Attention.model') # package  hdf5
-    end = time.time()
-    print((end - start)/60, '분')
+    #model.save('seq2seq_no_Attention.model') # package  hdf5
+
+    # Infernece Encode model
+
+    encoder_model_inf = Model(encoder_input, encoder_states)
+
+    # Inference Decoder Model
+    decoder_state_input_h = Input(shape=(256,))
+    decoder_state_input_c = Input(shape=(256,))
+    decoder_input_states = [decoder_state_input_h, decoder_state_input_c]
+
+    decoder_out, decoder_h, decoder_c = decoder_LSTM(decoder_input, initial_state = decoder_input_states)
+    decoder_states = [decoder_h , decoder_c]
+    decoder_out = decoder_dense(decoder_out)
+    decoder_model_inf = Model(inputs=[decoder_input] + decoder_input_states,
+                                outputs=[decoder_out] + decoder_states )
+
+    def decode_seq(inp_seq):
+        #initial states value is coming from the encoder
+        states_val = encoder_model_inf.predict(inp_seq)
+
+        target_seq = np.zeros((1, 1, total_words))
+        target_seq[0, 0 , word2onehot_dict['<eos>\n']]= 1
+
+        reply_sentence =''
+        stop = False
+
+        while not stop:
+            decoder_out, decoder_h, decoder_c = decoder_model_inf.predict( x = [target_seq] + states_val)
+            max_val_index = np.argmax(decoder_out[0, -1, :])
+            sampled_output = one2word_dict[max_val_index]
+            reply_sentence += sampled_output
+
+            if sampled_output == '<eos>\n' or len(reply_sentence)>  22 : # 22 = 제일 긴 문장 수
+                stop = True
+
+            target_seq = np.zeros((1, 1, total_words))
+            target_seq[0, 0, max_val_index] = 1
+
+            states_val = [decoder_h, decoder_c]
+
+        return reply_sentence
+    print('fitting finished')
+    while 1:
+        input_sentence = input("I say : ")
+        if input_sentence == 'q':
+            break
+        input_sentence += ' <eos>\n'
+        sen_in_list = input_sentence.split(' ')
+        inp_seq =  [sen_in_list]
+        inp_seq = convert_3d_shape_onehotencode(word2onehot_dict, inp_seq)
+        result = decode_seq(inp_seq)
+
+        print(result)
+
+
+    print('end program')
+
+
+
+
+
+
 
 
 main()
+end = time.time()
+print((end - start) / 60, '분')

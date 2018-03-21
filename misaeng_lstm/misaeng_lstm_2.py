@@ -96,6 +96,8 @@ for variance in range(3):
 
     for i,sentence in enumerate(sentences): # 명확한 이해 필요 #sentense = list ##########이 훈련 ,검증 셋트를 문장단위로 만들어야 함....
         for t, char in enumerate(sentence): #  char = string
+
+
             X[i, t, char_indices[char]] = 1
         y[i, char_indices[next_chars[i]]] = 1
 

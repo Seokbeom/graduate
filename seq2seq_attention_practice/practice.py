@@ -11,3 +11,7 @@ a= dict()
 a.update()
 print(len(a))
 print(a)
+
+a='dddd'
+a += 'ccc'
+print(a)
