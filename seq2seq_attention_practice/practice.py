@@ -1,17 +1,15 @@
-list1=[0,1,2,3,4,5,6,'d']
 
-for a ,b in enumerate(list1):
-    print(a, b)
-a= list1[:-1]
-print(a)
-a.remove(1)
-print(a)
+import re
+text='ddddddddddd           dddddddddddddddddddfdDDDDDDdf#\" ++!?!000@#@dfdf'
+#text = re.sub(r"[^A-Za-z0-9!?]", " ", text)
+text = re.sub("\s+", " ",text)
+print(text)
 
-a= dict()
-a.update()
-print(len(a))
-print(a)
 
-a='dddd'
-a += 'ccc'
-print(a)
+s=" dddddd\n\n ddd\n\n"
+print(s.strip())
+
+def f():
+    return 1,2
+
+

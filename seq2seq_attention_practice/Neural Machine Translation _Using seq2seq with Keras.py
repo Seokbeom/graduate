@@ -7,7 +7,7 @@
 
 import numpy as np
 import time
-start = time.time()
+
 import codecs  #?
 
 from keras.models import Sequential
@@ -58,7 +58,7 @@ def read_data(file_name):
 
 
 def convert_3d_shape_onehotencode(word2one, sentences_list):
-    max=22 # 0 으로해놔야함 원래
+    max=0 # 0 으로해놔야함 원래 22
     for s in sentences_list:
         length = len(s)
         if max < length:
@@ -83,8 +83,10 @@ def sample(preds):
 
 
 def main():
+    start = time.time()
     from keras import Model
     datatoread = 'second_cleansed.txt'
+    #datatoread = 'test_cleansed.txt'
     data_in_lang = read_data(datatoread)# 다른 경로에 데이터 몰아넣고 읽게 하자 #클랜징도 공백 두개 등 다시
     word2onehot_dict = one_hot_dictionary(datatoread)[0]
     one2word_dict = one_hot_dictionary(datatoread)[1]
@@ -116,17 +118,20 @@ def main():
     model.fit(x=[encode_input, decode_input],
               y=decode_ouput,
               batch_size=64,
-              epochs=20,
+              epochs=60,
               validation_split=0.2,
               verbose=2)
-
+    print('fitting finished')
+    end = time.time()
+    print((end - start) / 60, '분')
     #model.save('seq2seq_no_Attention.model') # package  hdf5
 
-    # Infernece Encode model
+
+    ### Infernece Encode model
 
     encoder_model_inf = Model(encoder_input, encoder_states)
 
-    # Inference Decoder Model
+    ###Inference Decoder Model
     decoder_state_input_h = Input(shape=(256,))
     decoder_state_input_c = Input(shape=(256,))
     decoder_input_states = [decoder_state_input_h, decoder_state_input_c]
@@ -151,7 +156,7 @@ def main():
             decoder_out, decoder_h, decoder_c = decoder_model_inf.predict( x = [target_seq] + states_val)
             max_val_index = np.argmax(decoder_out[0, -1, :])
             sampled_output = one2word_dict[max_val_index]
-            reply_sentence += sampled_output
+            reply_sentence += sampled_output +' '
 
             if sampled_output == '<eos>\n' or len(reply_sentence)>  22 : # 22 = 제일 긴 문장 수
                 stop = True
@@ -162,7 +167,7 @@ def main():
             states_val = [decoder_h, decoder_c]
 
         return reply_sentence
-    print('fitting finished')
+
     while 1:
         input_sentence = input("I say : ")
         if input_sentence == 'q':
@@ -173,7 +178,7 @@ def main():
         inp_seq = convert_3d_shape_onehotencode(word2onehot_dict, inp_seq)
         result = decode_seq(inp_seq)
 
-        print(result)
+        print('computer: ', result)
 
 
     print('end program')
@@ -186,5 +191,3 @@ def main():
 
 
 main()
-end = time.time()
-print((end - start) / 60, '분')
