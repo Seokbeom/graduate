@@ -12,4 +12,14 @@ print(s.strip())
 def f():
     return 1,2
 
-
+import numpy as np
+x=np.array( [[ [1,1,1],[1,1,1],[1,1,1],[1,1,1]],[ [2,2,2],[2,2,2],[2,2,2],[2,2,2]], [ [3,3,3],[3,3,3],[3,3,3],[3,3,3]]])
+print(x[0])
+xx=np.array([ [0,0,0],[1,1,1],[2,2,2], [3,3,3] ])
+print(xx)
+x[0]=xx
+print(x)
+print(xx)
+y = np.delete(xx,0,0)
+print(y)
+x[0] = y

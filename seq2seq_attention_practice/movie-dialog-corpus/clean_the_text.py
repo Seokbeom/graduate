@@ -1,5 +1,5 @@
 
-input='movie_dialogue.txt'
+input='cleansed_twice.txt'
 import re
 
 data= open(input, 'r', encoding='utf-8')

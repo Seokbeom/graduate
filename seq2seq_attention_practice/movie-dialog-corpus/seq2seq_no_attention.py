@@ -55,18 +55,19 @@ def read_data(file_name):
 
 
 def convert_3d_shape_onehotencode(word2one, sentences_list):
-    max=49 # 0 으로해놔야함 원래
+    sentence_length=12 # 0 으로해놔야함 원래
     for s in sentences_list:
         length = len(s)
-        if max < length: #and length < 230: # memory error
-            max = length
-    print('max ', max)
-    X = np.zeros((len(sentences_list), max, len(word2one)), dtype=np.bool)
+        if sentence_length < length: #and length < 230: # memory error
+            sentence_length = length
+    print('sentence_length ', sentence_length)
+    X = np.zeros((len(sentences_list), sentence_length, len(word2one) +1 ), dtype=np.bool) # 단어 백터의 맨 앞이 0이면 무시하게끔 할것임. 따라서 모든 단어는 1 0 0 0 0 0 1 0 0 0 이런식으로 원핫인코딩
     for i, sentence in enumerate(sentences_list):
         for j, word in enumerate(sentence):
-            #print(j,word)
+            # print(j,word)
             try:
-                X[i, j, word2one[word]] = 1
+                X[i ,j, 0 ] = 1
+                X[i, j, word2one[word] + 1 ] = 1
             except KeyError as e:
                 print('word out of dictionary')
     return X
@@ -87,6 +88,8 @@ def main(data_to_read): # 코드이해 30%
     from keras import Model
     from keras.layers import Dense
     from keras.layers import LSTM
+    from keras.layers import Embedding
+    from keras import Sequential
 
 
     #datatoread = 'test_cleansed.txt'
@@ -104,26 +107,30 @@ def main(data_to_read): # 코드이해 30%
     # Encoder model
     from keras.layers import Input
     total_words = len(word2onehot_dict)
-    encoder_input = Input(shape=(None, total_words))
-    encoder_LSTM = LSTM(256, return_state=True, return_sequences=False)
+    E = Embedding(total_words + 1, 256, input_length=None)  # dropout 가능
+    encoder_input = Input(shape=(12, total_words +1 ))
+    encoder_LSTM = LSTM(256, input_shape=(None, total_words+1), return_state=True, return_sequences=False)
     encoder_outputs, encoder_h, encoder_c = encoder_LSTM(encoder_input) #<class 'tensorflow.python.framework.ops.Tensor'>
     encoder_states = [encoder_h, encoder_c]
 
 
     # Decoder model
-    decoder_input = Input(shape=(None, total_words))
+    decoder_input = Input(shape=(12, total_words +1 ))
     decoder_LSTM = LSTM(256, return_state=True, return_sequences=True)
     decoder_out, _ , _ = decoder_LSTM(decoder_input, initial_state=encoder_states)
-    decoder_dense = Dense(total_words, activation='softmax')
+    decoder_dense = Dense(total_words +1 , activation='softmax')
     decoder_out = decoder_dense(decoder_out)
 
-    # Train ######  layer.get_weights(): returns the weights of the layer as a list of Numpy arrays.
-    model = Model(inputs=[encoder_input, decoder_input], outputs = [decoder_out])
+
+
+
+    model = Model(  inputs=[encoder_input, decoder_input], outputs = [decoder_out])
+
     model.summary()
     model.compile(optimizer='adam', loss= 'categorical_crossentropy') ##
     model.fit(x=[encode_input, decode_input],
               y=decode_ouput,
-              batch_size=32, # 64 is too big
+              batch_size=1, # 64 is too big
               epochs=1,
               validation_split=0.2,
               verbose=2)
@@ -151,7 +158,7 @@ def main(data_to_read): # 코드이해 30%
         #initial states value is coming from the encoder
         states_val = encoder_model_inf.predict(inp_seq)
 
-        target_seq = np.zeros((1, 1, total_words))
+        target_seq = np.zeros((1, 1, total_words +1 ))
         target_seq[0, 0 , word2onehot_dict['<eos>\n']] = 1
 
         reply_sentence =''
@@ -166,7 +173,7 @@ def main(data_to_read): # 코드이해 30%
             if sampled_output == '<eos>\n' or len(reply_sentence)>  49 : # 49 = 제일 긴 문장 수
                 stop = True
 
-            target_seq = np.zeros((1, 1, total_words))
+            target_seq = np.zeros((1, 1, total_words +1))
             target_seq[0, 0, max_val_index] = 1
 
             states_val = [decoder_h, decoder_c]
@@ -174,29 +181,20 @@ def main(data_to_read): # 코드이해 30%
 
         return reply_sentence
 
-    input_sentence ="a a a a a <eos>\n"
-    for turn in range(10):
-        try:
-            #print("A: " , input_sentence)
-            #input_sentence = input("I say : ")
-            #if input_sentence == 'q':
-            #   break
-            input_sentence.strip()
-            sen_in_list=[]
-            #input_sentence += '<eos>\n'
-            print(input_sentence.split(" "))
-            temp_sen_in_list = input_sentence.split(' ')
-            for word in temp_sen_in_list:
-                if word != "":
-                    sen_in_list.append(word)
+    while 1:
+        input_sentence = input("I say : ")
+        if input_sentence == 'q':
+            break
+        input_sentence += ' <eos>\n'
+        sen_in_list = input_sentence.split(' ')
+        inp_seq = [sen_in_list]
+        inp_seq = convert_3d_shape_onehotencode(word2onehot_dict, inp_seq)
+        result = decode_seq(inp_seq)
 
-            inp_seq =  [sen_in_list]
-            inp_seq = convert_3d_shape_onehotencode(word2onehot_dict, inp_seq)
-            result = decode_seq(inp_seq)
-            print(turn, result)
-            input_sentence = result
-        except :
-            print('except')
+        print('computer: ', result)
+
+
+
 
 
     print('end program')
