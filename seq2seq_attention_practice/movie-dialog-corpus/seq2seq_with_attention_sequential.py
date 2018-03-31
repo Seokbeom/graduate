@@ -19,7 +19,7 @@ import time
 import numpy as np
 
 
-max_step = 12
+max_step =0
 
 def one_hot_dictionary(file_name):
     data = open(file_name, 'r', encoding='utf8')
@@ -60,10 +60,10 @@ def read_data(file_name):
             if len(sentence_in_list) > max_step:
                 max_step = len(sentence_in_list)
                 print(max_step)
-            encoding_input.append(sentence_in_list[ : -1])
+            encoding_input.append(sentence_in_list[ : ])
             decoding_output.append(sentence_in_list[ : ])
-            sentence_in_list.insert(0, "<eos>\n")
-            decoding_input.append(sentence_in_list[: -1])
+            #sentence_in_list.insert(0, "<eos>\n")
+            decoding_input.append(sentence_in_list[: ])
             c+=1
         else:
             d+=1
@@ -129,16 +129,17 @@ def main(data_to_read): # 코드이해 30%
 
     # configure problem
     n_features = len(word2onehot_dict)
-    unit = 256
-    epoch = 30
+    unit = 64
+    epoch = 100
+    batchisize = 16
 
 
     # attention encoder - decoder model ?
     from keras.layers import RepeatVector, TimeDistributed
     model = Sequential()
-    model.add(LSTM(unit, input_shape=(max_step, n_features), return_sequences=False))
-    model.add(RepeatVector(max_step)) ###why???????????
-    model.add(LSTM(unit, return_sequences=True)) #True?????    #model.add(Embedding(n_features, 256, input_length= input)) # dropout 가능
+    model.add(LSTM(unit, input_shape=(max_step, n_features), return_sequences=True))
+    #model.add(RepeatVector(max_step)) ###why???????????
+    #model.add(LSTM(unit, return_sequences=True)) #True?????    #model.add(Embedding(n_features, 256, input_length= input)) # dropout 가능
     #model.add(RepeatVector(max_step))
     #model.add(LSTM(unit, return_sequences=True))
     #model.add(TimeDistributed(Dense(max_step, activation='softmax')))
@@ -146,15 +147,17 @@ def main(data_to_read): # 코드이해 30%
     model.summary()
     model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['acc'])
     #for sen in range(len(encode_input)):
-    model.fit(encode_input, decode_ouput, epochs=epoch, verbose=2, batch_size=128, validation_split=0.2)
+    model.fit(encode_input, decode_ouput, epochs=epoch, verbose=2, batch_size=batchisize, validation_split=0.2)
     print("fitting done")
+    end = time.time()
+    print( (end - start) / 60, '분')
 
 
     while 1:
         input_sentence = input("I say : ")
         if input_sentence == 'q':
             break
-        #input_sentence += ' <eos>\n'
+        input_sentence += ' <eos>\n'
         sen_in_list = input_sentence.split(' ')
         inp_seq = [sen_in_list]
         inp_seq = convert_3d_shape_onehotencode(word2onehot_dict, inp_seq)
@@ -258,7 +261,7 @@ def main(data_to_read): # 코드이해 30%
 
 
 #data_to_read = 'cleansed_movie_dialogue_shrinked.txt'
-data_to_read='cleansed_test2.txt'
+#data_to_read='cleansed_test2.txt'
 data_to_read='test_cleansed.txt'
-data_to_read='cleansed_cleansed_twice.txt'
+#data_to_read='cleansed_cleansed_twice.txt'
 main(data_to_read)
