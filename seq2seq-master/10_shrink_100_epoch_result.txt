@@ -1,0 +1,129 @@
+C:\Users\seok0\AppData\Local\Programs\Python\Python36\python.exe C:/Users/seok0/Desktop/graduate_project/graduate/seq2seq-master/model_test.py
+C:\Users\seok0\AppData\Roaming\Python\Python36\site-packages\h5py\__init__.py:36: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+10
+11
+사용되는 단어수(중복 제거) :  8051
+2018-04-06 18:57:24.968433: I C:\tf_jenkins\workspace\tf-nightly-windows\M\windows-gpu\PY\36\tensorflow\core\platform\cpu_feature_guard.cc:140] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2
+2018-04-06 18:57:26.178807: I C:\tf_jenkins\workspace\tf-nightly-windows\M\windows-gpu\PY\36\tensorflow\core\common_runtime\gpu\gpu_device.cc:1355] Found device 0 with properties: 
+name: GeForce GTX 1060 major: 6 minor: 1 memoryClockRate(GHz): 1.6705
+pciBusID: 0000:01:00.0
+totalMemory: 6.00GiB freeMemory: 4.96GiB
+2018-04-06 18:57:26.179338: I C:\tf_jenkins\workspace\tf-nightly-windows\M\windows-gpu\PY\36\tensorflow\core\common_runtime\gpu\gpu_device.cc:1434] Adding visible gpu devices: 0
+2018-04-06 18:57:26.966348: I C:\tf_jenkins\workspace\tf-nightly-windows\M\windows-gpu\PY\36\tensorflow\core\common_runtime\gpu\gpu_device.cc:922] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-04-06 18:57:26.966654: I C:\tf_jenkins\workspace\tf-nightly-windows\M\windows-gpu\PY\36\tensorflow\core\common_runtime\gpu\gpu_device.cc:928]      0 
+2018-04-06 18:57:26.966876: I C:\tf_jenkins\workspace\tf-nightly-windows\M\windows-gpu\PY\36\tensorflow\core\common_runtime\gpu\gpu_device.cc:941] 0:   N 
+2018-04-06 18:57:26.967213: I C:\tf_jenkins\workspace\tf-nightly-windows\M\windows-gpu\PY\36\tensorflow\core\common_runtime\gpu\gpu_device.cc:1052] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 4734 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1060, pci bus id: 0000:01:00.0, compute capability: 6.1)
+3.370354183514913 분
+I say : how are you ?
+scarred quite son <eos>
+ 
+I say : hey how are you ?
+hungry ? <eos>
+ 
+I say : what is your name ?
+berger mirtha <eos>
+ 
+I say : how old are you ?
+older <eos>
+ 
+I say : how old are you ?
+older <eos>
+ 
+I say : tell me somthing
+error
+readers bud brilliant ideas <eos>
+ 
+I say : tell me something
+does does brilliant <eos>
+ 
+I say : it matters to me
+i donut whatever you a lot of private stuff <eos>
+ 
+I say : i love you
+ooo love you <eos>
+ 
+I say : do you love me ?
+no huh orange ? <eos>
+ 
+I say : what the fuck
+i ? <eos>
+ 
+I say : tell me your story
+i was brilliant poor poor falls unknownword <eos>
+ 
+I say : what ?
+i <eos>
+ 
+I say : my name is unknownword
+i am waiting for you waiting for feature <eos>
+ 
+I say : can you tell me your name ?
+dante you i am <eos>
+ 
+I say : can you tell me about it ?
+i will if you <eos>
+ 
+I say : what is your age
+don t weak color john <eos>
+ 
+I say : what is your age ?
+i don t know <eos>
+ 
+I say : i don t know
+i profession absurde ? <eos>
+ 
+I say : what is your goal ?
+error
+i silver t unknownword <eos>
+ 
+I say : i love you
+ooo love you <eos>
+ 
+I say : i love you
+ooo love you <eos>
+ 
+I say : you love me
+i too that much nick you at that man ? <eos>
+ 
+I say : do you have a car ?
+no <eos>
+ 
+I say : what is one plus one ?
+how long you you any ? <eos>
+ 
+I say : are you kidding ?
+formerly will unknownword it ? walked out my door <eos>
+ 
+I say : tell me your story
+i was brilliant poor poor falls unknownword <eos>
+ 
+I say : martin
+martin minutes straighten her out ? <eos>
+ 
+I say : what ?
+i <eos>
+ 
+I say : yes
+i you <eos>
+ 
+I say : am i late ?
+yes too when you ve tipsy tipsy tipsy to be <eos>
+ 
+I say : what are you talking about ?
+tish krueger partial tee colleen <eos>
+ 
+I say : what the
+betcha didn t say berserk <eos>
+ 
+I say : what is berserk
+relax ! no to an <eos>
+ 
+I say : relax !
+i am drowning ! help ! <eos>
+ 
+I say : can you help me ?
+i am sure need ? i out of <eos>
+ 
+I say : 

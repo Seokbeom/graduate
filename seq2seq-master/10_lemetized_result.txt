@@ -1,0 +1,235 @@
+C:\Users\seok0\AppData\Local\Programs\Python\Python36\python.exe C:/Users/seok0/Desktop/graduate_project/graduate/seq2seq-master/seq2seq_with_attention_sequential.py
+C:\Users\seok0\AppData\Roaming\Python\Python36\site-packages\h5py\__init__.py:36: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+10
+11
+사용되는 단어수(중복 제거) :  6413
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+dropout_1 (Dropout)          (None, 11, 6413)          0         
+_________________________________________________________________
+bidirectional_1 (Bidirection (None, 11, 256)           13660160  
+_________________________________________________________________
+AttentionDecoder (AttentionD (None, 11, 6413)          49932726  
+=================================================================
+Total params: 63,592,886
+Trainable params: 63,592,886
+Non-trainable params: 0
+_________________________________________________________________
+Epoch 1/100
+2018-04-09 00:00:05.915423: I C:\tf_jenkins\workspace\tf-nightly-windows\M\windows-gpu\PY\36\tensorflow\core\platform\cpu_feature_guard.cc:140] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2
+2018-04-09 00:00:06.949933: I C:\tf_jenkins\workspace\tf-nightly-windows\M\windows-gpu\PY\36\tensorflow\core\common_runtime\gpu\gpu_device.cc:1355] Found device 0 with properties: 
+name: GeForce GTX 1060 major: 6 minor: 1 memoryClockRate(GHz): 1.6705
+pciBusID: 0000:01:00.0
+totalMemory: 6.00GiB freeMemory: 4.96GiB
+2018-04-09 00:00:06.950515: I C:\tf_jenkins\workspace\tf-nightly-windows\M\windows-gpu\PY\36\tensorflow\core\common_runtime\gpu\gpu_device.cc:1434] Adding visible gpu devices: 0
+2018-04-09 00:00:08.031791: I C:\tf_jenkins\workspace\tf-nightly-windows\M\windows-gpu\PY\36\tensorflow\core\common_runtime\gpu\gpu_device.cc:922] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-04-09 00:00:08.032110: I C:\tf_jenkins\workspace\tf-nightly-windows\M\windows-gpu\PY\36\tensorflow\core\common_runtime\gpu\gpu_device.cc:928]      0 
+2018-04-09 00:00:08.032346: I C:\tf_jenkins\workspace\tf-nightly-windows\M\windows-gpu\PY\36\tensorflow\core\common_runtime\gpu\gpu_device.cc:941] 0:   N 
+2018-04-09 00:00:08.032940: I C:\tf_jenkins\workspace\tf-nightly-windows\M\windows-gpu\PY\36\tensorflow\core\common_runtime\gpu\gpu_device.cc:1052] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 4734 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1060, pci bus id: 0000:01:00.0, compute capability: 6.1)
+ - 438s - loss: 2.8667 - acc: 0.0995
+Epoch 2/100
+ - 432s - loss: 2.7875 - acc: 0.1007
+Epoch 3/100
+ - 429s - loss: 2.7636 - acc: 0.1016
+Epoch 4/100
+ - 425s - loss: 2.7368 - acc: 0.1025
+Epoch 5/100
+ - 431s - loss: 2.7003 - acc: 0.1037
+Epoch 6/100
+ - 425s - loss: 2.6529 - acc: 0.1053
+Epoch 7/100
+ - 430s - loss: 2.5917 - acc: 0.1075
+Epoch 8/100
+ - 423s - loss: 2.5201 - acc: 0.1105
+Epoch 9/100
+ - 427s - loss: 2.4456 - acc: 0.1139
+Epoch 10/100
+ - 423s - loss: 2.3715 - acc: 0.1185
+Epoch 11/100
+ - 427s - loss: 2.3048 - acc: 0.1229
+Epoch 12/100
+ - 423s - loss: 2.2408 - acc: 0.1284
+Epoch 13/100
+ - 426s - loss: 2.1814 - acc: 0.1339
+Epoch 14/100
+ - 425s - loss: 2.1286 - acc: 0.1396
+Epoch 15/100
+ - 425s - loss: 2.0816 - acc: 0.1453
+Epoch 16/100
+ - 424s - loss: 2.0321 - acc: 0.1513
+Epoch 17/100
+ - 425s - loss: 1.9918 - acc: 0.1568
+Epoch 18/100
+ - 424s - loss: 1.9488 - acc: 0.1629
+Epoch 19/100
+ - 420s - loss: 1.9116 - acc: 0.1691
+Epoch 20/100
+ - 428s - loss: 1.8735 - acc: 0.1753
+Epoch 21/100
+ - 422s - loss: 1.8400 - acc: 0.1809
+Epoch 22/100
+ - 428s - loss: 1.8073 - acc: 0.1868
+Epoch 23/100
+ - 422s - loss: 1.7790 - acc: 0.1920
+Epoch 24/100
+ - 427s - loss: 1.7449 - acc: 0.1978
+Epoch 25/100
+ - 423s - loss: 1.7204 - acc: 0.2022
+Epoch 26/100
+ - 426s - loss: 1.6878 - acc: 0.2088
+Epoch 27/100
+ - 423s - loss: 1.6650 - acc: 0.2131
+Epoch 28/100
+ - 426s - loss: 1.6403 - acc: 0.2180
+Epoch 29/100
+ - 424s - loss: 1.6171 - acc: 0.2223
+Epoch 30/100
+ - 425s - loss: 1.5941 - acc: 0.2265
+Epoch 31/100
+ - 424s - loss: 1.5725 - acc: 0.2306
+Epoch 32/100
+ - 425s - loss: 1.5495 - acc: 0.2360
+Epoch 33/100
+ - 424s - loss: 1.5286 - acc: 0.2402
+Epoch 34/100
+ - 421s - loss: 1.5103 - acc: 0.2436
+Epoch 35/100
+ - 429s - loss: 1.4968 - acc: 0.2461
+Epoch 36/100
+ - 421s - loss: 1.4783 - acc: 0.2503
+Epoch 37/100
+ - 428s - loss: 1.4601 - acc: 0.2538
+Epoch 38/100
+ - 423s - loss: 1.4453 - acc: 0.2565
+Epoch 39/100
+ - 427s - loss: 1.4305 - acc: 0.2599
+Epoch 40/100
+ - 422s - loss: 1.4125 - acc: 0.2630
+Epoch 41/100
+ - 426s - loss: 1.3968 - acc: 0.2668
+Epoch 42/100
+ - 423s - loss: 1.3896 - acc: 0.2684
+Epoch 43/100
+ - 426s - loss: 1.3736 - acc: 0.2715
+Epoch 44/100
+ - 423s - loss: 1.3594 - acc: 0.2740
+Epoch 45/100
+ - 426s - loss: 1.3498 - acc: 0.2765
+Epoch 46/100
+ - 424s - loss: 1.3367 - acc: 0.2790
+Epoch 47/100
+ - 425s - loss: 1.3216 - acc: 0.2825
+Epoch 48/100
+ - 424s - loss: 1.3159 - acc: 0.2831
+Epoch 49/100
+ - 420s - loss: 1.3007 - acc: 0.2862
+Epoch 50/100
+ - 428s - loss: 1.2880 - acc: 0.2884
+Epoch 51/100
+ - 421s - loss: 1.2755 - acc: 0.2914
+Epoch 52/100
+ - 427s - loss: 1.2746 - acc: 0.2920
+Epoch 53/100
+ - 422s - loss: 1.2636 - acc: 0.2943
+Epoch 54/100
+ - 427s - loss: 1.2521 - acc: 0.2961
+Epoch 55/100
+ - 424s - loss: 1.2406 - acc: 0.2988
+Epoch 56/100
+ - 428s - loss: 1.2361 - acc: 0.2995
+Epoch 57/100
+ - 427s - loss: 1.2263 - acc: 0.3014
+Epoch 58/100
+ - 428s - loss: 1.2168 - acc: 0.3038
+Epoch 59/100
+ - 424s - loss: 1.2081 - acc: 0.3059
+Epoch 60/100
+ - 421s - loss: 1.1991 - acc: 0.3071
+Epoch 61/100
+ - 428s - loss: 1.1957 - acc: 0.3081
+Epoch 62/100
+ - 421s - loss: 1.1873 - acc: 0.3100
+Epoch 63/100
+ - 428s - loss: 1.1785 - acc: 0.3113
+Epoch 64/100
+ - 422s - loss: 1.1711 - acc: 0.3125
+Epoch 65/100
+ - 427s - loss: 1.1674 - acc: 0.3140
+Epoch 66/100
+ - 422s - loss: 1.1593 - acc: 0.3152
+Epoch 67/100
+ - 427s - loss: 1.1511 - acc: 0.3170
+Epoch 68/100
+ - 423s - loss: 1.1496 - acc: 0.3173
+Epoch 69/100
+ - 426s - loss: 1.1433 - acc: 0.3191
+Epoch 70/100
+ - 423s - loss: 1.1317 - acc: 0.3212
+Epoch 71/100
+ - 426s - loss: 1.1305 - acc: 0.3210
+Epoch 72/100
+ - 424s - loss: 1.1282 - acc: 0.3222
+Epoch 73/100
+ - 425s - loss: 1.1169 - acc: 0.3238
+Epoch 74/100
+ - 424s - loss: 1.1157 - acc: 0.3247
+Epoch 75/100
+ - 420s - loss: 1.1088 - acc: 0.3265
+Epoch 76/100
+ - 428s - loss: 1.0985 - acc: 0.3280
+Epoch 77/100
+ - 421s - loss: 1.0994 - acc: 0.3280
+Epoch 78/100
+ - 428s - loss: 1.0947 - acc: 0.3291
+Epoch 79/100
+ - 422s - loss: 1.0885 - acc: 0.3301
+Epoch 80/100
+ - 427s - loss: 1.0751 - acc: 0.3326
+Epoch 81/100
+ - 422s - loss: 1.0808 - acc: 0.3314
+Epoch 82/100
+ - 428s - loss: 1.0779 - acc: 0.3323
+Epoch 83/100
+ - 426s - loss: 1.0743 - acc: 0.3333
+Epoch 84/100
+ - 429s - loss: 1.0640 - acc: 0.3352
+Epoch 85/100
+ - 426s - loss: 1.0591 - acc: 0.3362
+Epoch 86/100
+ - 428s - loss: 1.0551 - acc: 0.3367
+Epoch 87/100
+ - 427s - loss: 1.0587 - acc: 0.3363
+Epoch 88/100
+ - 424s - loss: 1.0535 - acc: 0.3367
+Epoch 89/100
+ - 430s - loss: 1.0506 - acc: 0.3373
+Epoch 90/100
+ - 424s - loss: 1.0464 - acc: 0.3381
+Epoch 91/100
+ - 429s - loss: 1.0369 - acc: 0.3404
+Epoch 92/100
+ - 422s - loss: 1.0336 - acc: 0.3412
+Epoch 93/100
+ - 427s - loss: 1.0323 - acc: 0.3412
+Epoch 94/100
+ - 423s - loss: 1.0298 - acc: 0.3419
+Epoch 95/100
+ - 427s - loss: 1.0257 - acc: 0.3429
+Epoch 96/100
+ - 423s - loss: 1.0244 - acc: 0.3428
+Epoch 97/100
+ - 426s - loss: 1.0218 - acc: 0.3441
+Epoch 98/100
+ - 424s - loss: 1.0166 - acc: 0.3448
+Epoch 99/100
+ - 426s - loss: 1.0103 - acc: 0.3461
+Epoch 100/100
+ - 424s - loss: 1.0072 - acc: 0.3461
+fitting done
+710.4067646900813 분
+end program
+
+Process finished with exit code 0

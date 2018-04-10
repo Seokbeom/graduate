@@ -1,22 +1,27 @@
-import seq2seq
 from seq2seq.models import AttentionSeq2Seq
 import time
 import numpy as np
-
-from numpy import argmax
-from numpy import array_equal
 from keras.models import Sequential
-from keras.layers import LSTM
+from keras import optimizers
+from keras.layers import TimeDistributed
+from keras.layers import Dense
+from keras.layers import Dropout
 
-from keras.layers import Embedding
+#from keras.models import load_model
+
+#import seq2seq
+#from numpy import argmax
+#from numpy import array_equal
+
+#from keras.layers import LSTM
+
+#from keras.layers import Embedding
 # generate a sequence of random integers
 
 
-from seq2seq.models import Seq2Seq
-from keras import optimizers
-from keras.layers import TimeDistributed
-from keras.layers import Softmax
+#from seq2seq.models import Seq2Seq
 
+#from keras.layers import Softmax
 
 
 
@@ -51,25 +56,16 @@ def read_data(file_name):
     encoding_input =[]
     decoding_input=[]
     decoding_output=[]
-    c=1
-    d=0
     global max_step
     while(sentence):
-        if len(sentence) <= 200: # 너무 긴 문장은 뺴기...
-
-            sentence_in_list = sentence.lstrip().split(" ")
-            if len(sentence_in_list) > max_step:
-                max_step = len(sentence_in_list)
-                print(max_step)
-            encoding_input.append(sentence_in_list[ : ])
-            decoding_output.append(sentence_in_list[ : ])
-            decoding_input.append(sentence_in_list[ : ])
-            c+=1
-        else:
-            d+=1
-
+        sentence_in_list = sentence.lstrip().split(" ")
+        if len(sentence_in_list) > max_step:
+            max_step = len(sentence_in_list)
+            #print(max_step)
+        encoding_input.append(sentence_in_list[ : ])
+        decoding_output.append(sentence_in_list[ : ])
+        decoding_input.append(sentence_in_list[ : ])
         sentence = data.readline().lstrip()
-    print(c, d)
     encoding_input = encoding_input[ : -1] # 차원: 문장수 * 그 문장의 단어수
     decoding_input = decoding_input[1: ]
     decoding_output = decoding_output[1: ]
@@ -104,41 +100,40 @@ def convert_3d_shape_onehotencode(word2one, sentences_list):
 
 def main(data_to_read): # 코드이해 30%
     start = time.time()
-    from keras import Model
-    from keras.layers import Dense
-    from keras.layers import LSTM
 
 
 
-    #datatoread = 'test_cleansed.txt'
     data_in_lang = read_data(data_to_read)# 다른 경로에 데이터 몰아넣고 읽게 하자
     word2onehot_dict, one2word_dict = one_hot_dictionary(data_to_read)
     global max_step
     #prepare data which will be used in NN
     encode_input = convert_3d_shape_onehotencode(word2onehot_dict, data_in_lang[0])
-    decode_input = convert_3d_shape_onehotencode(word2onehot_dict, data_in_lang[1])
+    #decode_input = convert_3d_shape_onehotencode(word2onehot_dict, data_in_lang[1])
     decode_ouput = convert_3d_shape_onehotencode(word2onehot_dict, data_in_lang[2])
 
 
-    # configure problem
+    # bidirection =True, depth =1, unit = 256, barch =64, sententence =10, onehot, lemetized, farizrahman4u model, no embeeding layer, dropout=0.2
     n_features = len(word2onehot_dict)
     unit = 256
     epoch = 100
     batchisize = 64
-    optimizer = optimizers.Adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=None, decay=0.0, amsgrad=False)
+    #optimizer = optimizers.Adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=None, decay=0.0, amsgrad=False)
     model = Sequential()
-    model.add( AttentionSeq2Seq(input_shape = (max_step, n_features), hidden_dim=unit, output_length=max_step, output_dim=n_features, depth=2, bidirectional=True))
-    #model = AttentionSeq2Seq(input_shape = (max_step, n_features), hidden_dim=unit, output_length=max_step, output_dim=n_features, depth=1, bidirectional=False)
-    #model.add(TimeDistributed(Dense(n_features)) )
+    model.add(Dropout(0.2,input_shape = (max_step, n_features)))
+    model.add( AttentionSeq2Seq(input_shape = (max_step, n_features), hidden_dim=unit, output_length=max_step, output_dim=n_features, depth=1, bidirectional=True))
     model.add(TimeDistributed( Dense(units=n_features, input_shape=(max_step, n_features), activation='softmax')))
-
     model.summary()
     model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['acc'])
-    model.fit( encode_input, decode_ouput, epochs=epoch, verbose=2, batch_size=batchisize, validation_split=0.2)
+    model.fit( encode_input, decode_ouput, epochs=epoch, verbose=2, batch_size=batchisize) #  validation_split=0.2
     print("fitting done")
+    model_title = data_to_read[:-4] +'one_hot.h5'
+    model.save(model_title)  # creates a HDF5 file 'my_model.h5'
+    #del model  # deletes the existing model
+    #model = load_model('my_model.h5')
+
     end = time.time()
     print(( end-start) / 60 , '분')
-
+    '''
 
     while 1:
         input_sentence = input("I say : ")
@@ -159,14 +154,15 @@ def main(data_to_read): # 코드이해 30%
             print(word, end=' ')
             if word == "<eos>\n":
                 break
+                
+        '''
 
-
-        print()
 
 
 #data_to_read='cleansed_test2.txt'
-#data_to_read='test_cleansed.txt'
-data_to_read='cleansed_cleansed_twice.txt'
+#
+#data_to_read='movie_dialogue_10.txt'
+data_to_read='movie_dialogue_10_Extracted_Lemmatized.txt'
 main(data_to_read)
 
 

@@ -470,7 +470,9 @@ class RecurrentModel(Recurrent):
                 if ground_truth is None:
                     ground_truth = self._get_optional_input_placeholder('ground_truth')
                 inputs.append(ground_truth)
-        assert len(inputs) == req_num_inputs, "Required " + str(req_num_inputs) + " inputs, received " + str(len(inputs)) + "."
+        #print(inputs)
+        #print(len(inputs), req_num_inputs)
+        assert (len(inputs) == req_num_inputs) , "Required " + str(req_num_inputs) + " inputs, received " + str(len(inputs)) + "."
         with K.name_scope(self.name):
             if not self.built:
                 self.build(K.int_shape(inputs[0]))
@@ -860,6 +862,7 @@ class RecurrentModel(Recurrent):
 class RecurrentSequential(RecurrentModel):
 
     def __init__(self, state_sync=False, decode=False, output_length=None, return_states=False, readout=False, readout_activation='linear', teacher_force=False, state_initializer=None, **kwargs):
+        #self.model = Model
         self.state_sync = state_sync
         self.cells = []
         if decode and output_length is None:
@@ -939,6 +942,7 @@ class RecurrentSequential(RecurrentModel):
                     self.batch_size = batch_size
         if self.state_sync:
             if type(input_shape) is list:
+
                 x_shape = input_shape[0]
                 if not self.decode:
                     input_length = x_shape.pop(1)

@@ -1,9 +1,13 @@
 import random
+import re
+sen_length = 10
 
 ''' 
     1. Read from 'movie-lines.txt'
     2. Create a dictionary with ( key = line_id, value = text )
 '''
+
+
 
 
 def get_id2line():
@@ -43,6 +47,7 @@ def get_conversations():
         #a.write(_line)
         #a.close()
         convs.append(_line.split(','))
+        #print(convs)
     return convs
 
 
@@ -72,25 +77,39 @@ def extract_conversations(convs, id2line, path=''):
 
 
 def gather_dataset(convs, id2line):
-    questions = []
-    answers = []
-    dialogues =[]
-    #print(convs)
-    #print(id2line)
 
+    dialogues =[]
+    global sen_length
     for conv in convs:
         #print(conv)
         if conv[-1] == "":
             conv = conv[:-1]
+        toolong = False
+
         for i in range(len(conv)):
-            dialogues.append(id2line[conv[i]])
-            #if i % 2 == 0:
-            #    questions.append(id2line[conv[i]])
-            #else:
-            #    answers.append(id2line[conv[i]])
+            cleaned = clean(id2line[conv[i]])  #string
+            inlist = cleaned.split(" ")
+            if len(inlist) > sen_length:
+                toolong = True
+                break
+
+        if not toolong:
+            for i in range(len(conv)):
+                cleaned = clean(id2line[conv[i]])  #string
+                #print(cleaned)
+                dialogues.append(cleaned)
+
 
     #return questions, answers
     return dialogues
+
+def clean(line):
+    line = line.lower()
+    line = line.replace("\'re", " are ").replace("\'ll", " will ").replace("\'m", " am ").replace("?", " ? ").replace("!", " ! ")
+    line = re.sub(r"[^a-z0-9!?]", " ", line)
+    line = re.sub("\s+", " ", line)  # 연속되는 공백문자 공백하나로 통일
+    line = line.strip()
+    return line
 
 '''
     We need 4 files
@@ -103,28 +122,15 @@ def gather_dataset(convs, id2line):
 
 def prepare_seq2seq_files(dialogue, path='', TESTSET_SIZE=30000):
     # open files
-    #train_enc = open(path + 'train_enc.txt', 'w' ,encoding='utf8')
-    #train_dec = open(path + 'train_dec.txt', 'w',encoding='utf8')
-    #test_enc = open(path + 'test_enc.txt', 'w',encoding='utf8')
-    #test_dec = open(path + 'test_dec.txt', 'w',encoding='utf8')
-    movie_dialogue = open(path + 'movie_dialogue.txt','w', encoding='utf8')
-    #print(111111111)
-    # choose 30,000 (TESTSET_SIZE) items to put into testset
-    #test_ids = random.sample([i for i in range(len(questions))], 0)
+
+    global sen_length
+    title = 'movie_dialogue_'+str(sen_length) +'.txt'
+    movie_dialogue = open(path + title,'w', encoding='utf8')
 
     #print(len(questions))
     #print(len(answers))
     for i in range(len(dialogue)):
-        movie_dialogue.write(dialogue[i] + "\n")
-        #print(i)
-        '''
-        if i in test_ids:
-            test_enc.write(questions[i] + '\n')
-            test_dec.write(answers[i] + '\n')
-        else:
-            train_enc.write(questions[i] + '\n')
-            train_dec.write(answers[i] + '\n')
-        '''
+        movie_dialogue.write(dialogue[i] + " <eos>\n ")
         if i % 10000 == 0:
             print('\nwritten %d lines'%(i))
 
