@@ -133,7 +133,11 @@ def main(data_to_read): # 코드이해 30%
     model.summary()
     model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['acc'])
     #for sen in range(len(encode_input)):
-    model.fit(encode_input, decode_ouput, epochs=epoch, verbose=2, batch_size=batchisize)#, validation_split=0.2)
+    from keras import callbacks
+    filepath = '{epoch:02d}_{loss:.3f}_{val_loss:.3f}.h5'
+    callback = callbacks.ModelCheckpoint(filepath, monitor='val_loss', period=10)
+    callback2 = callbacks.ModelCheckpoint(filepath, monitor='loss', period=10)
+    model.fit(encode_input, decode_ouput, epochs=epoch, verbose=2, batch_size=batchisize, callbacks=[callback, callback2], validation_split=0.2)
     print("fitting done")
 
     model_title = data_to_read[:-4] + 'one_hot.h5'
@@ -251,8 +255,9 @@ def main(data_to_read): # 코드이해 30%
 
 
 #data_to_read = 'cleansed_movie_dialogue_shrinked.txt'
-#data_to_read='cleansed_test2.txt'
+#
 #data_to_read='test_cleansed.txt'
 #data_to_read='cleansed_cleansed_twice.txt'
 data_to_read='movie_dialogue_10_Extracted_Lemmatized.txt'
+data_to_read='cleansed_test2.txt'
 main(data_to_read)

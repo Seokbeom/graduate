@@ -1,6 +1,6 @@
 from nltk.stem import WordNetLemmatizer
-
-file_name ='movie_dialogue_15_Extracted_'
+senlen = 5
+file_name ='./extracted_data/movie_dialogue_' + str(senlen) +'_T'
 
 
 
@@ -42,9 +42,10 @@ for index in range(len(whole_text)):
     else:
         appeared.add(word)
 
-QA=('', 'Q', 'A')
+words_count = len(selected_word)
+QA=('T', 'Q', 'A')
 for qa in QA:
-    new_file_name = file_name + qa
+    new_file_name = file_name[:-1] + qa
     data = open(new_file_name +'.txt', 'r', encoding='utf8')
     whole_text= data.read()
     whole_text = whole_text.split(' ')
@@ -52,7 +53,7 @@ for qa in QA:
         whole_text.remove('')
     data.close()
 
-    data = open(new_file_name + '_Lemmatized.txt','w')
+    data = open( new_file_name + '_%d.txt'%(words_count),'w')
 
     for index in range(len(whole_text)):
         word = whole_text[index]
@@ -69,4 +70,4 @@ for qa in QA:
     data.close()
 
 #print(nameset)
-print('최종 단어 수 : ',len(selected_word))
+print('최종 단어 수 : ',words_count)
