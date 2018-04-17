@@ -1,6 +1,6 @@
 
 #https://machinelearningmastery.com/encoder-decoder-attention-sequence-to-sequence-prediction-keras/
-senlen = 15
+senlen = 10
 
 import time
 import numpy as np
