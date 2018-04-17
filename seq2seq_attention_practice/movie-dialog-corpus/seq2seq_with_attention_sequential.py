@@ -130,7 +130,7 @@ def main(data_to_read): # 코드이해 30%
     # configure problem
     n_features = len(word2onehot_dict)
     unit = 64
-    epoch = 100
+    epoch = 1
     batchisize = 16
 
 
@@ -162,15 +162,24 @@ def main(data_to_read): # 코드이해 30%
         inp_seq = [sen_in_list]
         inp_seq = convert_3d_shape_onehotencode(word2onehot_dict, inp_seq)
         result = model.predict(inp_seq)
-
-
-        for vec in result[0]:
-            #print(vec)
-            highest = np.argmax(vec)
+        for stepidx in range(max_step):
+            highest = np.argmax(result[0][stepidx])
             word = one2word_dict[highest]
-            print(word, end=' ')
+
+            for i in range(n_features):
+                #print(result[0][stepidx][i])
+                result[0][stepidx][i] = False
+
+
             if word == "<eos>\n":
-                break
+                print("<eos>", end=" ")
+            else:
+                print(word, end=' ')
+                result[0][stepidx][highest] = True
+                # eos가 나오면 그 뒤는 전부 0으로 아니면 argmax = 1
+        model.fit(inp_seq, result, epochs=1, verbose=0, batch_size=1)
+
+
 
 
         print()

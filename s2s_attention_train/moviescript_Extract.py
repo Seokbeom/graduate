@@ -1,5 +1,5 @@
 import re
-sen_length = 15
+sen_length = 5
 
 
 def get_id2line():
@@ -11,8 +11,6 @@ def get_id2line():
         _line = line.split('\t')
         #print(_line)
         if len(_line) >= 5: # ==
-            #print(_line)
-            #nameset.add(_line[3][0] + _line[3][1:].lower()) #이름저장
             id2line[_line[0]] = _line[4]
     #print(id2line)
     return id2line
@@ -40,30 +38,32 @@ def gather_dataset(convs, id2line):
     total =[]
     global sen_length
     for conv in convs:
-        #print(conv)
         if conv[-1] == "":
             conv = conv[:-1]
-        toolong = False
+
 
         for i in range(len(conv)):
-            cleaned = clean(id2line[conv[i]])  #string
+            cleaned = clean(id2line[conv[i]])  # string
             inlist = cleaned.split(" ")
-            if len(inlist) > sen_length:
-                toolong = True
-                break
-
-        if not toolong:
-            for i in range(len(conv)):
-                cleaned = clean(id2line[conv[i]])  #string
-                total.append(cleaned)
-                if i < len(conv) - 1:
+            shortenough = False
+            if i < len(conv) - 1: # questions
+                cleaned2 = clean(id2line[conv[i+1]])
+                inlist2 = cleaned2.split(" ")
+                if len(inlist) < sen_length and len(inlist2) < sen_length :
                     q.append(cleaned)
-                if i > 0:
+                    shortenough = True
+
+            if i > 0:  # answers
+                cleaned2 = clean(id2line[conv[i-1]])
+                inlist2 = cleaned2.split(" ")
+                if len(inlist) < sen_length and len(inlist2) < sen_length:
                     a.append(cleaned)
+                    shortenough = True
 
 
+            if shortenough:
+                total.append(cleaned)
 
-                #dialogues.append(cleaned)
 
 
     return total, q, a
@@ -83,9 +83,9 @@ def prepare_seq2seq_files(total, q, a, path=''):
     # open files
 
     global sen_length
-    title0 = 'movie_dialogue_' + str(sen_length) + '_Extracted_.txt'
-    title1 = 'movie_dialogue_'+str(sen_length) +'_Extracted_Q.txt'
-    title2 = 'movie_dialogue_' + str(sen_length) + '_Extracted_A.txt'
+    title0 = './extracted_data/movie_dialogue_' + str(sen_length) + '_T.txt'
+    title1 = './extracted_data/movie_dialogue_'+str(sen_length) + '_Q.txt'
+    title2 = './extracted_data/movie_dialogue_' + str(sen_length) + '_A.txt'
     T = open(path + title0, 'w', encoding='utf8')
     Q = open(path + title1,'w', encoding='utf8')
     A = open(path + title2,'w', encoding='utf8')

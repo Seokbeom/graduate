@@ -1,5 +1,7 @@
 string = '01234567890'
-
+a='dfdfd fd\n fdf\n '
+a=a.strip()
+print(a.split(" "))
 a = string.index('0')
 print(a)
 

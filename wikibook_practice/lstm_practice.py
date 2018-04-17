@@ -6,7 +6,6 @@
 # 뉴럴넷 최적화
 # 엔터키 여부
 
-
 import time
 start = time.time()
 import codecs  #?
@@ -57,9 +56,6 @@ y=np.zeros((len(sentences), len(chars)), dtype = np.bool)
 
 
 for i,sentence in enumerate(sentences): # 명확한 이해 필요
-    #while '' in sentence : # 의미없는 '' 제거
-        #sentence.remove('')
-    #print(i, sentence)
     for t, char in enumerate(sentence):
         X[i, t, char_indices[char]] = 1
     y[i, char_indices[next_chars[i]]] = 1
@@ -73,6 +69,8 @@ model.add(Dense(len(chars)))
 model.add(Activation('softmax'))
 optimizer = RMSprop(lr=0.01)
 model.compile(loss= 'categorical_crossentropy', optimizer = optimizer)
+model.summary()
+
 
 
 #후보를 배열에서 꺼내기
