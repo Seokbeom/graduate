@@ -12,7 +12,8 @@ data_location = './extracted_data/'
 word2vec_location = './word2vec_model/'
 
 data = LineSentence(data_location + file_name)
-model = word2vec.Word2Vec(size=size, seed=1234, min_count=1,alpha= 0.025, min_alpha=0.025,  workers=4)
+model = word2vec.Word2Vec(size=size, seed=1234, min_count=1,alpha= 0.025, min_alpha=0.025,  workers=4) ## Try alpha=0.05 and cbow_mean=1  https://stackoverflow.com/questions/34249586/the-accuracy-test-of-word2vec-in-gensim
+
 model.build_vocab(data)
 #model.train(data,total_examples=model.corpus_count,epochs=model.iter, compute_loss=True)
 for epoch in range(10): # in range(10) ? 50 doesnt work // the smaller the better ..... .?

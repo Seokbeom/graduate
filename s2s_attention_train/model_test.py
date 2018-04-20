@@ -4,16 +4,22 @@ import numpy as np
 from keras.models import load_model
 
 
-modelname = 'movie_dialogue_5_T_2715epoch_10_loss_2.773_valloss_3.062.h5'
+#modelname = 'movie_dialogue_10_T_9188__epoch_10_loss_0.000_valloss_0.000.h5'
+#modelname = 'movie_dialogue_5_T_2715__epoch_10_loss_2.315_valloss_3.134.h5'
+#modelname='test_cleansed_1_T_1__epoch_100_loss_0.028353_valloss_0.003710_OHE.h5'
+#modelname = 'movie_dialogue_10_T_9188__epoch_100_loss_0.721554_valloss_4.310535_OHE.h5'
+#modelname='movie_dialogue_10_T_9188__epoch_01_loss_2.959421_OHE.h5'
+modelname = 'movie_dialogue_10_T_9188__epoch_170_loss_0.512821_valloss_7.481432_acc_0.636959_OHE.h5'
+modelname = 'movie_dialogue_10_T_9188__epoch_40_loss_0.000000_valloss_0.000000_acc_0.246878_QandA_OHE.h5' #QandA version, samplefunction using ...
 INIT_TALK = 'how are you ?'
+INIT_TALK = None
 
-
-
-
-senlen = int(modelname[15])
-wordscount = int(modelname[19:23])
+t1 = modelname[:-4].split("_")[0]
+t2 = modelname[:-4].split("_")[1]
+senlen = int(modelname.split("_")[2])
+wordscount = int(modelname.split("_")[4])
 data_location = './extracted_data/'
-data_to_read ='movie_dialogue_%d_T_%d.txt'%(senlen, wordscount)
+data_to_read ='%s_%s_%d_T_%d.txt'%(t1,t2, senlen, wordscount)
 #data_to_read = 'movie_dialogue_10_Extracted__Lemmatized.txt'
 
 max_step =0
@@ -70,8 +76,8 @@ def convert_3d_shape_onehotencode(word2one, sentences_list):
         for j, word in enumerate(sentence):  # char = string
             try:
                 X[i, j, word2one[word]] = 1
-            except:
-                print("error", 'word = [', word ,']')
+            except :
+                print('error', 'word = \"%s\"'%(word))
                 #print(word)
     return X
 
@@ -91,23 +97,23 @@ def main(data_to_read, modelname, init = None):
     data_location = './extracted_data/'
     model_location = './model/'
 
-    read_data(data_location + data_to_read, False)  # to get max step
+    read_data(data_location + data_to_read, False)
     word2onehot_dict, one2word_dict = one_hot_dictionary(data_location + data_to_read)
     n_features = len(word2onehot_dict)
-    #model = load_model(model_location +'movie_dialogue_10_Extracted__Lemmatizedone_hot.h5', custom_objects={'AttentionDecoder': AttentionDecoder})
     model = load_model(model_location + modelname, custom_objects={'AttentionDecoder': AttentionDecoder})
-
 
     end = time.time()
     print('model loaded', (end - start) / 60, '분')
 
 
+
     if init:
         loop = 30
         input_sentence = init + ' <eos>\n'
+        print(input_sentence)
     else:
-        loop = 100
-        input_sentence = input("I say : ") + ' <eos>\n'
+        loop = 1000
+        input_sentence = input("\nI say : ") + ' <eos>\n'
 
     generated = open(model_location + modelname + '_dialogue.txt', 'w', encoding='utf-8')
     generated.write(input_sentence)
@@ -118,41 +124,49 @@ def main(data_to_read, modelname, init = None):
         # 컴퓨터와 대화하는 모드면 인풋을 받음/ 아닐 경우 컴퓨터의 전 대답이 인풋으로 들어감
         if input_sentence == 'q <eos>\n':
             break
-
+        print('input_sentence :', [input_sentence])
         # 인풋 스트링을 백터화
         sen_in_list = input_sentence.split(' ') # 리스트로 변환
         if sen_in_list[-1] == '':
             sen_in_list=sen_in_list[ : -1]
+        if sen_in_list[0] == '':
+            sen_in_list = sen_in_list[1 : ]
+
         input_sentence='' # input_sentence 초기화
         inp_seq = convert_3d_shape_onehotencode(word2onehot_dict, [sen_in_list])
         result = model.predict(inp_seq) # input에 대한 softmax output 0 * maxstep * n_feature 차원
         first_eos = True
         
-        for stepidx in range(max_step):
-            highest = sample(result[0][stepidx])
-            #highest = np.argmax(result[0][stepidx])
+        for stepidx in range(len(result[0])): #range(max_step):
+            #highest = sample(result[0][stepidx])
+            highest = np.argmax(result[0][stepidx])
             word = one2word_dict[highest]
             result[0][stepidx] = np.zeros((n_features), dtype=np.bool)
 
             # eos가 나오면 그 다음에 오는 모든 단어는 전부 0으로 /  eos가 아니면 argmax만 = 1
             if word == "<eos>\n":
                 if first_eos:
-                    input_sentence = input_sentence + word
+                    input_sentence = input_sentence + " " + word
                     result[0][stepidx][highest] = 1
                     first_eos = False
-                print("<eos>", end=" ") # 탭으로 당겨도 됨
+                    #print("<eos>", end=" ") # 탭으로 당겨도 됨
+                    print(word, end=' ')
+                    break
                 
             else:
-                input_sentence = input_sentence + word + " "
+                input_sentence = input_sentence + " " + word # + " "
                 result[0][stepidx][highest] = 1
-                print(word, end=' ')
+                print (word, end=' ')
+
 
         if not init:
-            input_sentence = input("I say : ") + ' <eos>\n'
+            generated.write(input_sentence + '\n')
+            input_sentence = input("\nI say : ") + ' <eos>\n'
+
         generated.write(input_sentence)
 
         # online training
-        model.fit(inp_seq, result, epochs=1, verbose=0, batch_size=1)
+        #model.fit(inp_seq, result, epochs=1, verbose=0, batch_size=1)
         print()
 
     generated.close()

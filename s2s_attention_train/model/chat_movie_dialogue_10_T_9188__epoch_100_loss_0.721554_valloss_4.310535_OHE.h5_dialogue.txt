@@ -1,0 +1,449 @@
+C:\Users\Server\AppData\Local\Programs\Python\Python36\python.exe C:/Users/Server/Desktop/SB_LEE/graduate/s2s_attention_train/model_test.py
+C:\Users\Server\AppData\Roaming\Python\Python36\site-packages\h5py\__init__.py:36: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+10
+사용되는 단어수(중복 제거) :  9189
+2018-04-18 14:08:30.684469: I T:\src\github\tensorflow\tensorflow\core\platform\cpu_feature_guard.cc:140] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2
+2018-04-18 14:08:30.944721: I T:\src\github\tensorflow\tensorflow\core\common_runtime\gpu\gpu_device.cc:1344] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.582
+pciBusID: 0000:17:00.0
+totalMemory: 11.00GiB freeMemory: 9.08GiB
+2018-04-18 14:08:31.024806: I T:\src\github\tensorflow\tensorflow\core\common_runtime\gpu\gpu_device.cc:1344] Found device 1 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.582
+pciBusID: 0000:65:00.0
+totalMemory: 11.00GiB freeMemory: 9.08GiB
+2018-04-18 14:08:31.025226: I T:\src\github\tensorflow\tensorflow\core\common_runtime\gpu\gpu_device.cc:1423] Adding visible gpu devices: 0, 1
+2018-04-18 14:08:31.908981: I T:\src\github\tensorflow\tensorflow\core\common_runtime\gpu\gpu_device.cc:911] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-04-18 14:08:31.909215: I T:\src\github\tensorflow\tensorflow\core\common_runtime\gpu\gpu_device.cc:917]      0 1 
+2018-04-18 14:08:31.909365: I T:\src\github\tensorflow\tensorflow\core\common_runtime\gpu\gpu_device.cc:930] 0:   N N 
+2018-04-18 14:08:31.909523: I T:\src\github\tensorflow\tensorflow\core\common_runtime\gpu\gpu_device.cc:930] 1:   N N 
+2018-04-18 14:08:31.909787: I T:\src\github\tensorflow\tensorflow\core\common_runtime\gpu\gpu_device.cc:1041] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 8794 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:17:00.0, compute capability: 6.1)
+2018-04-18 14:08:32.258472: I T:\src\github\tensorflow\tensorflow\core\common_runtime\gpu\gpu_device.cc:1041] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:1 with 8794 MB memory) -> physical GPU (device: 1, name: GeForce GTX 1080 Ti, pci bus id: 0000:65:00.0, compute capability: 6.1)
+model loaded 4.041628754138946 분
+
+I say : how are you ?
+input_sentence : ['how are you ? <eos>\n']
+fine <eos>
+ 
+I say : fine ?
+
+input_sentence : ['fine ? <eos>\n']
+fine <eos>
+ 
+I say : what is your name ?
+
+input_sentence : ['what is your name ? <eos>\n']
+NAME norwegian is her your service camelot ! <eos>
+ 
+I say : what are you doing ?
+
+input_sentence : ['what are you doing ? <eos>\n']
+i am <eos>
+ 
+I say : i am
+
+input_sentence : ['i am <eos>\n']
+you ? <eos>
+ 
+I say : yes me
+
+input_sentence : ['yes me <eos>\n']
+i ? <eos>
+ 
+I say : what the fuck
+
+input_sentence : ['what the fuck <eos>\n']
+NAME ? <eos>
+ 
+I say : who are you ?
+
+input_sentence : ['who are you ? <eos>\n']
+i am the son <eos>
+ 
+I say : how is everything ?
+
+input_sentence : ['how is everything ? <eos>\n']
+everything s good everything s fine <eos>
+ 
+I say : nice to meet you
+
+input_sentence : ['nice to meet you <eos>\n']
+that s a sharp jacket this way <eos>
+ 
+I say : how old are you ?
+
+input_sentence : ['how old are you ? <eos>\n']
+twenty <eos>
+ 
+I say : what is your age ?
+
+input_sentence : ['what is your age ? <eos>\n']
+i don is know <eos>
+ 
+I say : what is your age
+
+input_sentence : ['what is your age <eos>\n']
+which don <eos>
+ 
+I say : how is it going ?
+
+input_sentence : ['how is it going ? <eos>\n']
+maybe s <eos>
+ 
+I say : i love you
+
+input_sentence : ['i love you <eos>\n']
+i love <eos>
+ 
+I say : do you love me ?
+
+input_sentence : ['do you love me ? <eos>\n']
+i asked love me ? <eos>
+ 
+I say : do i love you ?
+
+input_sentence : ['do i love you ? <eos>\n']
+that s the key question <eos>
+ 
+I say : that s the key question
+
+input_sentence : ['that s the key question <eos>\n']
+yeah <eos>
+ 
+I say : yeah
+
+input_sentence : ['yeah <eos>\n']
+i you you <eos>
+ 
+I say : i you you
+
+input_sentence : ['i you you <eos>\n']
+you ? ? <eos>
+ 
+I say : you ? ?
+\
+input_sentence : ['you ? ? <eos>\n']
+yeah <eos>
+ 
+I say : yeah
+
+input_sentence : ['yeah <eos>\n']
+i you you <eos>
+ 
+I say : what are you talking about
+
+input_sentence : ['what are you talking about <eos>\n']
+i s t <eos>
+ 
+I say : what are you talking about ?
+
+input_sentence : ['what are you talking about ? <eos>\n']
+i s <eos>
+ 
+I say : what are you doing right now ?
+
+input_sentence : ['what are you doing right now ? <eos>\n']
+i just guess back <eos>
+ 
+I say : i just guess back
+
+input_sentence : ['i just guess back <eos>\n']
+fuck s fine ? <eos>
+ 
+I say : are you a boy ?
+
+input_sentence : ['are you a boy ? <eos>\n']
+no <eos>
+ 
+I say : are you a girl?
+
+input_sentence : ['are you a girl? <eos>\n']
+error word = "girl?"
+yes <eos>
+ 
+I say : are you a girl ?
+
+input_sentence : ['are you a girl ? <eos>\n']
+no <eos>
+ 
+I say : are you a man ?
+
+input_sentence : ['are you a man ? <eos>\n']
+yes <eos>
+ 
+I say : are you a woman ?
+
+input_sentence : ['are you a woman ? <eos>\n']
+yes <eos>
+ 
+I say : are you a robot ?
+
+input_sentence : ['are you a robot ? <eos>\n']
+no <eos>
+ 
+I say : are you a human ?
+
+input_sentence : ['are you a human ? <eos>\n']
+come <eos>
+ 
+I say : how is everything ?
+
+input_sentence : ['how is everything ? <eos>\n']
+everything s good everything s fine <eos>
+ 
+I say : everything is good ?
+
+input_sentence : ['everything is good ? <eos>\n']
+NAME NAME <eos>
+ 
+I say : my name is NAME
+
+input_sentence : ['my name is NAME <eos>\n']
+hi you warts NAME shoe ? ? <eos>
+ 
+I say : i am NAME
+
+input_sentence : ['i am NAME <eos>\n']
+you harrison <eos>
+ 
+I say : harrison
+
+input_sentence : ['harrison <eos>\n']
+what are <eos>
+ 
+I say : do you love me ?
+
+input_sentence : ['do you love me ? <eos>\n']
+i asked love me ? <eos>
+ 
+I say : i dont know
+
+input_sentence : ['i dont know <eos>\n']
+error word = "dont"
+you you <eos>
+ 
+I say : i don t know
+
+input_sentence : ['i don t know <eos>\n']
+you don you <eos>
+ 
+I say : are you religious ?
+
+input_sentence : ['are you religious ? <eos>\n']
+no <eos>
+ 
+I say : are you okay ?
+
+input_sentence : ['are you okay ? <eos>\n']
+i i fine <eos>
+ 
+I say : are you fine ?
+
+input_sentence : ['are you fine ? <eos>\n']
+i am <eos>
+ 
+I say :  is everything okay?
+
+input_sentence : [' is everything okay? <eos>\n']
+error word = "okay?"
+oh <eos>
+ 
+I say : is everything okay ?
+
+input_sentence : ['is everything okay ? <eos>\n']
+yah <eos>
+ 
+I say : what is wrong with you ?
+
+input_sentence : ['what is wrong with you ? <eos>\n']
+say my name do you have ? <eos>
+ 
+I say : i don t understnad you
+
+input_sentence : ['i don t understnad you <eos>\n']
+error word = "understnad"
+i d t <eos>
+ 
+I say : i don t understand you
+
+input_sentence : ['i don t understand you <eos>\n']
+promise <eos>
+ 
+I say : promise what
+
+input_sentence : ['promise what <eos>\n']
+i <eos>
+ 
+I say : promise
+
+input_sentence : ['promise <eos>\n']
+i mean <eos>
+ 
+I say : i mean
+
+input_sentence : ['i mean <eos>\n']
+NAME cabinet <eos>
+ 
+I say : are you smart ?
+
+input_sentence : ['are you smart ? <eos>\n']
+yes i am not <eos>
+ 
+I say : are you dumb ?
+
+input_sentence : ['are you dumb ? <eos>\n']
+yes are <eos>
+ 
+I say : what is going on ?
+
+input_sentence : ['what is going on ? <eos>\n']
+really i don t know <eos>
+ 
+I say : what s going on ?
+
+input_sentence : ['what s going on ? <eos>\n']
+i are here to <eos>
+ 
+I say : how is everything ?
+
+input_sentence : ['how is everything ? <eos>\n']
+everything s good everything s fine <eos>
+ 
+I say : how s everything ?
+
+input_sentence : ['how s everything ? <eos>\n']
+good <eos>
+ 
+I say : is everything fine ?
+
+input_sentence : ['is everything fine ? <eos>\n']
+oui now you ve got me talking NAME <eos>
+ 
+I say : is everything good ?
+
+input_sentence : ['is everything good ? <eos>\n']
+yes <eos>
+ 
+I say : what is your name ?
+
+input_sentence : ['what is your name ? <eos>\n']
+NAME norwegian is her your service camelot ! <eos>
+ 
+I say : norwegian
+
+input_sentence : ['norwegian <eos>\n']
+oh yeah <eos>
+ 
+I say : what is your favorite ?
+
+input_sentence : ['what is your favorite ? <eos>\n']
+i know no know it fucking <eos>
+ 
+I say : how old ?
+
+input_sentence : ['how old ? <eos>\n']
+come july <eos>
+ 
+I say : come july
+
+input_sentence : ['come july <eos>\n']
+come <eos>
+ 
+I say : come
+
+input_sentence : ['come <eos>\n']
+i <eos>
+ 
+I say : i
+
+input_sentence : ['i <eos>\n']
+i ? <eos>
+ 
+I say : i ?
+
+input_sentence : ['i ? <eos>\n']
+i <eos>
+ 
+I say : i
+
+input_sentence : ['i <eos>\n']
+i ? <eos>
+ 
+I say : yes you 
+
+input_sentence : ['yes you  <eos>\n']
+error word = ""
+i you <eos>
+ 
+I say : yes you
+
+input_sentence : ['yes you <eos>\n']
+i i <eos>
+ 
+I say : what the hell
+
+input_sentence : ['what the hell <eos>\n']
+i are a couple UNK this is a dream <eos>
+ 
+I say : what is your name
+\
+input_sentence : ['what is your name <eos>\n']
+NAME norwegian <eos>
+ 
+I say : whats your name
+
+input_sentence : ['whats your name <eos>\n']
+error word = "whats"
+NAME what <eos>
+ 
+I say : what s your name
+
+input_sentence : ['what s your name <eos>\n']
+NAME <eos>
+ 
+I say : what s your name ?
+
+input_sentence : ['what s your name ? <eos>\n']
+NAME <eos>
+ 
+I say : are you NAME ?
+
+input_sentence : ['are you NAME ? <eos>\n']
+yes <eos>
+ 
+I say : do people call you NAME ?
+
+input_sentence : ['do people call you NAME ? <eos>\n']
+call but i <eos>
+ 
+I say : what is one plus one ?
+
+input_sentence : ['what is one plus one ? <eos>\n']
+i suppose <eos>
+ 
+I say : would you like something to drink ?
+
+input_sentence : ['would you like something to drink ? <eos>\n']
+what are i am buying <eos>
+ 
+I say : something to drink ?
+
+input_sentence : ['something to drink ? <eos>\n']
+no cokes <eos>
+ 
+I say : do you like cokes ?
+
+input_sentence : ['do you like cokes ? <eos>\n']
+as a it it <eos>
+ 
+I say : you are so dumb
+
+input_sentence : ['you are so dumb <eos>\n']
+i ? <eos>
+ 
+I say : q
+
+총 :  20.271881790955863 분
+
+Process finished with exit code 0

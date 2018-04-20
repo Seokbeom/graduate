@@ -2,21 +2,22 @@ from attention_decoder import AttentionDecoder
 import time
 import numpy as np
 from keras.models import load_model
-from gensim.models import word2vec
+from gensim.models import word2vec # Try alpha=0.05 and cbow_mean=1  https://stackoverflow.com/questions/34249586/the-accuracy-test-of-word2vec-in-gensim
+
 #############################
 modelname = 'movie_dialogue_5_T_2715__epoch_10_loss_2.874_valloss_3.093_W2V.h5'
 
 INIT_TALK = 'how are you ?'
 
 #########################
-senlen = int(modelname[15])
-wordscount = int(modelname[19:23])
+
+t1 = modelname[:-4].split("_")[0]
+t2 = modelname[:-4].split("_")[1]
+senlen = int(modelname.split("_")[2])
+wordscount = int(modelname.split("_")[4])
 data_location = './extracted_data/'
-data_to_read = 'movie_dialogue_%d_T_%d.txt' % (senlen, wordscount)
-# data_to_read = 'movie_dialogue_10_Extracted__Lemmatized.txt'
-
+data_to_read ='%s_%s_%d_T_%d.txt'%(t1,t2, senlen, wordscount)
 max_step = 0
-
 
 def one_hot_dictionary(file_name):
     data = open(file_name, 'r', encoding='utf8')
@@ -69,7 +70,7 @@ def convert_3d_shape_onehotencode(word2one, sentences_list):
             try:
                 X[i, j, word2one[word]] = 1
             except:
-                print("error", 'word = [', word, ']')
+                print('error', 'word = \"%s\"' % (word))
                 # print(word)
     return X
 
@@ -108,7 +109,6 @@ def main(data_to_read, modelname, init=None):
 
     read_data(data_location + data_to_read, False)  # to get max step
     word2onehot_dict, one2word_dict = one_hot_dictionary(data_location + data_to_read)
-
     n_features = len(word2onehot_dict)
     model = load_model(model_location + modelname, custom_objects={'AttentionDecoder': AttentionDecoder})
 
@@ -119,7 +119,7 @@ def main(data_to_read, modelname, init=None):
         loop = 30
         input_sentence = init + ' <eos>\n'
     else:
-        loop = 100
+        loop = 1000
         input_sentence = input("I say : ") + ' <eos>\n'
 
     generated = open(model_location + modelname + '_dialogue.txt', 'w', encoding='utf-8')
@@ -136,36 +136,42 @@ def main(data_to_read, modelname, init=None):
         sen_in_list = input_sentence.split(' ')  # 리스트로 변환
         if sen_in_list[-1] == '':
             sen_in_list = sen_in_list[: -1]
+        if sen_in_list[0] == '':
+            sen_in_list = sen_in_list[1:]
+
         input_sentence = ''  # input_sentence 초기화
         inp_seq = convert_3d_shape_word2vec(data_to_read, [sen_in_list])
         result = model.predict(inp_seq)  # input에 대한 softmax output 0 * maxstep * n_feature 차원
         first_eos = True
 
         for stepidx in range(max_step):
-            highest = sample(result[0][stepidx])
-            # highest = np.argmax(result[0][stepidx])
+            #highest = sample(result[0][stepidx])
+            highest = np.argmax(result[0][stepidx])
             word = one2word_dict[highest]
             result[0][stepidx] = np.zeros((n_features), dtype=np.bool)
 
             # eos가 나오면 그 다음에 오는 모든 단어는 전부 0으로 /  eos가 아니면 argmax만 = 1
             if word == "<eos>\n":
                 if first_eos:
-                    input_sentence = input_sentence + word
+                    input_sentence = input_sentence + " " + word
                     result[0][stepidx][highest] = 1
                     first_eos = False
-                print("<eos>", end=" ")  # 탭으로 당겨도 됨
+                    print(word, end=" ")
+                    break
 
             else:
-                input_sentence = input_sentence + word + " "
+                input_sentence = input_sentence + " " + word
                 result[0][stepidx][highest] = 1
                 print(word, end=' ')
 
         if not init:
+            generated.write(input_sentence + '\n')
             input_sentence = input("I say : ") + ' <eos>\n'
+
         generated.write(input_sentence)
 
         # online training
-        model.fit(inp_seq, result, epochs=1, verbose=0, batch_size=1)
+        #model.fit(inp_seq, result, epochs=1, verbose=0, batch_size=1)
         print()
 
     generated.close()

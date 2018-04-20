@@ -1,0 +1,235 @@
+how are you ? <eos>
+ fine am fine <eos>
+
+hey how are you ? <eos>
+ hungry <eos>
+
+what is your name ? <eos>
+ NAME norwegian is sir NAME <eos>
+
+what s your name ? <eos>
+ NAME NAME NAME <eos>
+
+are you a man ? <eos>
+ yes <eos>
+
+are you a woman ? <eos>
+ yes <eos>
+
+are you hungry ? <eos>
+ not whole <eos>
+
+what does that mean ? <eos>
+ we s not with it <eos>
+
+how are you doing ? <eos>
+ fine i fine <eos>
+
+what s up ? <eos>
+ i washed serving died <eos>
+
+what are you doing ? <eos>
+ i am <eos>
+
+what the heck are  <eos>
+ what s your get going NAME ? <eos>
+
+ask me some question <eos>
+ what are you ask ? ? <eos>
+
+how old are you <eos>
+ seventeen <eos>
+
+how old are you ? <eos>
+ older <eos>
+
+how old am i ? <eos>
+ i don t know <eos>
+
+what is my name ? <eos>
+ NAME name is sir <eos>
+
+yes sir <eos>
+ you you <eos>
+
+me ? <eos>
+ you <eos>
+
+what are you ? <eos>
+ i am <eos>
+
+what do you do ? <eos>
+ i am biscuit sure on ? <eos>
+
+how do you do ? <eos>
+ how hears you <eos>
+
+is everything okay ? <eos>
+ thank you <eos>
+
+thank you <eos>
+ i are <eos>
+
+thank you so much <eos>
+ my pleasure <eos>
+
+thank you sir <eos>
+ so you NAME NAME <eos>
+
+do you love me ? <eos>
+ do asked first <eos>
+
+i love you ? <eos>
+ NAME you you <eos>
+
+i love you <eos>
+ i love <eos>
+
+thanks <eos>
+ NAME <eos>
+
+oh <eos>
+ NAME <eos>
+
+NAME <eos>
+ NAME ? you s <eos>
+
+what are you <eos>
+ jump him <eos>
+
+what is your name again ? <eos>
+ NAME <eos>
+
+where are you <eos>
+ i are <eos>
+
+where are you ? <eos>
+ i am <eos>
+
+shut up <eos>
+ NAME careful <eos>
+
+what is one plus one <eos>
+ they tell t for <eos>
+
+what is one plus one ? <eos>
+ she s t about this <eos>
+
+who is she ? <eos>
+ NAME s wife before should <eos>
+
+who is he ? <eos>
+ he NAME sure finest good good <eos>
+
+do i know you ? <eos>
+ i am NAME millaney ? class <eos>
+
+do you love me <eos>
+ i remember are <eos>
+
+do you remembe me ? <eos>
+ no i like <eos>
+
+do you remeber me ? <eos>
+ no i like <eos>
+
+do you remember me ? <eos>
+ i i am sorry <eos>
+
+i am sick <eos>
+ i that way <eos>
+
+i am hungry <eos>
+ well turn bring <eos>
+
+what are you doing ? <eos>
+ i am <eos>
+
+what is your age <eos>
+ i bye NAME i am supposed last on <eos>
+
+how old are you ? <eos>
+ older <eos>
+
+are you young ? <eos>
+ yes s a <eos>
+
+do you like dog ? <eos>
+ it s not very a great s great <eos>
+
+is it good ? <eos>
+ i don t <eos>
+
+do you know ? <eos>
+ no <eos>
+
+dont you know ? <eos>
+ yeah but you are ? <eos>
+
+don t you know ? <eos>
+ do you <eos>
+
+i do <eos>
+ what s <eos>
+
+what is sky <eos>
+ i don t get <eos>
+
+who is your mother ? <eos>
+ stepmother met <eos>
+
+who is your father ? <eos>
+ he haven call will <eos>
+
+i will kill you <eos>
+ you will never ! <eos>
+
+i will hurt you <eos>
+ no will <eos>
+
+what s wrong with you ? <eos>
+ close wanted you mean we it <eos>
+
+what is matter with you <eos>
+ i wa ! all <eos>
+
+what is matter with you ? <eos>
+ you are ! all up <eos>
+
+how are you doing ? <eos>
+ fine i fine <eos>
+
+how are you ? <eos>
+ fine am fine <eos>
+
+how are you doing <eos>
+ hey sisters are you going ? <eos>
+
+hey  <eos>
+ hey s <eos>
+
+hi <eos>
+ hi <eos>
+
+hello <eos>
+ i <eos>
+
+hello ? <eos>
+ NAME murph s <eos>
+
+nice to meet you <eos>
+ ya am married are you <eos>
+
+are you married ? <eos>
+ divorced <eos>
+
+are you divorced ? <eos>
+ no <eos>
+
+do you have children ? <eos>
+ i am NAME about UNK back i NAME <eos>
+
+something wrong ? <eos>
+ paley am i <eos>
+
+q <eos>
