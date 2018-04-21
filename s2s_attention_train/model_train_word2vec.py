@@ -1,6 +1,6 @@
 
 
-print('word2vec train')
+
 import time
 import numpy as np
 from keras.models import Sequential
@@ -10,11 +10,11 @@ from keras import callbacks
 from gensim.models import word2vec
 #-----------------
 filename='movie_dialogue_10_T_9188.txt' # QandA version, diffent dimension sizes , etc....
-
+filename = 'movie_dialogue_15_T_9752.txt'
 #---------------------
-
-senlen = int(filename.split("_")[2]) #int(filename[15:17])
-wordscount = int(filename.split("_")[-1])  #int(filename[20:24])
+print('word2vec train')
+senlen = int(filename[:-4].split("_")[2]) #int(filename[15:17])
+wordscount = int(filename[:-4].split("_")[-1])  #int(filename[20:24])
 t1 = filename[:-4].split("_")[0]
 t2 = filename[:-4].split("_")[1]
 max_step =0
@@ -30,10 +30,10 @@ def one_hot_dictionary(file_name):
     #모든 단어들을 중복 없이 딕셔너리에 숫자로 코딩해서 넣음 ,
     words =sorted(list(set(whole_text)))
     word_to_onehot = dict((c,i) for i, c in enumerate(words))
-    onehot_to_word = dict((i ,c ) for i, c in enumerate(words))
+    #onehot_to_word = dict((i ,c ) for i, c in enumerate(words))
 
     print('사용되는 단어수(중복 제거, <eos> 포함) : ', len(words))
-    return word_to_onehot, onehot_to_word
+    return word_to_onehot #, onehot_to_word
 
 def read_data_old_version(file_name):
     data = open(file_name, 'r', encoding='utf8')
@@ -123,14 +123,17 @@ def main(T,Q,A): # 코드이해 30%
     start = time.time()
     global max_step
     data_location = './extracted_data/'
-    data_in_lang = read_data_old_version( data_location + T)
-    word2onehot_dict, one2word_dict = one_hot_dictionary( data_location + T)
-    encode_input = convert_3d_shape_word2vec(T, data_in_lang[0])
-    decode_ouput = convert_3d_shape_onehotencode(word2onehot_dict, data_in_lang[1])
+    word2onehot_dict = one_hot_dictionary(data_location + T)
+    # word2onehot_dict, one2word_dict = one_hot_dictionary( data_location + T)
 
-    #read_data(data_location +T, False)
-    #encode_input = convert_3d_shape_word2vec(T, read_data( data_location + Q))
-    #decode_ouput = convert_3d_shape_onehotencode(word2onehot_dict, read_data( data_location + A))
+
+    #data_in_lang = read_data_old_version( data_location + T)
+    #encode_input = convert_3d_shape_word2vec(T, data_in_lang[0])
+    #decode_ouput = convert_3d_shape_onehotencode(word2onehot_dict, data_in_lang[1])
+
+    read_data(data_location +T, False)
+    encode_input = convert_3d_shape_word2vec(T, read_data( data_location + Q))
+    decode_ouput = convert_3d_shape_onehotencode(word2onehot_dict, read_data( data_location + A))
     end = time.time()
     print('read and vectorize', (end - start) / 60, '분')
 
@@ -139,12 +142,12 @@ def main(T,Q,A): # 코드이해 30%
     embedded_dim = 100
     unit = 512
     batchisize = 128
-    epoch = 200
+    epoch = 300
     valsplit=0.1
     period = 10
 
     model = Sequential()
-    #model.add(Dropout(0.2, input_shape=(max_step, embedded_dim)))
+    model.add(Dropout(0.2, input_shape=(max_step, embedded_dim)))
     model.add(Masking(mask_value=0., input_shape=(max_step, embedded_dim)))
     model.add(Bidirectional(LSTM(unit, input_shape=(max_step, embedded_dim), return_sequences=True), merge_mode='sum'))#
     model.add(AttentionDecoder(unit, n_features))

@@ -2,7 +2,7 @@
 import time
 import numpy as np
 from keras.models import Sequential
-from keras.layers import LSTM, Dropout, Bidirectional,Masking
+from keras.layers import LSTM, Bidirectional,Masking, Dropout
 from attention_decoder import AttentionDecoder
 from keras import callbacks
 
@@ -11,9 +11,10 @@ from keras import callbacks
 #from keras.utils.training_utils import multi_gpu_model
 #-----------------
 
-filename = 'movie_dialogue_10_T_9188.txt'
+filename = 'movie_dialogue_15_T_13714.txt'
 #filename='test_cleansed_1_T_1.txt'
 #filename= 'movie_dialogue_5_T_2715.txt'
+filename = 'movie_dialogue_15_T_9752.txt' #q and a + 1024 + dropout한 버전이 성능이 좋은 것 같음...
 
 #---------------------
 
@@ -97,7 +98,7 @@ def read_data(file_name, doreturn = True):
 
 def convert_3d_shape_onehotencode(word2one, sentences_list):
     global max_step
-    X = np.zeros((len(sentences_list), max_step, len(word2one)), dtype=np.bool)
+    X = np.zeros((len(sentences_list), max_step, len(word2one)), dtype=np.int8)
     for i, sentence in enumerate(sentences_list):  # 명확한 이해 필요 #sentense = list ##########이 훈련 ,검증 셋트를 문장단위로 만들어야 함....
         for j, word in enumerate(sentence):  # char = string
             #print(j,word)
@@ -140,8 +141,8 @@ def main(T,Q,A): # 코드이해 30%
     '''
 
     model = Sequential()
-    #model.add(Dropout(0.5, input_shape=(max_step, n_features)))
-    model.add(Masking(mask_value=0., input_shape=(max_step, n_features)))
+    model.add(Dropout(0.5, input_shape=(max_step, n_features))) ##이거할까 #embedin layer를 추가할까
+    model.add(Masking(mask_value=0, input_shape=(max_step, n_features)))
     model.add(Bidirectional(LSTM(units= unit, input_shape=(max_step, n_features), return_sequences=True), merge_mode='sum'))#
     model.add(AttentionDecoder(unit, n_features))
     # model = multi_gpu_model(model, gpus=2)

@@ -1,6 +1,6 @@
-from nltk.stem import WordNetLemmatizer
 
-senlen = 5
+
+senlen = 15
 file_name ='./extracted_data/movie_dialogue_' + str(senlen) +'_T'
 
 
@@ -17,7 +17,6 @@ for line in lines:
 nameset.remove('Class')
 nameset.remove('All')
 
-wnl = WordNetLemmatizer()
 data = open(file_name +'.txt', 'r', encoding='utf8')
 whole_text= data.read()
 data.close()
@@ -27,21 +26,24 @@ while '' in whole_text:  # 의미없는 '' 제거
 
 
 #등장 빈도가 1개이하면 UNK 로 대체
-appeared = set()
+appeared_once = set()
+appeared_twice = set()
 selected_word = set()
-print('원래 단어 수 : ',len(whole_text))
+
 for index in range(len(whole_text)):
     word = whole_text[index]
     if word in nameset:
         word = 'NAME'
     else:
-        word = wnl.lemmatize(whole_text[index]).lower()
+        word = whole_text[index].lower()
     whole_text[index] = word
 
-    if word in appeared:
+    if word in appeared_twice:
         selected_word.add(word)
+    if word in appeared_once:
+        appeared_twice.add(word)
     else:
-        appeared.add(word)
+        appeared_once.add(word)
 
 words_count = len(selected_word)
 QA=('T', 'Q', 'A')
@@ -98,4 +100,5 @@ for qa in QA:
 
 
 #print(nameset)
+print('원래 단어 수 : ',len(appeared_once))
 print('최종 단어 수 : ',words_count)
