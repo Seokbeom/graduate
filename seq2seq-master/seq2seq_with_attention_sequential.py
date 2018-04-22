@@ -119,9 +119,9 @@ def main(data_to_read): # 코드이해 30%
 
     # configure problem
     n_features = len(word2onehot_dict)
-    unit = 256
-    epoch = 100
-    batchisize = 64
+    unit = 10
+    epoch = 1
+    batchisize = 10
 
     from keras.layers import Dropout
     from keras.layers import Bidirectional
@@ -137,9 +137,9 @@ def main(data_to_read): # 코드이해 30%
     filepath = '{epoch:02d}_{loss:.3f}_{val_loss:.3f}.h5'
     callback = callbacks.ModelCheckpoint(filepath, monitor='val_loss', period=10)
     callback2 = callbacks.ModelCheckpoint(filepath, monitor='loss', period=10)
-    model.fit(encode_input, decode_ouput, epochs=epoch, verbose=2, batch_size=batchisize, callbacks=[callback, callback2], validation_split=0.2)
+    model.fit(encode_input, decode_ouput, epochs=epoch, verbose=2, batch_size=batchisize)#callbacks=[callback, callback2], validation_split=0.2)
     print("fitting done")
-
+    print(sum(model.predict(decode_ouput)[0][0])) # softmax로 된거 맞음
     model_title = data_to_read[:-4] + 'one_hot.h5'
     model.save(model_title)  # creates a HDF5 file 'my_model.h5'
 

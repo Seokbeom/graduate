@@ -1,0 +1,100 @@
+loss :  56355364.0 57233816.0
+number of vocab in model:  9189
+[('we', 0.7275919914245605), ('they', 0.7186503410339355), ('i', 0.6098880171775818), ('me', 0.46534019708633423), ('him', 0.4453716576099396), ('ya', 0.41510337591171265), ('<eos>', 0.4098973870277405), ('them', 0.38357245922088623), ('her', 0.36355018615722656), ('to', 0.3632468283176422)]
+303.10760855674744 段
+
+Process finished with exit code 0
+
+
+
+100
+loss :  51712372.0
+number of vocab in model:  9189
+[('they', 0.8142186403274536), ('we', 0.8115420937538147), ('i', 0.7915611267089844), ('ya', 0.5371005535125732), ('me', 0.5294694900512695), ('<eos>', 0.5102896690368652), ('him', 0.5046077966690063), ('them', 0.46544647216796875), ('people', 0.3899988532066345), ('her', 0.38906198740005493)]
+293.7313117980957 段
+
+Process finished with exit code 0
+
+
+
+C:\Users\seok0\AppData\Local\Programs\Python\Python36\python.exe C:/Users/seok0/Desktop/graduate_project/graduate/s2s_attention_train/word2vec_embedding.py
+C:\Users\seok0\AppData\Roaming\Python\Python36\site-packages\gensim\utils.py:1197: UserWarning: detected Windows; aliasing chunkize to chunkize_serial
+  warnings.warn("detected Windows; aliasing chunkize to chunkize_serial")
+loss :  1457735.625
+loss :  1138069.625
+loss :  1111760.25
+loss :  1104800.0
+loss :  1039142.125
+loss :  1037321.4375
+loss :  1063442.5
+loss :  1035718.375
+loss :  973745.5
+loss :  984145.75
+number of vocab in model:  9189
+[('we', 0.7661823034286499), ('they', 0.7570323944091797), ('i', 0.7100256681442261), ('me', 0.5339339971542358), ('ya', 0.5124025344848633), ('him', 0.49713486433029175), ('them', 0.4913533926010132), ('anybody', 0.42849162220954895), ('<eos>', 0.42693910002708435), ('people', 0.4213178753852844)]
+29.2946035861969 段
+
+Process finished with exit code 0
+
+
+
+300 dim 5 10iter
+C:\Users\seok0\AppData\Local\Programs\Python\Python36\python.exe C:/Users/seok0/Desktop/graduate_project/graduate/s2s_attention_train/word2vec_embedding.py
+C:\Users\seok0\AppData\Roaming\Python\Python36\site-packages\gensim\utils.py:1197: UserWarning: detected Windows; aliasing chunkize to chunkize_serial
+  warnings.warn("detected Windows; aliasing chunkize to chunkize_serial")
+loss :  0.0
+loss :  0.0
+loss :  0.0
+loss :  0.0
+loss :  0.0
+loss :  0.0
+loss :  0.0
+loss :  0.0
+loss :  0.0
+loss :  0.0
+number of vocab in model:  9189
+[('we', 0.7061643600463867), ('they', 0.6607911586761475), ('i', 0.6157429814338684), ('ya', 0.4684962332248688), ('me', 0.4494427442550659), ('him', 0.4234301745891571), ('<eos>', 0.37713053822517395), ('he', 0.3507046103477478), ('them', 0.34867051243782043), ('anybody', 0.34483808279037476)]
+30.3282949924469 段
+
+Process finished with exit code 0
+
+
+
+
+100 5
+C:\Users\seok0\AppData\Local\Programs\Python\Python36\python.exe C:/Users/seok0/Desktop/graduate_project/graduate/s2s_attention_train/word2vec_embedding.py
+C:\Users\seok0\AppData\Roaming\Python\Python36\site-packages\gensim\utils.py:1197: UserWarning: detected Windows; aliasing chunkize to chunkize_serial
+  warnings.warn("detected Windows; aliasing chunkize to chunkize_serial")
+loss :  0.0
+loss :  0.0
+loss :  0.0
+loss :  0.0
+loss :  0.0
+number of vocab in model:  9189
+[('we', 0.6929914951324463), ('they', 0.6838546395301819), ('i', 0.59679114818573), ('ya', 0.5246737003326416), ('them', 0.46047407388687134), ('me', 0.4459828734397888), ('people', 0.4205024242401123), ('him', 0.41835981607437134), ('anybody', 0.39290887117385864), ('others', 0.37316370010375977)]
+14.99577260017395 段
+
+Process finished with exit code 0
+
+
+100 - 10
+C:\Users\seok0\AppData\Local\Programs\Python\Python36\python.exe C:/Users/seok0/Desktop/graduate_project/graduate/s2s_attention_train/word2vec_embedding.py
+C:\Users\seok0\AppData\Roaming\Python\Python36\site-packages\gensim\utils.py:1197: UserWarning: detected Windows; aliasing chunkize to chunkize_serial
+  warnings.warn("detected Windows; aliasing chunkize to chunkize_serial")
+loss :  0.0
+loss :  0.0
+loss :  0.0
+loss :  0.0
+loss :  0.0
+loss :  0.0
+loss :  0.0
+loss :  0.0
+loss :  0.0
+loss :  0.0
+number of vocab in model:  9189
+[('we', 0.7849973440170288), ('they', 0.7688213586807251), ('i', 0.7072403430938721), ('me', 0.5286674499511719), ('ya', 0.5268526077270508), ('him', 0.4935495853424072), ('them', 0.47685495018959045), ('people', 0.42387646436691284), ('anybody', 0.4236030578613281), ('her', 0.4060744047164917)]
+29.351660013198853 段
+
+Process finished with exit code 0
+
+
