@@ -28,6 +28,7 @@ word = 'i'
 print(model.wv.most_similar(word))
 #print(model['i'])
 model.delete_temporary_training_data(replace_word_vectors_with_normalized=True) # normalize
+'''
 a = model.wv.vocab
 #print(model['i'])
 #for i in a:
@@ -42,10 +43,11 @@ for i in b:
 print(r)
 print(model.wv.most_similar_cosmul(word))
 print(model.wv.most_similar( (b, b),topn=1, )) ## vector b와 제일 근접한 단어 출력(cosine sim)
+'''
 # To save
 
 
-#model.save(word2vec_location + file_name +'_%s_dim.model'%(str(size)))  #model = word2vec.Word2Vec.load('word2vec_misaeng.model')
+model.save(word2vec_location + file_name +'_%s_dim.model'%(str(size)))  #model = word2vec.Word2Vec.load('word2vec_misaeng.model')
 print('number of vocab in model: ' , len(model.wv.vocab))
 
 

@@ -49,6 +49,7 @@ def read_data(file_name, doreturn=True):
 
 def convert_3d_shape_word2vec(filename, sentences_list):
     model = word2vec.Word2Vec.load('./word2vec_model/' + filename + '_100_dim.model')
+    model.delete_temporary_training_data(replace_word_vectors_with_normalized=True)  # normalize
     word_vec = model.wv
     del model
 
@@ -70,6 +71,7 @@ def convert_3d_shape_word2vec(filename, sentences_list):
 def main(data_to_read, modelname, init=None):
     start = time.time()
     model2 = word2vec.Word2Vec.load('./word2vec_model/' + data_to_read + '_100_dim.model')
+    model2.delete_temporary_training_data(replace_word_vectors_with_normalized=True)  # normalize
     data_location = './extracted_data/'
     model_location = './model/'
 
