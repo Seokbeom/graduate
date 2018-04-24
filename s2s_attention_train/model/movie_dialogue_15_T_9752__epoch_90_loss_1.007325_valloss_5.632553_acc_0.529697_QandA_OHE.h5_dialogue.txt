@@ -1,116 +1,14 @@
-hello <eos>
- NAME . <eos>
+excuse me but how old are you ? <eos>
+ twenty six . <eos>
 
-how are you ? <eos>
+do you know your name ? <eos>
  i . <eos>
 
-l love you . <eos>
- yeah . <eos>
+can you tell me your name ? <eos>
+ NAME . NAME . <eos>
 
-do you love me ? <eos>
- i . love you . <eos>
-
-do i love you ? <eos>
- i . love key question . <eos>
-
-what is your name ? <eos>
- NAME . <eos>
-
-what s your name ? <eos>
- NAME . <eos>
-
-how old are you ? <eos>
- i am <eos>
-
-how old are you <eos>
- i am <eos>
-
-what is your age ? <eos>
- we . <eos>
-
-are you my friend ? <eos>
+are you a man or woman ? <eos>
  no . <eos>
-
-are you my enemy ? <eos>
- of . . . <eos>
-
-how was last night ? <eos>
- i . <eos>
-
-i <eos>
- you . <eos>
-
-you <eos>
- i . <eos>
-
-do you have mom ? <eos>
- yes i <eos>
-
-do you have a girlfriend ? <eos>
- i . <eos>
-
-shut up <eos>
- NAME s . <eos>
-
-is <eos>
- yeah s <eos>
-
-what is the color of the sky ? <eos>
- the of of <eos>
-
-what color do you like ? <eos>
- i do . <eos>
-
-you do ? <eos>
- no . <eos>
-
-who are you ? <eos>
- i harrington . <eos>
-
-are you harrington ? <eos>
- how ? you do ? <eos>
-
-i am fine  <eos>
- you ? <eos>
-
-i am fine . <eos>
- you s ? <eos>
-
-yeah <eos>
- you s <eos>
-
-how about you ? <eos>
- i . <eos>
-
-what did you say ? <eos>
- i . . <eos>
-
-? <eos>
- it s not . <eos>
-
- <eos>
- <eos>
-
-? <eos>
- it s not . <eos>
-
-it is . <eos>
- what it <eos>
-
-the color of the sky . <eos>
- . <eos>
-
-sky <eos>
- up there . <eos>
-
-sky up there <eos>
- up there . . <eos>
-
-look at the sky . <eos>
- and ? <eos>
-
-and look at me . <eos>
- i am not you you . <eos>
 
 are you a man ? <eos>
  no . <eos>
@@ -118,43 +16,49 @@ are you a man ? <eos>
 are you a woman ? <eos>
  no . <eos>
 
-are you a man <eos>
+do you like milk ? <eos>
+ yes . i think . <eos>
+
+whey what s up bro . <eos>
+ i do not like . . <eos>
+
+hey what s up bro . <eos>
+ i do not like a cop . <eos>
+
+hey what s going on ? <eos>
+ nothing . what s throw ? <eos>
+
+would you like something to drink ? <eos>
+ what thank you . <eos>
+
+do you love yourself ? <eos>
  no . <eos>
 
-are you a robot ? <eos>
- no . <eos>
+what don t you love yourself ? <eos>
+ why not <eos>
 
-what are you ? <eos>
- i am <eos>
+why do you hate yourself ? <eos>
+ i do not . my safest their in . <eos>
 
-you are ? <eos>
- yeah . <eos>
+do you know what color i like most ? <eos>
+ NAME get your <eos>
 
-you are a men ? <eos>
- no . <eos>
+what is your name bro ? <eos>
+ NAME . . <eos>
 
-who are you than <eos>
- i . not know . <eos>
+what is your name ? <eos>
+ NAME . <eos>
 
-i don t know <eos>
- i thought you were an UNK ? <eos>
+do you know your name ? <eos>
+ i . <eos>
 
-no i am not <eos>
- you are <eos>
+do you know what your name is ? <eos>
+ NAME . <eos>
 
-i am not ! <eos>
- you are <eos>
+how do people call you ? <eos>
+ i UNK it ? <eos>
 
-why do  you think so ? <eos>
- you think not why are stupid . where s <eos>
-
-why do you think so ? <eos>
- you think not why are stupid . where s <eos>
-
-you are stupid . <eos>
- you you <eos>
-
-i am stupid . <eos>
- you s a you do baby going . <eos>
+what is your name ? i just wonder . <eos>
+ NAME . . <eos>
 
 q <eos>
