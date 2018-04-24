@@ -1,5 +1,5 @@
 import re
-sen_length = 15
+sen_length = 30
 
 
 def get_id2line():
@@ -101,7 +101,8 @@ def clean(text):
     text = re.sub(r"\'re", " are ", text)
     text = re.sub(r"\'d", " would ", text)
     text = re.sub(r"\'ll", " will ", text)
-    text = re.sub(r" is ", " s ", text)
+    #  text = re.sub(r" is ", " s ", text)
+    #text = re.sub(r"    Is ", " s ", text)
 
 
     text = re.sub(r"[^A-Za-z0-9!?.]", " ", text)

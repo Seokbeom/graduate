@@ -5,9 +5,10 @@ from keras.models import load_model
 from gensim.models import word2vec # Try alpha=0.05 and cbow_mean=1  https://stackoverflow.com/questions/34249586/the-accuracy-test-of-word2vec-in-gensim
 
 #############################
-modelname = 'movie_dialogue_5_T_2715__epoch_10_loss_2.874_valloss_3.093_W2V.h5'
+modelname = 'movie_dialogue_15_T_9752__epoch_110_loss_1.170869_valloss_5.731023_acc_0.457372_W2V.h5'
 
 INIT_TALK = 'how are you ?'
+INIT_TALK = None
 
 #########################
 

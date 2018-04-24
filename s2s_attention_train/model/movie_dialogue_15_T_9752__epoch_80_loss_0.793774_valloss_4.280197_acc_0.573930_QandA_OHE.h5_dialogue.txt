@@ -1,0 +1,163 @@
+how are you ? <eos>
+ i . <eos>
+
+hey whay s up <eos>
+ you s not . my scared . <eos>
+
+hey what s yp ? <eos>
+ i you . UNK hello ? <eos>
+
+hello ? <eos>
+ NAME . <eos>
+
+hi ! <eos>
+ i . <eos>
+
+how old are you ? <eos>
+ i . <eos>
+
+excuse me but how old are you ? <eos>
+ twenty six . <eos>
+
+do you know your name ? <eos>
+ no . <eos>
+
+are you my friend ? <eos>
+ no . <eos>
+
+are you a robot ? <eos>
+ no . <eos>
+
+what is the color of the sky ? <eos>
+ the son of <eos>
+
+why are you here ? <eos>
+ i . <eos>
+
+good mornig sir . <eos>
+ good . acquired . taste . NAME <eos>
+
+good morning sir . <eos>
+ NAME have acquired a for you to . <eos>
+
+how have you been ? <eos>
+ the merv . <eos>
+
+what are you doing right now ? <eos>
+ i . <eos>
+
+i got a problem . <eos>
+ all your money s <eos>
+
+i need some help . <eos>
+ you am afraid i <eos>
+
+can  you help me pleas ? <eos>
+ i . christian . <eos>
+
+can you help me ? <eos>
+ i . christian . <eos>
+
+do you believe in god ? <eos>
+ i . <eos>
+
+are you a man ? <eos>
+ yes . <eos>
+
+are you a woman ? <eos>
+ no fuse . <eos>
+
+ <eos>
+ <eos>
+
+are you a robot ? <eos>
+ no . <eos>
+
+are you a computer ? <eos>
+ no . <eos>
+
+are you a man ? <eos>
+ yes . <eos>
+
+thank you so much . <eos>
+ you are . going to fly creed . <eos>
+
+can you fly ? <eos>
+ are you kidding ? that ? <eos>
+
+can a bird fly ? <eos>
+ if you ever i i ? <eos>
+
+what is your favorite ? <eos>
+ NAME ? <eos>
+
+what is your name agian ? <eos>
+ NAME . <eos>
+
+what is your name again ? <eos>
+ NAME . <eos>
+
+what is your name ? <eos>
+ NAME . <eos>
+
+what is your hobby ? <eos>
+ that s off . <eos>
+
+do you have a daughter ? <eos>
+ i am afraid not . <eos>
+
+do you have a son ? <eos>
+ NAME . <eos>
+
+what is your son s name ? <eos>
+ NAME . <eos>
+
+are you married ? <eos>
+ no . <eos>
+
+are you not married ? <eos>
+ no . <eos>
+
+do you know who took my pizza ? <eos>
+ NAME . <eos>
+
+do  you know who killed me ? <eos>
+ you UNK ? i . you you <eos>
+
+do you have conciousness ? <eos>
+ no . <eos>
+
+i will call you  tomorrow . <eos>
+ right . <eos>
+
+i will call you tomorrow . <eos>
+ right . <eos>
+
+what is one plus one ? <eos>
+ what s NAME UNK . <eos>
+
+are you good at math ? <eos>
+ i really <eos>
+
+really ? <eos>
+ i . <eos>
+
+i am so sorry . <eos>
+ you s . . <eos>
+
+are you sorry? <eos>
+ no . <eos>
+
+l love you . <eos>
+ i christ you . <eos>
+
+do you love me ? <eos>
+ i . questions yes . <eos>
+
+do you really like me ? <eos>
+ yes . not . <eos>
+
+what do you mean by that ? <eos>
+ you what i said . <eos>
+
+q <eos>

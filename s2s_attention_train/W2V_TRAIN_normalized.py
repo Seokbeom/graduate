@@ -1,3 +1,8 @@
+#import tensorflow as tf
+#with tf.device('/gpu:1'):
+import os
+os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"  # so the IDs match nvidia-smi "0000:65:00.0"
+os.environ["CUDA_VISIBLE_DEVICES"] = "1" # "0, 1" for multiple
 import time
 import numpy as np
 from keras.models import Sequential
@@ -8,8 +13,8 @@ from gensim.models import word2vec
 from sklearn.preprocessing import normalize
 
 #-----------------
-filename='test_cleansed_1_T_1.txt' # QandA version, diffent dimension sizes , etc....
-#filename = 'movie_dialogue_15_T_9752.txt'
+#filename='test_cleansed_1_T_1.txt' # QandA version, diffent dimension sizes , etc....
+filename = 'movie_dialogue_15_T_9752.txt'
 #---------------------
 print('word2vec train')
 t1 = filename[:-4].split("_")[0]
@@ -118,7 +123,8 @@ def convert_3d_shape_word2vec(filename, sentences_list):
                 print(E)
     return X
 
-def main(T,Q,A): # 코드이해 30%
+def main(T,Q,A):
+
     start = time.time()
     global max_step
     data_location = './extracted_data/'
@@ -146,7 +152,8 @@ def main(T,Q,A): # 코드이해 30%
     model.add(AttentionDecoder(unit, n_features))
     model.summary()
     model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['acc'])
-
+    end = time.time()
+    print('constructed ', (end - start) / 60, '분')
 
     filepath ='./model/'+  T[:-4] + '__epoch_{epoch:02d}_loss_{loss:.6f}_valloss_{val_loss:.6f}_acc_{acc:.6f}_W2VN.h5'
     callback0 = callbacks.ModelCheckpoint(filepath, monitor='val_loss', period=period)

@@ -24,3 +24,7 @@ C:\Users\seok0\Desktop\graduate_project\graduate>tensorboard --logdir C:/Users/s
 
 
 4. loss0000 나온거 설명, 해석도 쓰기?
+
+
+gpu0 = 0000:17:00.0
+gpu1 = 0000:65:00.0

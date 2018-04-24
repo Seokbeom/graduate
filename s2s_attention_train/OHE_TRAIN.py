@@ -1,4 +1,7 @@
-#https://machinelearningmastery.com/encoder-decoder-attention-sequence-to-sequence-prediction-keras/
+
+import os
+os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"  # so the IDs match nvidia-smi "0000:65:00.0"
+os.environ["CUDA_VISIBLE_DEVICES"] = "1" # "0, 1" for multiple
 import time
 import numpy as np
 from keras.models import Sequential
@@ -15,6 +18,7 @@ filename = 'movie_dialogue_15_T_13714.txt'
 #filename='test_cleansed_1_T_1.txt'
 #filename= 'movie_dialogue_5_T_2715.txt'
 filename = 'movie_dialogue_15_T_9752.txt' #q and a + 1024 + dropout한 버전이 성능이 좋은 것 같음...
+#filename = 'movie_dialogue_30_T_16549.txt'
 
 #---------------------
 
@@ -130,23 +134,23 @@ def main(T,Q,A): # 코드이해 30%
     unit = 512
     batchisize = 128
     epoch = 200
-    valsplit=0.1
+    valsplit=0.2
     period = 10
 
-    ''' 
+
     from keras.models import load_model
-    modelname = 'movie_dialogue_10_T_9188__epoch_100_loss_0.721554_valloss_4.310535_OHE.h5'
+    modelname = 'movie_dialogue_15_T_9752__epoch_90_loss_1.007325_valloss_5.632553_acc_0.529697_QandA_OHE.h5'
     model_location = './model/'
     model = load_model(model_location + modelname, custom_objects={'AttentionDecoder': AttentionDecoder})
-    '''
 
+    ''' 
     model = Sequential()
-    model.add(Dropout(0.5, input_shape=(max_step, n_features))) ##이거할까 #embedin layer를 추가할까
+    model.add(Dropout(0.4, input_shape=(max_step, n_features))) ##이거할까 #embedin layer를 추가할까
     model.add(Masking(mask_value=0, input_shape=(max_step, n_features)))
     model.add(Bidirectional(LSTM(units= unit, input_shape=(max_step, n_features), return_sequences=True), merge_mode='sum'))#
     model.add(AttentionDecoder(unit, n_features))
     # model = multi_gpu_model(model, gpus=2)
-
+    '''
     #para = Parallelizer()
     #model = para.transform(model)
     model.summary()
@@ -165,7 +169,7 @@ def main(T,Q,A): # 코드이해 30%
                                       embeddings_freq=0, embeddings_layer_names=None, embeddings_metadata=None)
 
     model.fit(encode_input, decode_ouput, epochs=epoch, verbose=2, batch_size=batchisize,
-              callbacks=[callback0, callback1, callback2, callback3], validation_split=valsplit)
+              callbacks=[callback0, callback1, callback3], validation_split=valsplit)
     #callback0 = callbacks.ModelCheckpoint(filepath, monitor='val_loss', period=period)
     #callback1 = callbacks.ModelCheckpoint(filepath, monitor='loss', period=period)
     #model.fit(encode_input, decode_ouput, epochs=epoch, verbose=2, batch_size=batchisize, callbacks= [callback0, callback1], validation_split=valsplit)

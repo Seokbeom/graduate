@@ -1,6 +1,8 @@
-
-
-
+#import tensorflow as tf
+#with tf.device('/gpu:0'):
+import os
+os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID" # so the IDs match nvidia-smi #"0000:17:00.0"
+os.environ["CUDA_VISIBLE_DEVICES"] = "0" # "0, 1" for multiple
 import time
 import numpy as np
 from keras.models import Sequential
@@ -8,8 +10,10 @@ from keras.layers import LSTM, Dropout, Bidirectional, Masking
 from attention_decoder import AttentionDecoder
 from keras import callbacks
 from gensim.models import word2vec
+
+
 #-----------------
-filename='movie_dialogue_10_T_9188.txt' # QandA version, diffent dimension sizes , etc....
+#filename='movie_dialogue_10_T_9188.txt' # QandA version, diffent dimension sizes , etc....
 filename = 'movie_dialogue_15_T_9752.txt'
 #---------------------
 print('word2vec train')
@@ -120,6 +124,7 @@ def convert_3d_shape_word2vec(filename, sentences_list):
     return X
 
 def main(T,Q,A): # 코드이해 30%
+
     start = time.time()
     global max_step
     data_location = './extracted_data/'
@@ -153,6 +158,8 @@ def main(T,Q,A): # 코드이해 30%
     model.add(AttentionDecoder(unit, n_features))
     model.summary()
     model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['acc'])
+    end = time.time()
+    print('constructed ', (end - start) / 60, '분')
 
 
     filepath ='./model/'+  T[:-4] + '__epoch_{epoch:02d}_loss_{loss:.6f}_valloss_{val_loss:.6f}_acc_{acc:.6f}_W2V.h5'
@@ -162,6 +169,7 @@ def main(T,Q,A): # 코드이해 30%
     callback3 = callbacks.TensorBoard(log_dir='./logs/' + T[:-4] + filepath[-7:-3] + '/', histogram_freq=0,
                                       batch_size=batchisize, write_graph=True, write_grads=False, write_images=False,
                                       embeddings_freq=0, embeddings_layer_names=None, embeddings_metadata=None)
+    # your code here
 
     model.fit(encode_input, decode_ouput, epochs=epoch, verbose=2, batch_size=batchisize,
               callbacks=[callback0, callback1, callback2, callback3], validation_split=valsplit)
