@@ -1,33 +1,47 @@
-1. 트윗데이터추가 (마이크로소프트 그건 머냐)
 
-1.5 트위터로만 해보기 ???
+W2v to W2V 더 많은양의 데이터, 러닝레이트 크게하기
+
+OHE loss 그래프 구해야 함....
+
+모델 별 대화 캡쳐
+
+
+
+
+
 
 2. 어텐션 없이 해보기
 
-3. 문장 길이를 늘려보기...
 
 4.단어빈도 3개이하 unk
 
 4.논문은 미리 쓰는게...
 
+6. 
 
-5.word2vec 정규화??
 
-6. W2v to W2V 더 많은양의 데이터, 러닝레이트 크게하기
 
-OHE loss 그래프 구해야 함....
 
 5 논문내용 쳇봇 결과적 성능비교 말고 다른것도할까
 
+
 1. 대화결과
-2. 훈련시간
+
+
 3. loss의 변화그래프(변수는? 벡터라이즈별(정규화), 바이다이렉션 옵션?? , batchsize ?? 
+
  https://machinelearningmastery.com/develop-bidirectional-lstm-sequence-classification-python-keras/
+
 C:\Users\seok0\Desktop\graduate_project\graduate>tensorboard --logdir C:/Users/seok0/Desktop/graduate_project/graduate/s2s_attention_train/logs
 
 
-4. loss0000 나온거 설명, 해석도 쓰기?
+
+
+
 
 
 gpu0 = 0000:17:00.0
 gpu1 = 0000:65:00.0
+1. 트윗데이터추가 (마이크로소프트 그건 머냐)
+
+1.5 트위터로만 해보기 ???

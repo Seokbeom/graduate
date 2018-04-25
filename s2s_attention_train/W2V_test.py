@@ -149,27 +149,27 @@ def main(data_to_read, modelname, init=None):
             #highest = sample(result[0][stepidx])
             highest = np.argmax(result[0][stepidx])
             word = one2word_dict[highest]
-            result[0][stepidx] = np.zeros((n_features), dtype=np.bool)
+            #result[0][stepidx] = np.zeros((n_features), dtype=np.bool)
 
             # eos가 나오면 그 다음에 오는 모든 단어는 전부 0으로 /  eos가 아니면 argmax만 = 1
             if word == "<eos>\n":
                 if first_eos:
                     input_sentence = input_sentence + " " + word
-                    result[0][stepidx][highest] = 1
+                    #result[0][stepidx][highest] = 1
                     first_eos = False
                     print(word, end=" ")
                     break
 
             else:
                 input_sentence = input_sentence + " " + word
-                result[0][stepidx][highest] = 1
+                #result[0][stepidx][highest] = 1
                 print(word, end=' ')
 
         if not init:
             generated.write(input_sentence + '\n')
-            input_sentence = input("I say : ") + ' <eos>\n'
+            input_sentence = input("\nI say : ") + ' <eos>\n'
 
-        generated.write(input_sentence)
+        generated.write(input_sentence+'\n')
 
         # online training
         #model.fit(inp_seq, result, epochs=1, verbose=0, batch_size=1)

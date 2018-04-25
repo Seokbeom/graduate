@@ -1,7 +1,8 @@
-
+'''
 import os
 os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"  # so the IDs match nvidia-smi "0000:65:00.0"
 os.environ["CUDA_VISIBLE_DEVICES"] = "1" # "0, 1" for multiple
+'''
 import time
 import numpy as np
 from keras.models import Sequential
@@ -43,8 +44,6 @@ def one_hot_dictionary(file_name):
 
     print('사용되는 단어수(중복 제거, <eos> 포함) : ', len(words))
     return word_to_onehot #onehot_to_word
-
-
 
 
 def read_data_old_version(file_name):
@@ -137,7 +136,7 @@ def main(T,Q,A): # 코드이해 30%
     valsplit=0.2
     period = 10
 
-
+    '''
     from keras.models import load_model
     modelname = 'movie_dialogue_15_T_9752__epoch_90_loss_1.007325_valloss_5.632553_acc_0.529697_QandA_OHE.h5'
     model_location = './model/'
@@ -145,12 +144,12 @@ def main(T,Q,A): # 코드이해 30%
 
     ''' 
     model = Sequential()
-    model.add(Dropout(0.4, input_shape=(max_step, n_features))) ##이거할까 #embedin layer를 추가할까
+    model.add(Dropout(0.2, input_shape=(max_step, n_features))) ##이거할까 #embedin layer를 추가할까
     model.add(Masking(mask_value=0, input_shape=(max_step, n_features)))
     model.add(Bidirectional(LSTM(units= unit, input_shape=(max_step, n_features), return_sequences=True), merge_mode='sum'))#
     model.add(AttentionDecoder(unit, n_features))
     # model = multi_gpu_model(model, gpus=2)
-    '''
+
     #para = Parallelizer()
     #model = para.transform(model)
     model.summary()
@@ -160,11 +159,11 @@ def main(T,Q,A): # 코드이해 30%
     end = time.time()
     print('model construct', (end - start) / 60, '분')
 
-    filepath = './model/' + T[:-4] + '__epoch_{epoch:02d}_loss_{loss:.6f}_valloss_{val_loss:.6f}_acc_{acc:.6f}_QandA_OHE.h5'
+    filepath = './model/' + T[:-4] + '__epoch_{epoch:02d}_loss_{loss:.6f}_valloss_{val_loss:.6f}_acc_{acc:.6f}_QandA_NEWOHE.h5'
     callback0 = callbacks.ModelCheckpoint(filepath, monitor='val_loss', period=period)
     callback1 = callbacks.ModelCheckpoint(filepath, monitor='loss', period=period)
     callback2 = callbacks.EarlyStopping(monitor='loss', min_delta=0, patience=2, verbose=0, mode='auto')
-    callback3 = callbacks.TensorBoard(log_dir='./logs/' + T[:-4] + filepath[-7:-3] + '/', histogram_freq=0,
+    callback3 = callbacks.TensorBoard(log_dir='./logs/' + T[:-4] + filepath[-10:-3] + '/', histogram_freq=0,
                                       batch_size=batchisize, write_graph=True, write_grads=False, write_images=False,
                                       embeddings_freq=0, embeddings_layer_names=None, embeddings_metadata=None)
 

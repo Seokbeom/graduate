@@ -62,7 +62,6 @@ def read_data(file_name, doreturn=True):
             sentence = data.readline().lstrip()
         data.close()
 
-
 def convert_3d_shape_onehotencode(word2one, sentences_list):
     global max_step
     X = np.zeros((len(sentences_list), max_step, len(word2one)), dtype=np.bool)
@@ -88,19 +87,13 @@ def convert_3d_shape_word2vec(filename, sentences_list):
                 word = '<eos>'
             try:
                 temp = word_vec[word]
+                print(temp[0][0])
+                print( normalize(temp.reshape(1, -1))[0][0])
                 X[i, j] = normalize(temp.reshape(1, -1))
             except KeyError as E:
                 print(E)
     return X
 
-
-def sample(preds):
-    preds = np.asarray(preds).astype('float64')
-    preds = np.log(preds)
-    exp_preds = np.exp(preds)
-    preds = exp_preds / np.sum(exp_preds)
-    probas = np.random.multinomial(100, preds, size=1)  # preds의 확률대로 주사위를 1번 던저서 나온 결과를 출력, size 번 반복
-    return np.argmax(probas)
 
 
 def main(data_to_read, modelname, init=None):
@@ -111,7 +104,7 @@ def main(data_to_read, modelname, init=None):
 
     read_data(data_location + data_to_read, False)  # to get max step
     word2onehot_dict, one2word_dict = one_hot_dictionary(data_location + data_to_read)
-    n_features = len(word2onehot_dict)
+    #n_features = len(word2onehot_dict)
     model = load_model(model_location + modelname, custom_objects={'AttentionDecoder': AttentionDecoder})
 
     end = time.time()
@@ -122,7 +115,7 @@ def main(data_to_read, modelname, init=None):
         input_sentence = init + ' <eos>\n'
     else:
         loop = 1000
-        input_sentence = input("I say : ") + ' <eos>\n'
+        input_sentence = input("\nI say : ") + ' <eos>\n'
 
     generated = open(model_location + modelname + '_dialogue.txt', 'w', encoding='utf-8')
     generated.write(input_sentence)
@@ -140,6 +133,7 @@ def main(data_to_read, modelname, init=None):
             sen_in_list = sen_in_list[: -1]
         if sen_in_list[0] == '':
             sen_in_list = sen_in_list[1:]
+        print('INPUT :', sen_in_list)
 
         input_sentence = ''  # input_sentence 초기화
         inp_seq = convert_3d_shape_word2vec(data_to_read, [sen_in_list])
@@ -150,27 +144,24 @@ def main(data_to_read, modelname, init=None):
             #highest = sample(result[0][stepidx])
             highest = np.argmax(result[0][stepidx])
             word = one2word_dict[highest]
-            result[0][stepidx] = np.zeros((n_features), dtype=np.bool)
+            #result[0][stepidx] = np.zeros((n_features), dtype=np.bool)
 
             # eos가 나오면 그 다음에 오는 모든 단어는 전부 0으로 /  eos가 아니면 argmax만 = 1
             if word == "<eos>\n":
-                if first_eos:
-                    input_sentence = input_sentence + " " + word
-                    result[0][stepidx][highest] = 1
-                    first_eos = False
-                    print(word, end=" ")
-                    break
+                input_sentence = input_sentence + " " + word
+                print(word, end=" ")
+                break
 
             else:
                 input_sentence = input_sentence + " " + word
-                result[0][stepidx][highest] = 1
+                #result[0][stepidx][highest] = 1
                 print(word, end=' ')
 
         if not init:
             generated.write(input_sentence + '\n')
-            input_sentence = input("I say : ") + ' <eos>\n'
+            input_sentence = input("\nI say : ") + ' <eos>\n'
 
-        generated.write(input_sentence)
+        generated.write(input_sentence +'\n')
 
         # online training
         #model.fit(inp_seq, result, epochs=1, verbose=0, batch_size=1)

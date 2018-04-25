@@ -1,17 +1,18 @@
-
+'''
 import os
 os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"  # so the IDs match nvidia-smi "0000:65:00.0"
 os.environ["CUDA_VISIBLE_DEVICES"] = "0" # "0, 1" for multiple
+'''
 import time
 import numpy as np
 from keras.models import Sequential
-from keras.layers import LSTM, Dropout, Bidirectional, Masking, Dense, activations
+from keras.layers import LSTM, Dropout, Bidirectional, Masking, Lambda #Dense, activations
 from attention_decoder_tanh  import AttentionDecoder
 from keras import callbacks
 from gensim.models import word2vec
 from keras import backend as K
-from keras.layers import Lambda
-from sklearn.preprocessing import normalize
+from keras.optimizers import Adam
+
 
 #-----------------
 #filename='movie_dialogue_5_T_2715.txt' # QandA version, diffent dimension sizes , etc....
@@ -115,22 +116,23 @@ def main(T,Q,A): # 코드이해 30%
     unit = 512
     batchisize = 128
     epoch = 500
-    valsplit = 0.1
+    valsplit = 0.2
     period = 10
 
     model = Sequential()
-    model.add(Dropout(0.2, input_shape=(max_step, embedded_dim))) #0.5?
+    model.add(Dropout(0.3, input_shape=(max_step, embedded_dim))) #0.5?
     model.add(Masking(mask_value=0., input_shape=(max_step, embedded_dim)))
     model.add(Bidirectional(LSTM(unit, input_shape=(max_step, embedded_dim), return_sequences=True), merge_mode='sum'))#
     model.add(AttentionDecoder(unit, embedded_dim))
     model.add(Lambda(lambda x : K.l2_normalize(x) ))
+    optimizer = Adam(lr=0.006, beta_1=0.9, beta_2=0.999, epsilon=None, decay=0.0, amsgrad=False)#default = 0.001
     #model.add(Lambda(lambda x: x / ( K.l2_normalize(x) * K.l2_normalize(x) )))
     #model.add(Dense(units=unit, input_shape=(max_step, embedded_dim), activation='tanh'))# model.add(TimeDistributed( Dense(units=n_features, input_shape=(max_step, n_features), activation='softmax')))
     model.summary()
-    model.compile(loss='cosine_proximity', optimizer='adam', metrics=['acc'])
+    model.compile(loss='cosine_proximity', optimizer=optimizer, metrics=['acc'])
 
 
-    filepath ='./model/'+  T[:-4] + '__epoch_{epoch:02d}_loss_{loss:.6f}_valloss_{val_loss:.6f}_acc_{acc:.6f}_WWWW.h5'
+    filepath ='./model/'+  T[:-4] + '__epoch_{epoch:02d}_loss_{loss:.6f}_valloss_{val_loss:.6f}_acc_{acc:.6f}_cccc.h5'
     callback0 = callbacks.ModelCheckpoint(filepath, monitor='val_loss', period=period)
     callback1 = callbacks.ModelCheckpoint(filepath, monitor='loss', period=period)
     callback2 = callbacks.EarlyStopping(monitor='loss', min_delta=0, patience=2, verbose=0, mode='auto')

@@ -1,5 +1,5 @@
 import re
-sen_length = 30
+sen_length = 40
 
 
 def get_id2line():

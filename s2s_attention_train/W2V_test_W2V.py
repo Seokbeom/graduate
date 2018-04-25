@@ -6,6 +6,8 @@ from gensim.models import word2vec # Try alpha=0.05 and cbow_mean=1  https://sta
 
 #############################
 modelname = 'movie_dialogue_15_T_9752__epoch_490_loss_-0.323665_valloss_-0.111473_acc_0.170399_WWWW.h5'
+modelname='movie_dialogue_15_T_9752__epoch_100_loss_-0.127914_valloss_-0.128073_acc_0.027951_cccc.h5'
+modelname= 'movie_dialogue_15_T_9752__epoch_120_loss_nan_valloss_nan_acc_0.487157_cccc.h5'
 
 INIT_TALK = 'how are you ?'
 INIT_TALK = None

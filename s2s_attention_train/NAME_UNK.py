@@ -1,6 +1,6 @@
 
 
-senlen = 30
+senlen = 40
 file_name ='./extracted_data/movie_dialogue_' + str(senlen) +'_T'
 
 
