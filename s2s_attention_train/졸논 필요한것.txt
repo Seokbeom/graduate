@@ -1,0 +1,19 @@
+필요한 자료
+
+no attention - ohe, w2v-norm, w2v-w2v, w2v notnorm loss 그래프 
+
+attention OHE loss 그래프 구해야 함....
+
+모델 별 대화 캡쳐
+ 
+
+
+
+
+
+
+
+ https://machinelearningmastery.com/develop-bidirectional-lstm-sequence-classification-python-keras/
+
+C:\Users\seok0\Desktop\graduate_project\graduate>tensorboard --logdir C:/Users/seok0/Desktop/graduate_project/graduate/s2s_attention_train/logs
+

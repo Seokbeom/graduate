@@ -11,6 +11,8 @@ import numpy as np
 
 
 filename = 'movie_dialogue_15_T_9752.txt' #q and a + 1024 + dropout한 버전이 성능이 좋은 것 같음...
+filename = 'movie_dialogue_5_T_2715.txt'
+filename='test_cleansed_1_T_1.txt'
 
 senlen = int(filename.split("_")[2])
 wordscount = int(filename[:-4].split("_")[4])
@@ -30,10 +32,10 @@ def one_hot_dictionary(file_name):
     #모든 단어들을 중복 없이 딕셔너리에 숫자로 코딩해서 넣음 ,
     words =sorted(list(set(whole_text)))
     word_to_onehot = dict((c,i) for i, c in enumerate(words))
-    #onehot_to_word = dict((i ,c ) for i, c in enumerate(words))
+    onehot_to_word = dict((i ,c ) for i, c in enumerate(words))
 
     print('사용되는 단어수(중복 제거, <eos> 포함) : ', len(words))
-    return word_to_onehot #onehot_to_word
+    return word_to_onehot, onehot_to_word
 
 
 def read_data(file_name, doreturn = True):
@@ -79,7 +81,7 @@ def main(T, Q, A):
     start = time.time()
     global max_step
     data_location = './extracted_data/'
-    word2onehot_dict = one_hot_dictionary(data_location + T)
+    word2onehot_dict, one2word_dict = one_hot_dictionary(data_location + T)
     end = time.time()
     print('read and vectorize', (end - start) / 60, '분')
 
@@ -90,9 +92,9 @@ def main(T, Q, A):
     decode_ouput = convert_3d_shape_onehotencode(word2onehot_dict, read_data(data_location + A))
 
     n_features = len(word2onehot_dict)
-    unit = 512
-    batchisize = 128
-    epoch = 200
+    unit = 256
+    batchisize = 64
+    epoch = 30
     valsplit = 0.2
     period = 10
     # Encoder model
@@ -136,7 +138,7 @@ def main(T, Q, A):
               epochs=epoch,
               verbose=2,
               validation_split=valsplit,
-              callbacks=[callback0, callback1, callback3],
+              #callbacks=[callback0, callback1, callback3],
 
               )
     print('fitting finished')
@@ -150,8 +152,8 @@ def main(T, Q, A):
     encoder_model_inf = Model(encoder_input, encoder_states)
 
     ###Inference Decoder Model
-    decoder_state_input_h = Input(shape=(256,))
-    decoder_state_input_c = Input(shape=(256,))
+    decoder_state_input_h = Input(shape=(unit,))
+    decoder_state_input_c = Input(shape=(unit,))
     decoder_input_states = [decoder_state_input_h, decoder_state_input_c]
 
     decoder_out, decoder_h, decoder_c = decoder_LSTM(decoder_input, initial_state = decoder_input_states)
@@ -176,7 +178,7 @@ def main(T, Q, A):
             sampled_output = one2word_dict[max_val_index]
             reply_sentence += sampled_output +' '
 
-            if sampled_output == '<eos>\n' or len(reply_sentence)>  22 : # 22 = 제일 긴 문장 수
+            if len(reply_sentence.strip().split(" ")) > 10 : # ' sampled_output == <eos>\n' or
                 stop = True
 
             target_seq = np.zeros((1, 1, n_features))
@@ -196,9 +198,9 @@ def main(T, Q, A):
         inp_seq = convert_3d_shape_onehotencode(word2onehot_dict, inp_seq)
         result = decode_seq(inp_seq)
 
-        print('computer: ', result)
+        print('computer: ', result ,'\n')
 
-    '''
+
    
 
 

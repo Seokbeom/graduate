@@ -132,7 +132,7 @@ def main(T,Q,A): # 코드이해 30%
     model.compile(loss='cosine_proximity', optimizer=optimizer, metrics=['acc'])
 
 
-    filepath ='./model/'+  T[:-4] + '__epoch_{epoch:02d}_loss_{loss:.6f}_valloss_{val_loss:.6f}_acc_{acc:.6f}_cccc.h5'
+    filepath ='./model/'+  T[:-4] + '__epoch_{epoch:02d}_loss_{loss:.6f}_valloss_{val_loss:.6f}_acc_{acc:.6f}_nnnn.h5'
     callback0 = callbacks.ModelCheckpoint(filepath, monitor='val_loss', period=period)
     callback1 = callbacks.ModelCheckpoint(filepath, monitor='loss', period=period)
     callback2 = callbacks.EarlyStopping(monitor='loss', min_delta=0, patience=2, verbose=0, mode='auto')

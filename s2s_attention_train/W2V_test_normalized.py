@@ -138,6 +138,7 @@ def main(data_to_read, modelname, init=None):
         input_sentence = ''  # input_sentence 초기화
         inp_seq = convert_3d_shape_word2vec(data_to_read, [sen_in_list])
         result = model.predict(inp_seq)  # input에 대한 softmax output 0 * maxstep * n_feature 차원
+
         first_eos = True
 
         for stepidx in range(max_step):
