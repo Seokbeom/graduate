@@ -1,4 +1,8 @@
-import tensorflow as tf
+#import tensorflow as tf
+#with tf.device('/gpu:1'):
+import os
+os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"  # so the IDs match nvidia-smi "0000:65:00.0"
+os.environ["CUDA_VISIBLE_DEVICES"] = "1" # "0, 1" for multiple
 import time
 import numpy as np
 from keras.models import Sequential
@@ -7,17 +11,24 @@ from attention_decoder import AttentionDecoder
 from keras import callbacks
 from gensim.models import word2vec
 from sklearn.preprocessing import normalize
+from tensorflow import nn
+from sklearn.model_selection import train_test_split
+import keras.backend as K
+def perplexity(y_true, y_pred):
+    return K.pow(2.0, K.mean(nn.softmax_cross_entropy_with_logits(logits=y_pred, labels=y_true, name='perplexity')))
 
+#
 
 #-----------------
-#filename='movie_dialogue_10_T_9188.txt' # QandA version, diffent dimension sizes , etc....
+#filename='test_cleansed_1_T_1.txt' # QandA version, diffent dimension sizes , etc....
 filename = 'movie_dialogue_15_T_9752.txt'
 #---------------------
 print('word2vec train')
-senlen = int(filename[:-4].split("_")[2]) #int(filename[15:17])
-wordscount = int(filename[:-4].split("_")[-1])  #int(filename[20:24])
 t1 = filename[:-4].split("_")[0]
 t2 = filename[:-4].split("_")[1]
+senlen = int(filename[:-4].split("_")[2]) #int(filename[15:17])
+wordscount = int(filename[:-4].split("_")[-1])  #int(filename[20:24])
+
 max_step =0
 def one_hot_dictionary(file_name):
     data = open(file_name, 'r', encoding='utf8')
@@ -41,8 +52,6 @@ def read_data_old_version(file_name):
     sentence = data.readline().lstrip()
     sentence = sentence.replace('\ufeff','')
     #print(sentence.split(" "))
-
-
 
     encoding_input =[]
     decoding_output=[]
@@ -103,29 +112,11 @@ def convert_3d_shape_onehotencode(word2one, sentences_list):
     return X
 
 
-
 def convert_3d_shape_word2vec(filename, sentences_list):
     model = word2vec.Word2Vec.load('./word2vec_model/' + filename + '_100_dim.model')
     word_vec = model.wv
     del model
 
-    global max_step
-    X = np.zeros((len(sentences_list), max_step, 100), dtype=np.float)
-    for i, sentence in enumerate(sentences_list):  # 명확한 이해 필요 #sentense = list ##########이 훈련 ,검증 셋트를 문장단위로 만들어야 함....
-        for j, word in enumerate(sentence):  # char = string
-            if word == '<eos>\n':
-                word = '<eos>'
-            try:
-                X[i, j] = word_vec[word]
-            except KeyError as E:
-                print(E)
-    return X
-
-
-def convert_3d_shape_word2vec_2(filename, sentences_list):
-    model = word2vec.Word2Vec.load('./word2vec_model/' + filename + '_100_dim.model')
-    word_vec = model.wv
-    del model
     global max_step
     X = np.zeros((len(sentences_list), max_step, 100), dtype=np.float)
     for i, sentence in enumerate(sentences_list):  # 명확한 이해 필요 #sentense = list ##########이 훈련 ,검증 셋트를 문장단위로 만들어야 함....
@@ -139,77 +130,51 @@ def convert_3d_shape_word2vec_2(filename, sentences_list):
                 print(E)
     return X
 
-def main(T,Q,A): # 코드이해 30%
+def main(T,Q,A):
 
     start = time.time()
     global max_step
     data_location = './extracted_data/'
     word2onehot_dict = one_hot_dictionary(data_location + T)
+
     read_data(data_location +T, False)
     encode_input = convert_3d_shape_word2vec(T, read_data( data_location + Q))
-    encode_input2 = convert_3d_shape_word2vec_2(T, read_data(data_location + Q))
     decode_ouput = convert_3d_shape_onehotencode(word2onehot_dict, read_data( data_location + A))
     end = time.time()
     print('read and vectorize', (end - start) / 60, '분')
 
-
+    from parameters import parameters
     n_features = len(word2onehot_dict)
     embedded_dim = 100
     unit = 512
-    batchisize = 128
+    batchisize = parameters.batchsize
     epoch = 200
-    valsplit = 0.1
     period = 10
 
-    model1 = Sequential()
-    model1.add(Dropout(0.2, input_shape=(max_step, embedded_dim)))
-    model1.add(Masking(mask_value=0., input_shape=(max_step, embedded_dim)))
-    model1.add(Bidirectional(LSTM(unit, input_shape=(max_step, embedded_dim), return_sequences=True), merge_mode='sum'))#
-    model1.add(AttentionDecoder(unit, n_features))
-    model1.summary()
-    model1.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['acc'])
-
-
-    filepath1 ='./model/'+  T[:-4] + '__epoch_{epoch:02d}_loss_{loss:.6f}_valloss_{val_loss:.6f}_acc_{acc:.6f}_W2V.h5'
-    callback10 = callbacks.ModelCheckpoint(filepath1, monitor='val_loss', period=period)
-    callback11 = callbacks.ModelCheckpoint(filepath1, monitor='loss', period=period)
-    callback12 = callbacks.EarlyStopping(monitor='loss', min_delta=0, patience=2, verbose=0, mode='auto')
-    callback13 = callbacks.TensorBoard(log_dir='./logs/' + T[:-4] + filepath1[-7:-3] + '/', histogram_freq=0,
-                                      batch_size=batchisize, write_graph=True, write_grads=False, write_images=False,
-                                      embeddings_freq=0, embeddings_layer_names=None, embeddings_metadata=None)
-    # Normalized
-    model2 = Sequential()
-    model2.add(Dropout(0.2, input_shape=(max_step, embedded_dim)))
-    model2.add(Masking(mask_value=0., input_shape=(max_step, embedded_dim)))
-    model2.add(
-        Bidirectional(LSTM(unit, input_shape=(max_step, embedded_dim), return_sequences=True), merge_mode='sum'))  #
-    model2.add(AttentionDecoder(unit, n_features))
-    model2.summary()
-    model2.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['acc'])
-
-    filepath2 = './model/' + T[:-4] + '__epoch_{epoch:02d}_loss_{loss:.6f}_valloss_{val_loss:.6f}_acc_{acc:.6f}_W2VN.h5'
-    callback20 = callbacks.ModelCheckpoint(filepath2, monitor='val_loss', period=period)
-    callback21 = callbacks.ModelCheckpoint(filepath2, monitor='loss', period=period)
-    callback22 = callbacks.EarlyStopping(monitor='loss', min_delta=0, patience=2, verbose=0, mode='auto')
-    callback23 = callbacks.TensorBoard(log_dir='./logs/' + T[:-4] + filepath2[-8:-3] + '/', histogram_freq=0,
+    model = Sequential()
+    model.add(Dropout(0.33, input_shape=(max_step, embedded_dim)))
+    model.add(Masking(mask_value=0., input_shape=(max_step, embedded_dim)))
+    model.add(Bidirectional(LSTM(unit, input_shape=(max_step, embedded_dim), return_sequences=True), merge_mode=parameters.merge_mode))#
+    model.add(AttentionDecoder(unit, n_features))
+    model.summary()
+    #
+    model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=[perplexity])
+    end = time.time()
+    print('model construct', (end - start) / 60, '분')
+    filepath = './model2/' + T[
+                            :-4] + '__epoch_{epoch:02d}_loss_{loss:.6f}_valloss_{val_loss:.6f}_Perplexity_{perplexity:.6f}_W2V_NOM_ATT_.h5'  # name
+    callback0 = callbacks.ModelCheckpoint(filepath, monitor='val_loss', period=period)
+    callback1 = callbacks.ModelCheckpoint(filepath, monitor='loss', period=period)
+    callback2 = callbacks.ModelCheckpoint(filepath, monitor='perplexity', period=period)
+    # callback2 = callbacks.EarlyStopping(monitor='loss', min_delta=0, patience=2, verbose=0, mode='auto')
+    callback3 = callbacks.TensorBoard(log_dir='./logs/' + T[:-4] + filepath[-16:-3] + '/', histogram_freq=0,
                                       batch_size=batchisize, write_graph=False, write_grads=False, write_images=False,
                                       embeddings_freq=0, embeddings_layer_names=None, embeddings_metadata=None)
 
-    #doesnt work simult
-    with tf.device('/gpu:0'):
-        model1.fit(encode_input, decode_ouput, epochs=epoch, verbose=2, batch_size=batchisize,
-                   callbacks=[callback10, callback11, callback12, callback13], validation_split=valsplit)
-
-    with tf.device('/gpu:1'):
-        model2.fit(encode_input, decode_ouput, epochs=epoch, verbose=2, batch_size=batchisize,
-                   callbacks=[callback20, callback21, callback22, callback23], validation_split=valsplit)
-
-
-
-
-
-
-
+    X_train, X_test, y_train, y_test = train_test_split(encode_input, decode_ouput, test_size=0.2, random_state=7)
+    model.fit(X_train, y_train, validation_data=(X_test, y_test), epochs=epoch, verbose=2, batch_size=batchisize,
+              callbacks=[callback0, callback1, callback2, callback3])
+    #
 
     end = time.time()
     print( 'model saved ',(end - start) / 60, '분')
@@ -221,7 +186,7 @@ def main(T,Q,A): # 코드이해 30%
 
 
 
-T = 'movie_dialogue_%d_T_%d.txt'%(senlen, wordscount)
-Q = 'movie_dialogue_%d_Q_%d.txt'%(senlen, wordscount)
-A = 'movie_dialogue_%d_A_%d.txt'%(senlen, wordscount)
+T = '%s_%s_%d_T_%d.txt'%(t1, t2, senlen, wordscount)
+Q = '%s_%s_%d_Q_%d.txt'%(t1, t2,senlen, wordscount)
+A = '%s_%s_%d_A_%d.txt'%(t1, t2, senlen, wordscount)
 main(T, Q, A)

@@ -1,23 +1,28 @@
-'''
+
 import os
 os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"  # so the IDs match nvidia-smi "0000:65:00.0"
-os.environ["CUDA_VISIBLE_DEVICES"] = "1" # "0, 1" for multiple
-'''
+os.environ["CUDA_VISIBLE_DEVICES"] = "0" # "0, 1" for multiple
+
 import time
 import numpy as np
 from keras.models import Sequential
-from keras.layers import LSTM, Bidirectional,Masking, Dropout,TimeDistributed, RepeatVector, Dense
-#from attention_decoder import AttentionDecoder
+from keras.layers import LSTM, Bidirectional,Masking, Dropout
+from attention_decoder import AttentionDecoder
 from keras import callbacks
 
+#
+from tensorflow import nn
+from sklearn.model_selection import train_test_split
+import keras.backend as K
+def perplexity(y_true, y_pred):
+    return K.pow(2.0, K.mean(nn.softmax_cross_entropy_with_logits(logits=y_pred, labels=y_true, name='perplexity')))
 
-#from machine_learning.parallelizer import Parallelizer  # https://github.com/rmkemker/main
-#from keras.utils.training_utils import multi_gpu_model
+#
+
 #-----------------
 
-filename = 'movie_dialogue_15_T_13714.txt'
-#filename='test_cleansed_1_T_1.txt'
-#filename= 'movie_dialogue_5_T_2715.txt'
+
+filename= 'movie_dialogue_5_T_2715.txt'
 filename = 'movie_dialogue_15_T_9752.txt' #q and a + 1024 + dropout한 버전이 성능이 좋은 것 같음...
 #filename = 'movie_dialogue_30_T_16549.txt'
 
@@ -45,34 +50,6 @@ def one_hot_dictionary(file_name):
     print('사용되는 단어수(중복 제거, <eos> 포함) : ', len(words))
     return word_to_onehot #onehot_to_word
 
-
-def read_data_old_version(file_name):
-    data = open(file_name, 'r', encoding='utf8')
-    sentence = data.readline().lstrip()
-    sentence = sentence.replace('\ufeff','')
-    #print(sentence.split(" "))
-
-
-
-    encoding_input =[]
-    decoding_output=[]
-    global max_step
-    while(sentence):
-
-
-        sentence_in_list = sentence.lstrip().split(" ")
-        if len(sentence_in_list) > max_step:
-            max_step = len(sentence_in_list)
-            print(max_step)
-        encoding_input.append(sentence_in_list)
-        decoding_output.append(sentence_in_list)
-        sentence = data.readline().lstrip()
-
-    encoding_input = encoding_input[ : -1] # 차원: 문장수 * 그 문장의 단어수
-    decoding_output = decoding_output[1: ]
-
-    data.close()
-    return (encoding_input, decoding_output)
 
 def read_data(file_name, doreturn = True):
     data = open(file_name, 'r', encoding='utf8')
@@ -128,52 +105,45 @@ def main(T,Q,A): # 코드이해 30%
     decode_ouput = convert_3d_shape_onehotencode(word2onehot_dict, read_data( data_location + A))
     end = time.time()
     print('read and vectorize', (end - start) / 60, '분')
-
+    from parameters import parameters
     n_features = len(word2onehot_dict)
     unit = 512
-    batchisize = 128
+    batchisize = parameters.batchisize
     epoch = 200
-    valsplit=0.2
     period = 10
 
-    # define model
-    model = Sequential()
-    model.add(Dropout(0.2, input_shape=(max_step, n_features))) ##이거할까 #embedin layer를 추가할까
-    model.add(Masking(mask_value=0, input_shape=(max_step, n_features)))
-    model.add(Bidirectional(LSTM(units=unit, input_shape=(max_step, n_features)), merge_mode='sum'))  #
-    model.add(RepeatVector(max_step))
-    model.add(LSTM(unit, return_sequences=True))
-    model.add(TimeDistributed(Dense(n_features, activation='softmax')))
-   #model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['acc'])
-
     '''
+    from keras.models import load_model
+    modelname = 'movie_dialogue_15_T_9752__epoch_90_loss_1.007325_valloss_5.632553_acc_0.529697_QandA_OHE.h5'
+    model_location = './model/'
+    model = load_model(model_location + modelname, custom_objects={'AttentionDecoder': AttentionDecoder})
+
+    ''' 
     model = Sequential()
-    model.add(Dropout(0.2, input_shape=(max_step, n_features))) ##이거할까 #embedin layer를 추가할까
+    model.add(Dropout(0.33, input_shape=(max_step, n_features))) ##이거할까 #embedin layer를 추가할까
     model.add(Masking(mask_value=0, input_shape=(max_step, n_features)))
-    model.add(Bidirectional(LSTM(units= unit, input_shape=(max_step, n_features), return_sequences=True), merge_mode='sum'))#
+    model.add(Bidirectional(LSTM(units= unit, input_shape=(max_step, n_features), return_sequences=True), merge_mode=parameters.merge_mode))#
     model.add(AttentionDecoder(unit, n_features))
-    '''
     model.summary()
-    model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['acc'])
 
-
+    #
+    model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=[perplexity])
     end = time.time()
     print('model construct', (end - start) / 60, '분')
-
-    filepath = './model/' + T[:-4] + '__epoch_{epoch:02d}_loss_{loss:.6f}_valloss_{val_loss:.6f}_acc_{acc:.6f}_QandA_NoAtte.h5'
+    filepath = './model2/' + T[:-4] + '__epoch_{epoch:02d}_loss_{loss:.6f}_valloss_{val_loss:.6f}_Perplexity_{perplexity:.6f}_OHE_OHE_ATT_.h5' # name
     callback0 = callbacks.ModelCheckpoint(filepath, monitor='val_loss', period=period)
     callback1 = callbacks.ModelCheckpoint(filepath, monitor='loss', period=period)
-    callback2 = callbacks.EarlyStopping(monitor='loss', min_delta=0, patience=2, verbose=0, mode='auto')
-    callback3 = callbacks.TensorBoard(log_dir='./logs/' + T[:-4] + filepath[-10:-3] + '/', histogram_freq=0,
-                                      batch_size=batchisize, write_graph=True, write_grads=False, write_images=False,
+    callback2 = callbacks.ModelCheckpoint(filepath, monitor='perplexity', period=period)
+    #callback2 = callbacks.EarlyStopping(monitor='loss', min_delta=0, patience=2, verbose=0, mode='auto')
+    callback3 = callbacks.TensorBoard(log_dir='./logs/' + T[:-4] + filepath[-16:-3] + '/', histogram_freq=0,
+                                      batch_size=batchisize, write_graph=False, write_grads=False, write_images=False,
                                       embeddings_freq=0, embeddings_layer_names=None, embeddings_metadata=None)
 
-    model.fit(encode_input, decode_ouput, epochs=epoch, verbose=2, batch_size=batchisize,
-              callbacks=[callback0, callback1, callback3], validation_split=valsplit)
-    #callback0 = callbacks.ModelCheckpoint(filepath, monitor='val_loss', period=period)
-    #callback1 = callbacks.ModelCheckpoint(filepath, monitor='loss', period=period)
-    #model.fit(encode_input, decode_ouput, epochs=epoch, verbose=2, batch_size=batchisize, callbacks= [callback0, callback1], validation_split=valsplit)
-    #model.save('./model')
+    X_train, X_test, y_train, y_test = train_test_split(encode_input, decode_ouput, test_size=0.2, random_state=7)
+    model.fit(X_train, y_train, validation_data=(X_test, y_test),epochs=epoch, verbose=2, batch_size=batchisize,
+              callbacks=[callback0, callback1,callback2, callback3])
+    #
+
     end = time.time()
     print('fitting done', (end - start) / 60, '분')
 

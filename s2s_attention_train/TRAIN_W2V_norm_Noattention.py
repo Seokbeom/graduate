@@ -13,6 +13,13 @@ from keras.layers import LSTM, Dropout, Bidirectional, Masking, RepeatVector, Ti
 from keras import callbacks
 from gensim.models import word2vec
 
+from tensorflow import nn
+from sklearn.model_selection import train_test_split
+import keras.backend as K
+def perplexity(y_true, y_pred):
+    return K.pow(2.0, K.mean(nn.softmax_cross_entropy_with_logits(logits=y_pred, labels=y_true, name='perplexity')))
+
+#
 
 #-----------------
 #filename='test_cleansed_1_T_1.txt' # QandA version, diffent dimension sizes , etc....
@@ -113,40 +120,43 @@ def main(T,Q,A):
     end = time.time()
     print('read and vectorize', (end - start) / 60, '분')
 
-
+    from parameters import parameters
     n_features = len(word2onehot_dict)
     embedded_dim = 100
     unit = 512
-    batchisize = 128
+    batchisize = parameters.batchsize
     epoch = 200
     valsplit = 0.2
     period = 10
 
     # define model
     model = Sequential()
-    model.add(Dropout(0.2, input_shape=(max_step, n_features))) ##이거할까 #embedin layer를 추가할까
-    model.add(Masking(mask_value=0, input_shape=(max_step, n_features)))
-    model.add(Bidirectional(LSTM(units=unit, input_shape=(max_step, n_features)), merge_mode='sum'))  #
+    model.add(Dropout(0.33, input_shape=(max_step, embedded_dim))) ##이거할까 #embedin layer를 추가할까
+    model.add(Masking(mask_value=0, input_shape=(max_step, embedded_dim)))
+    model.add(Bidirectional(LSTM(units=unit, input_shape=(max_step, embedded_dim)), merge_mode=parameters.merge_mode))  #
     model.add(RepeatVector(max_step))
     model.add(LSTM(unit, return_sequences=True))
     model.add(TimeDistributed(Dense(n_features, activation='softmax')))
 
     model.summary()
-    model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['acc'])
+    #
+    model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=[perplexity])
     end = time.time()
-    print('constructed ', (end - start) / 60, '분')
-
-    filepath ='./model/'+  T[:-4] + '__epoch_{epoch:02d}_loss_{loss:.6f}_valloss_{val_loss:.6f}_acc_{acc:.6f}_NNN.h5'
+    print('model construct', (end - start) / 60, '분')
+    filepath = './model2/' + T[
+                            :-4] + '__epoch_{epoch:02d}_loss_{loss:.6f}_valloss_{val_loss:.6f}_Perplexity_{perplexity:.6f}_W2V_NOM_NOA_.h5'  # name
     callback0 = callbacks.ModelCheckpoint(filepath, monitor='val_loss', period=period)
     callback1 = callbacks.ModelCheckpoint(filepath, monitor='loss', period=period)
-    callback2 = callbacks.EarlyStopping(monitor='loss', min_delta=0, patience=2, verbose=0, mode='auto')
-    callback3 = callbacks.TensorBoard(log_dir='./logs/'+T[ :-4] + filepath[-8:-3]+'/', histogram_freq=0, batch_size=batchisize, write_graph=True, write_grads=False, write_images=False, embeddings_freq=0, embeddings_layer_names=None, embeddings_metadata=None)
+    callback2 = callbacks.ModelCheckpoint(filepath, monitor='perplexity', period=period)
+    # callback2 = callbacks.EarlyStopping(monitor='loss', min_delta=0, patience=2, verbose=0, mode='auto')
+    callback3 = callbacks.TensorBoard(log_dir='./logs/' + T[:-4] + filepath[-16:-3] + '/', histogram_freq=0,
+                                      batch_size=batchisize, write_graph=False, write_grads=False, write_images=False,
+                                      embeddings_freq=0, embeddings_layer_names=None, embeddings_metadata=None)
 
-    model.fit(encode_input, decode_ouput, epochs=epoch, verbose=2, batch_size=batchisize,
-              callbacks=[callback0, callback1, callback3], validation_split=valsplit)
-
-
-
+    X_train, X_test, y_train, y_test = train_test_split(encode_input, decode_ouput, test_size=0.2, random_state=7)
+    model.fit(X_train, y_train, validation_data=(X_test, y_test), epochs=epoch, verbose=2, batch_size=batchisize,
+              callbacks=[callback0, callback1, callback2, callback3])
+    #
 
     end = time.time()
     print( 'model saved ',(end - start) / 60, '분')
