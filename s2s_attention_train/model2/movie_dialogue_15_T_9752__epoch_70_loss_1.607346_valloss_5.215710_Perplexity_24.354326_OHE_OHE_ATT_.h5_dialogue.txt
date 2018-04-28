@@ -1,0 +1,118 @@
+hi . <eos>
+ i . <eos>
+
+hello . <eos>
+ i . <eos>
+
+who are you ? <eos>
+ i am . NAME . <eos>
+
+how is it going ? <eos>
+ i do not . . <eos>
+
+are you okay ? <eos>
+ i . <eos>
+
+what is wrong with you ? <eos>
+ i . not <eos>
+
+what is your name? i just wonder . <eos>
+ you have you <eos>
+
+what is your name ? i just wonder . <eos>
+ UNK . UNK . . <eos>
+
+do you have a son ? <eos>
+ i . <eos>
+
+do you know what your name is ? <eos>
+ no . <eos>
+
+what is your favorite ? <eos>
+ NAME . <eos>
+
+what is your name ? ? <eos>
+ NAME . <eos>
+
+what is your name ? <eos>
+ NAME . <eos>
+
+what do  you want from me ? <eos>
+ i . i <eos>
+
+what do you want from me ? <eos>
+ i . i <eos>
+
+do you have any questions ? <eos>
+ no . <eos>
+
+i am so sad . <eos>
+ you s not you it . . UNK <eos>
+
+i am in blue . <eos>
+ what s it ? <eos>
+
+i got a problem . <eos>
+ you s it ? <eos>
+
+i have a problem . <eos>
+ what s <eos>
+
+i have a problem . . <eos>
+ you . <eos>
+
+do you love me ? <eos>
+ i . <eos>
+
+i got a little problem . . <eos>
+ you s it ? <eos>
+
+how is everything ? every thing s good ? <eos>
+ NAME . . <eos>
+
+how is everything ? <eos>
+ i . <eos>
+
+how are you ?  <eos>
+ i am <eos>
+
+how are you doing ? <eos>
+ i do you <eos>
+
+how is everything going ? <eos>
+ i . <eos>
+
+do you have children ? <eos>
+ no . <eos>
+
+what do you have ? <eos>
+ i . <eos>
+
+i want to kiss you . <eos>
+ no thanks . <eos>
+
+thank you . <eos>
+ i are not <eos>
+
+i am NAME . <eos>
+ i s . <eos>
+
+my name is NMAE . <eos>
+ no . <eos>
+
+my name is NAME . <eos>
+ no . <eos>
+
+my name is NAME . what s yours ? <eos>
+ NAME . you pleased to meet . ? <eos>
+
+my name is NAME . and you ? <eos>
+ no . . . <eos>
+
+i am fine and you ? <eos>
+ i am not . <eos>
+
+i am feeling good today . and you ? <eos>
+ i am that . <eos>
+
+q <eos>
