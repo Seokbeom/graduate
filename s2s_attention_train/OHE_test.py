@@ -3,7 +3,13 @@ import time
 import numpy as np
 from keras.models import load_model
 
+from tensorflow import nn
+from sklearn.model_selection import train_test_split
+import keras.backend as K
+def perplexity(y_true, y_pred):
+    return K.pow(2.0, K.mean(nn.softmax_cross_entropy_with_logits(logits=y_pred, labels=y_true, name='perplexity')))
 
+#
 #modelname = 'movie_dialogue_10_T_9188__epoch_10_loss_0.000_valloss_0.000.h5'
 #modelname = 'movie_dialogue_5_T_2715__epoch_10_loss_2.315_valloss_3.134.h5'
 #modelname='test_cleansed_1_T_1__epoch_100_loss_0.028353_valloss_0.003710_OHE.h5'
@@ -13,6 +19,7 @@ modelname = 'movie_dialogue_10_T_9188__epoch_170_loss_0.512821_valloss_7.481432_
 modelname = 'movie_dialogue_15_T_9752__epoch_90_loss_1.007325_valloss_5.632553_acc_0.529697_QandA_OHE.h5'#QandA version, samplefunction using ...
 modelname = 'movie_dialogue_15_T_9752__epoch_80_loss_0.793774_valloss_4.280197_acc_0.573930_QandA_OHE.h5'
 modelname= 'movie_dialogue_15_T_9752__epoch_90_loss_1.007325_valloss_5.632553_acc_0.529697_QandA_OHE.h5'
+modelname= 'movie_dialogue_15_T_9752__epoch_70_loss_1.607346_valloss_5.215710_Perplexity_24.354326_OHE_OHE_ATT_.h5'
 INIT_TALK = 'how are you ?'
 INIT_TALK = None
 
@@ -97,12 +104,12 @@ def main(data_to_read, modelname, init = None):
     start = time.time()
 
     data_location = './extracted_data/'
-    model_location = './model/'
+    model_location = './model2/'
 
     read_data(data_location + data_to_read, False)
     word2onehot_dict, one2word_dict = one_hot_dictionary(data_location + data_to_read)
     n_features = len(word2onehot_dict)
-    model = load_model(model_location + modelname, custom_objects={'AttentionDecoder': AttentionDecoder})
+    model = load_model(model_location + modelname, custom_objects={'AttentionDecoder': AttentionDecoder ,'perplexity': perplexity})
 
     end = time.time()
     print('model loaded', (end - start) / 60, '분')

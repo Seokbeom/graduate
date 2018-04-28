@@ -2,7 +2,7 @@
 #with tf.device('/gpu:1'):
 import os
 os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"  # so the IDs match nvidia-smi "0000:65:00.0"
-os.environ["CUDA_VISIBLE_DEVICES"] = "1" # "0, 1" for multiple
+os.environ["CUDA_VISIBLE_DEVICES"] = "0" # "0, 1" for multiple
 import time
 import numpy as np
 from keras.models import Sequential
@@ -15,7 +15,7 @@ from tensorflow import nn
 from sklearn.model_selection import train_test_split
 import keras.backend as K
 def perplexity(y_true, y_pred):
-    return K.pow(2.0, K.mean(nn.softmax_cross_entropy_with_logits(logits=y_pred, labels=y_true, name='perplexity')))
+    return K.pow(2.0, K.mean(nn.softmax_cross_entropy_with_logits_v2(logits=y_pred, labels=y_true, name='perplexity')))
 
 #
 
@@ -47,31 +47,7 @@ def one_hot_dictionary(file_name):
     print('사용되는 단어수(중복 제거, <eos> 포함) : ', len(words))
     return word_to_onehot #, onehot_to_word
 
-def read_data_old_version(file_name):
-    data = open(file_name, 'r', encoding='utf8')
-    sentence = data.readline().lstrip()
-    sentence = sentence.replace('\ufeff','')
-    #print(sentence.split(" "))
 
-    encoding_input =[]
-    decoding_output=[]
-    global max_step
-    while(sentence):
-
-
-        sentence_in_list = sentence.lstrip().split(" ")
-        if len(sentence_in_list) > max_step:
-            max_step = len(sentence_in_list)
-            print(max_step)
-        encoding_input.append(sentence_in_list)
-        decoding_output.append(sentence_in_list)
-        sentence = data.readline().lstrip()
-
-    encoding_input = encoding_input[ : -1] # 차원: 문장수 * 그 문장의 단어수
-    decoding_output = decoding_output[1: ]
-
-    data.close()
-    return (encoding_input, decoding_output)
 
 def read_data(file_name, doreturn = True):
     data = open(file_name, 'r', encoding='utf8')
@@ -147,7 +123,7 @@ def main(T,Q,A):
     n_features = len(word2onehot_dict)
     embedded_dim = 100
     unit = 512
-    batchisize = parameters.batchsize
+    batchisize = parameters.batchisize
     epoch = 200
     period = 10
 
@@ -171,8 +147,10 @@ def main(T,Q,A):
                                       batch_size=batchisize, write_graph=False, write_grads=False, write_images=False,
                                       embeddings_freq=0, embeddings_layer_names=None, embeddings_metadata=None)
 
-    X_train, X_test, y_train, y_test = train_test_split(encode_input, decode_ouput, test_size=0.2, random_state=7)
-    model.fit(X_train, y_train, validation_data=(X_test, y_test), epochs=epoch, verbose=2, batch_size=batchisize,
+    encode_input, X_test, decode_ouput, y_test = train_test_split(encode_input, decode_ouput, test_size=0.2,
+                                                                  random_state=7)
+    model.fit(encode_input, decode_ouput, validation_data=(X_test, y_test), epochs=epoch, verbose=2,
+              batch_size=batchisize,
               callbacks=[callback0, callback1, callback2, callback3])
     #
 

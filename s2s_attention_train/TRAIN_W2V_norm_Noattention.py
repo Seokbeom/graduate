@@ -124,9 +124,8 @@ def main(T,Q,A):
     n_features = len(word2onehot_dict)
     embedded_dim = 100
     unit = 512
-    batchisize = parameters.batchsize
+    batchisize = parameters.batchisize
     epoch = 200
-    valsplit = 0.2
     period = 10
 
     # define model
@@ -153,8 +152,10 @@ def main(T,Q,A):
                                       batch_size=batchisize, write_graph=False, write_grads=False, write_images=False,
                                       embeddings_freq=0, embeddings_layer_names=None, embeddings_metadata=None)
 
-    X_train, X_test, y_train, y_test = train_test_split(encode_input, decode_ouput, test_size=0.2, random_state=7)
-    model.fit(X_train, y_train, validation_data=(X_test, y_test), epochs=epoch, verbose=2, batch_size=batchisize,
+    encode_input, X_test, decode_ouput, y_test = train_test_split(encode_input, decode_ouput, test_size=0.2,
+                                                                  random_state=7)
+    model.fit(encode_input, decode_ouput, validation_data=(X_test, y_test), epochs=epoch, verbose=2,
+              batch_size=batchisize,
               callbacks=[callback0, callback1, callback2, callback3])
     #
 

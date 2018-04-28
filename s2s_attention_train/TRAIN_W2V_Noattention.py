@@ -2,7 +2,7 @@
 #with tf.device('/gpu:0'):
 import os
 os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID" # so the IDs match nvidia-smi #"0000:17:00.0"
-os.environ["CUDA_VISIBLE_DEVICES"] = "0" # "0, 1" for multiple
+os.environ["CUDA_VISIBLE_DEVICES"] = "1" # "0, 1" for multiple
 import time
 import numpy as np
 from keras.models import Sequential
@@ -153,13 +153,13 @@ def main(T,Q,A): # 코드이해 30%
     embedded_dim = 100
     unit = 512
     batchisize = parameters.batchisize
-    epoch = 200
+    epoch = 150
     period = 10
 
     model = Sequential()
     model.add(Dropout(0.33, input_shape=(max_step, embedded_dim)))  ##이거할까 #embedin layer를 추가할까
     model.add(Masking(mask_value=0, input_shape=(max_step, embedded_dim)))
-    model.add(Bidirectional(LSTM(units=unit, input_shape=(max_step, embedded_dim)), merge_mode='concat'))  #
+    model.add(Bidirectional(LSTM(units=unit, input_shape=(max_step, embedded_dim)), merge_mode=parameters.merge_mode))  #
     model.add(RepeatVector(max_step))
     model.add(LSTM(unit, return_sequences=True))
     model.add(TimeDistributed(Dense(n_features, activation='softmax')))
@@ -178,10 +178,11 @@ def main(T,Q,A): # 코드이해 30%
                                       batch_size=batchisize, write_graph=False, write_grads=False, write_images=False,
                                       embeddings_freq=0, embeddings_layer_names=None, embeddings_metadata=None)
 
-    X_train, X_test, y_train, y_test = train_test_split(encode_input, decode_ouput, test_size=0.2, random_state=7)
-    model.fit(X_train, y_train, validation_data=(X_test, y_test), epochs=epoch, verbose=2, batch_size=batchisize,
+    encode_input, X_test, decode_ouput, y_test = train_test_split(encode_input, decode_ouput, test_size=0.2,
+                                                                  random_state=7)
+    model.fit(encode_input, decode_ouput, validation_data=(X_test, y_test), epochs=epoch, verbose=2,
+              batch_size=batchisize,
               callbacks=[callback0, callback1, callback2, callback3])
-    #
 
 
     end = time.time()
