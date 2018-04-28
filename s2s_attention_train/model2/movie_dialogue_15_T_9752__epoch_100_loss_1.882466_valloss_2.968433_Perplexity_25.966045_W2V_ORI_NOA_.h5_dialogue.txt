@@ -1,0 +1,61 @@
+hi . <eos>
+ what are wrong ? <eos>
+
+hello . <eos>
+
+ what are wrong ? <eos>
+
+whi hello . <eos>
+
+ what are wrong ? <eos>
+
+hi hello . <eos>
+
+ where s this ? <eos>
+
+who are you ? <eos>
+
+ why s <eos>
+
+it is nice to meet you NAME ! <eos>
+
+ what ? . . <eos>
+
+how s everything ? <eos>
+
+ why s <eos>
+
+can you fly ? <eos>
+
+ why s <eos>
+
+are you satisfied with your life ? <eos>
+
+ what ? . . <eos>
+
+are you a man ? <eos>
+
+ what s . <eos>
+
+are you a computer ? <eos>
+
+ what s . <eos>
+
+i am planning something . <eos>
+
+ what s . <eos>
+
+i really love you . <eos>
+
+ what s . <eos>
+
+do you really love me ? <eos>
+
+ what ? <eos>
+
+what is life ? <eos>
+
+ why s <eos>
+
+q <eos>
+

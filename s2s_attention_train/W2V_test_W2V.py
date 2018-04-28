@@ -3,11 +3,12 @@ import time
 import numpy as np
 from keras.models import load_model
 from gensim.models import word2vec # Try alpha=0.05 and cbow_mean=1  https://stackoverflow.com/questions/34249586/the-accuracy-test-of-word2vec-in-gensim
-
+from sklearn.preprocessing import normalize
 #############################
 modelname = 'movie_dialogue_15_T_9752__epoch_490_loss_-0.323665_valloss_-0.111473_acc_0.170399_WWWW.h5'
 modelname='movie_dialogue_15_T_9752__epoch_100_loss_-0.127914_valloss_-0.128073_acc_0.027951_cccc.h5'
 modelname= 'movie_dialogue_15_T_9752__epoch_400_loss_-0.276557_valloss_-0.121348_acc_0.126529_nnnn.h5'
+modelname='movie_dialogue_15_T_9752__epoch_100_loss_-0.127914_valloss_-0.128073_acc_0.027951_cccc.h5'
 
 INIT_TALK = 'how are you ?'
 INIT_TALK = None
@@ -51,9 +52,9 @@ def read_data(file_name, doreturn=True):
 
 def convert_3d_shape_word2vec(filename, sentences_list):
     model = word2vec.Word2Vec.load('./word2vec_model/' + filename + '_100_dim.model')
-    model.delete_temporary_training_data(replace_word_vectors_with_normalized=True)  # normalize
+    #model.delete_temporary_training_data(replace_word_vectors_with_normalized=True)  # normalize
     word_vec = model.wv
-    del model
+    #del model
 
     global max_step
     X = np.zeros((len(sentences_list), max_step, 100), dtype=np.bool)
@@ -62,6 +63,20 @@ def convert_3d_shape_word2vec(filename, sentences_list):
             if word == '<eos>\n':
                 word = '<eos>'
             try:
+                temp = word_vec[word]
+
+                print(type(temp))
+                print(temp)
+
+                a= normalize(temp.reshape(1, -1))
+                #print(a)
+                print()
+
+                print(a[0])
+                sum = 0
+                for mm in a[0]:
+                    sum = sum + mm*mm
+                print(sum)
                 X[i, j] = word_vec[word]
             except KeyError as E:
                 print(E)
