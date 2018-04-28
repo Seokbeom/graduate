@@ -13,11 +13,11 @@ from keras.layers import LSTM, Dropout, Bidirectional, Masking, RepeatVector, Ti
 from keras import callbacks
 from gensim.models import word2vec
 
-from tensorflow import nn
+from tensorflow.python.ops.nn import softmax_cross_entropy_with_logits_v2
 from sklearn.model_selection import train_test_split
-import keras.backend as K
+from keras import backend as K
 def perplexity(y_true, y_pred):
-    return K.pow(2.0, K.mean(nn.softmax_cross_entropy_with_logits(logits=y_pred, labels=y_true, name='perplexity')))
+    return K.pow(2.0, K.mean(softmax_cross_entropy_with_logits_v2(logits=y_pred, labels=y_true, name='perplexity')))
 
 #
 
@@ -124,7 +124,7 @@ def main(T,Q,A):
     n_features = len(word2onehot_dict)
     embedded_dim = 100
     unit = 512
-    batchisize = parameters.batchsize
+    batchisize = parameters.batchisize
     epoch = 200
     valsplit = 0.2
     period = 10
@@ -153,8 +153,8 @@ def main(T,Q,A):
                                       batch_size=batchisize, write_graph=False, write_grads=False, write_images=False,
                                       embeddings_freq=0, embeddings_layer_names=None, embeddings_metadata=None)
 
-    X_train, X_test, y_train, y_test = train_test_split(encode_input, decode_ouput, test_size=0.2, random_state=7)
-    model.fit(X_train, y_train, validation_data=(X_test, y_test), epochs=epoch, verbose=2, batch_size=batchisize,
+    encode_input, X_test, decode_ouput, y_test = train_test_split(encode_input, decode_ouput, test_size=0.2, random_state=7)
+    model.fit(encode_input, decode_ouput, validation_data=(X_test, y_test), epochs=epoch, verbose=2, batch_size=batchisize,
               callbacks=[callback0, callback1, callback2, callback3])
     #
 

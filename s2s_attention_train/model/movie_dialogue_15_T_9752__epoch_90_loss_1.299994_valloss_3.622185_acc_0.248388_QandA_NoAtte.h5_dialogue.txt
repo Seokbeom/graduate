@@ -1,0 +1,493 @@
+hello . how are you ? <eos>
+ fine good . <eos>
+
+how old are you ? i just wonder . <eos>
+ there are there UNK gun . <eos>
+
+how old are you ? <eos>
+ twenty . <eos>
+
+what is your name ? <eos>
+ NAME . <eos>
+
+what s your name ? <eos>
+ NAME . <eos>
+
+what is a dog ? <eos>
+ he he got a gun . <eos>
+
+do you have a sister ? <eos>
+ we are <eos>
+
+are you my friend or enemy ? <eos>
+ maybe . . <eos>
+
+are you my friend ? <eos>
+ no . <eos>
+
+are you my enemy ? <eos>
+ maybe . . . would . <eos>
+
+are you a man ? <eos>
+ yes . <eos>
+
+are you a woman ? <eos>
+ yeah huh . <eos>
+
+are you a man or woman ? <eos>
+ no . . <eos>
+
+what color do you like most ? <eos>
+ a bet . <eos>
+
+what animal do you like most ? <eos>
+ a than . i you not you help . <eos>
+
+what is your favorite color ? <eos>
+ NAME ? <eos>
+
+who is your best friend ? <eos>
+ NAME you of of of . <eos>
+
+i got in trouble . <eos>
+ i has you trouble in you . <eos>
+
+can you help me ? <eos>
+ i am christian <eos>
+
+can you help me? i got a trouble . <eos>
+ you are . of trouble trouble . <eos>
+
+do you love me ? <eos>
+ i asked love . <eos>
+
+do i love you ? <eos>
+ i . you . . <eos>
+
+l love you . <eos>
+ yeah away <eos>
+
+do you like me ? <eos>
+ i love <eos>
+
+do you love me ? ? <eos>
+ i much . know . <eos>
+
+how is everything man ? <eos>
+ pretty . . <eos>
+
+is everything okay ? <eos>
+ yah s the such . <eos>
+
+what color is the sky ? <eos>
+ NAME s <eos>
+
+do you know what cat is ? <eos>
+ i think that s horrible mean you hair . <eos>
+
+do you know what it feels like ? <eos>
+ well what . <eos>
+
+how are you ? <eos>
+ fine . <eos>
+
+how are you doing ? <eos>
+ fine . i fine . . <eos>
+
+how are you doing old man ? <eos>
+ i am on . . . <eos>
+
+how is everything ? <eos>
+ everything s good good . . <eos>
+
+is everything good ? <eos>
+ yes . <eos>
+
+what are you doing right now ? <eos>
+ i am a get . <eos>
+
+how was your last night ? <eos>
+ i broke . <eos>
+
+you broke ? <eos>
+ no i was busy . <eos>
+
+were you busy ? <eos>
+ yes . <eos>
+
+did you sleep well ? <eos>
+ yes . <eos>
+
+what kind of food do you like ? <eos>
+ oh i children very very . . <eos>
+
+do you have a dog ? <eos>
+ UNK . <eos>
+
+do you have a cat ? <eos>
+ yeah . <eos>
+
+what is her name ? <eos>
+ no do not know . NAME . . <eos>
+
+do you know your name ? <eos>
+ i do NAME NAME . NAME . <eos>
+
+i am sad . <eos>
+ why not not old doctor ? ? <eos>
+
+i am really sad . <eos>
+ and you <eos>
+
+i don t feel good .. <eos>
+ that s UNK . s sick sick sick . <eos>
+
+are you happy ? <eos>
+ oh i . . <eos>
+
+are you not happy ? <eos>
+ no i do . . <eos>
+
+do you like soccer ? <eos>
+ like you build . UNK . <eos>
+
+wha is morality ? <eos>
+ who me that the the the about ? <eos>
+
+have you been to america ? <eos>
+ no . <eos>
+
+have you been to us ? <eos>
+ no . <eos>
+
+have you been to usa ? <eos>
+ no . <eos>
+
+introduce yourself . <eos>
+ NAME . <eos>
+
+can i call you NAME ? <eos>
+ i . . NAME call . <eos>
+
+what should i call you ? <eos>
+ i . <eos>
+
+do you know me ? <eos>
+ i . <eos>
+
+do you know my name ? <eos>
+ i do not . famous . <eos>
+
+i want to know more about you . <eos>
+ not love . <eos>
+
+i think i am fall in love with you . <eos>
+ and you seem the night <eos>
+
+i think i am crushed into you . <eos>
+ no it s that thing not . <eos>
+
+do you like her ? <eos>
+ i i <eos>
+
+what is your sex ? <eos>
+ never one it problem <eos>
+
+i have a problem . <eos>
+ thanks . <eos>
+
+thank you . <eos>
+ you are . <eos>
+
+thanks . <eos>
+ i are . <eos>
+
+thank you so much . <eos>
+ you you you you you grip . italy . <eos>
+
+can you help me with this ? <eos>
+ it s in in . . . . . <eos>
+
+can you help me ? <eos>
+ i am christian <eos>
+
+are you christian ? <eos>
+ UNK . <eos>
+
+do you believe in god ? <eos>
+ yes . <eos>
+
+do you think god exists ? <eos>
+ i think he s he be . . . he . . <eos>
+
+what do you think ? <eos>
+ i think you . . . <eos>
+
+do you like me ? <eos>
+ i love <eos>
+
+oh . i love you too . <eos>
+ i you . . you . <eos>
+
+ <eos>
+ i . <eos>
+
+i love you to NAME . <eos>
+ i you you too . . <eos>
+
+i love you too NAME . <eos>
+ you me . too . <eos>
+
+i love you too . NAME . <eos>
+ do not . <eos>
+
+why not ? <eos>
+ because s not not . . <eos>
+
+i am so hungry. do you have something to eat ? <eos>
+ i s you <eos>
+
+i am so hungry . <eos>
+ i it cold . <eos>
+
+it s too cold out there . <eos>
+ NAME . <eos>
+
+could you closed the door ? <eos>
+ yeah . <eos>
+
+could you open the door ? <eos>
+ get out . <eos>
+
+why are you so serious ? <eos>
+ i do you . <eos>
+
+don t be so serious . <eos>
+ i s fine fine . <eos>
+
+are you serious ? <eos>
+ yeah . not . . . <eos>
+
+are you kidding me ? <eos>
+ no engaged . <eos>
+
+it was a tough day was not it ? <eos>
+ yes the . <eos>
+
+i had a tough day . <eos>
+ i just day NAME . <eos>
+
+what is your son s name ? <eos>
+ NAME . <eos>
+
+do you have a son ? <eos>
+ yes . <eos>
+
+do you have a daughter ? <eos>
+ no am <eos>
+
+is NAME your son ? <eos>
+ yes . <eos>
+
+i want to be friend with you . <eos>
+ then will s the will be be be be . <eos>
+
+how is the wheather today ? <eos>
+ i . not on . <eos>
+
+come on let s go . we should hurry . <eos>
+ i am my . i you not . <eos>
+
+come on let s go ! <eos>
+ i a a <eos>
+
+come on . <eos>
+ i ! . <eos>
+
+what is a god ? <eos>
+ one one out . a a a ! . <eos>
+
+do you have a dog ? <eos>
+ UNK . <eos>
+
+i have a dog ? <eos>
+ yes . <eos>
+
+i have a dog . <eos>
+ why not not <eos>
+
+i do not have a dog . <eos>
+ why do not do what ? ? ? ? <eos>
+
+i do not want to have a dog . <eos>
+ you broke nothing do do you ? ? <eos>
+
+i just wonder what your name is . <eos>
+ i . your opinion . <eos>
+
+what is your opinion ? <eos>
+ i s no UNK stars . <eos>
+
+what is the sun ? <eos>
+ she of s of the then . <eos>
+
+have you ever been to space ? <eos>
+ no . <eos>
+
+i have been to space . <eos>
+ i know that that a of that . <eos>
+
+did you her that? NAME got hurt . <eos>
+ he . <eos>
+
+did you hear that ? <eos>
+ what what . <eos>
+
+NAME got hurt ! <eos>
+ i am not not ! ! <eos>
+
+are you the person ? <eos>
+ yes . <eos>
+
+you are the person i was looking for . <eos>
+ i did i think that that . . . . . . . <eos>
+
+why are you keep following me ? <eos>
+ i you not interested . <eos>
+
+are you interseted in me ? <eos>
+ no . <eos>
+
+are you good at math ? <eos>
+ it s a very lot . and a a and class . <eos>
+
+do you like math ? <eos>
+ it little little lot lot . <eos>
+
+math <eos>
+ a UNK more . . <eos>
+
+what is one plus one ? <eos>
+ NAME one guess it right . <eos>
+
+guess what . <eos>
+ i ? <eos>
+
+guess what ? <eos>
+ i do <eos>
+
+do you ? <eos>
+ no . <eos>
+
+i got in a trouble ! <eos>
+ you if <eos>
+
+if you were a bird what would you do ? <eos>
+ my for in of . <eos>
+
+i got a fever . <eos>
+ kennedy . <eos>
+
+i am cold . <eos>
+ here . i . turn down the money . <eos>
+
+i do not have money . <eos>
+ this . <eos>
+
+i am so sorry. <eos>
+ you you . <eos>
+
+i am so sorry . <eos>
+ do not gonna . . <eos>
+
+are you gonna go ? <eos>
+ i am . . <eos>
+
+where are you gonna go ? <eos>
+ well i am i . <eos>
+
+do you have a question ? <eos>
+ no . <eos>
+
+do you have any question ? <eos>
+ i . <eos>
+
+why so serious ? <eos>
+ i am him it . it s a . <eos>
+
+dou you love him ? <eos>
+ i do not know . <eos>
+
+do you love him ? <eos>
+ i do not know . <eos>
+
+why do not you know ? <eos>
+ because me . <eos>
+
+why did you do that ? <eos>
+ i do not know . <eos>
+
+what do you know <eos>
+ i s a . . <eos>
+
+what do you know ? <eos>
+ i have a . . <eos>
+
+what do you have ? <eos>
+ i . <eos>
+
+i got nothing . what do you have ? <eos>
+ this a one you you . . <eos>
+
+this is a pencil . <eos>
+ i got to to you not <eos>
+
+where is NAME ? i can not find her . <eos>
+ right . <eos>
+
+do you know where NAME is ? <eos>
+ no . . <eos>
+
+can you hear me ? <eos>
+ yes . <eos>
+
+how do i look like ? <eos>
+ you are not . <eos>
+
+i am not ? <eos>
+ you . you <eos>
+
+do i look like ? <eos>
+ you . <eos>
+
+am i handsome ? <eos>
+ i are the NAME . <eos>
+
+am i gonna die ? <eos>
+ no you want go . <eos>
+
+do you want to go ? <eos>
+ no . . <eos>
+
+where do you wanna go ? <eos>
+ get go . . <eos>
+
+what do you want you bitch ! <eos>
+ you are okay are ? <eos>
+
+what do you want ? <eos>
+ i want you . . . <eos>
+
+do you like me ? <eos>
+ i love <eos>
+
+is your sister okay ? <eos>
+ i am not . <eos>
+
+are you oaky ? <eos>
+ i . <eos>
+
+are you okay ? <eos>
+ yeah . <eos>
+
+q <eos>

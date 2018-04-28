@@ -17,3 +17,5 @@ attention OHE loss 그래프 구해야 함....
 
 C:\Users\seok0\Desktop\graduate_project\graduate>tensorboard --logdir C:/Users/seok0/Desktop/graduate_project/graduate/s2s_attention_train/logs
 
+tensorboard --logdir C:/Users/seok0/Desktop/graduate_project/graduate/s2s_attention_train/logs
+
