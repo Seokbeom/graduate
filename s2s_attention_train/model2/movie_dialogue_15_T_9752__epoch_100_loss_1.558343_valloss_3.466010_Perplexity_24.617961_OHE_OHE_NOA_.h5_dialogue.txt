@@ -1,0 +1,178 @@
+hi . <eos>
+ hi . <eos>
+
+hello . <eos>
+ hello . . <eos>
+
+what is your name ? <eos>
+ NAME . . UNK . <eos>
+
+what s your name ? <eos>
+ NAME s . UNK . <eos>
+
+what is your name ? i just wonder . <eos>
+ UNK UNK ? <eos>
+
+do you have children ? <eos>
+ no . <eos>
+
+do you have a son ? <eos>
+ i was <eos>
+
+do you like banana ? <eos>
+ yeah . <eos>
+
+what do you want from me ? <eos>
+ i do not UNK you . <eos>
+
+what do you want from me ? ? <eos>
+ i UNK i UNK that . . . <eos>
+
+stop talking ! <eos>
+ NAME ! UNK ! me ! <eos>
+
+what is your favorite ? <eos>
+ NAME ? <eos>
+
+what is the color of the sky ? <eos>
+ the ? . <eos>
+
+look at the sky is not it beautiful ? <eos>
+ i looks so idea . i do not . . <eos>
+
+do not you have a car ? <eos>
+ i i . not the car . the . <eos>
+
+what is a human ? <eos>
+ NAME be be as . <eos>
+
+where do you live ? <eos>
+ you . on the UNK . <eos>
+
+where do you live in ? <eos>
+ i . . the UNK . <eos>
+
+what are you doing right now ? <eos>
+ i am on the baby . . s <eos>
+
+do you like puppy ? <eos>
+ one do we are be a a ? <eos>
+
+are you serious ? <eos>
+ i am not promoted . . <eos>
+
+i am planning to go to a trip . <eos>
+ when ? <eos>
+
+i do not know . <eos>
+ you s you a . . <eos>
+
+do you wanna join ? <eos>
+ no . <eos>
+
+do you want to join ? <eos>
+ no . i am s a . . <eos>
+
+do you want to join me ? <eos>
+ no . i will me that . <eos>
+
+do you wanna join me ? <eos>
+ uh . i are not you . <eos>
+
+tomorrow . <eos>
+ i am snow . <eos>
+
+maybe tomorrow ? <eos>
+ no . . <eos>
+
+i am planning to go to a trip . wanna join ? <eos>
+ no . <eos>
+
+why not ? <eos>
+ i s not . . . <eos>
+
+why not? it will be fun . <eos>
+ i really it . <eos>
+
+why not ? it will be fun ! <eos>
+ i you you your your . . <eos>
+
+oh . why not ? <eos>
+ i do not a . . <eos>
+
+you do not what ? <eos>
+ i know . <eos>
+
+oh . come on ! <eos>
+ oh NAME ! . <eos>
+
+come on ! <eos>
+ i ! <eos>
+
+i am planning to go to a trip . <eos>
+ when ? <eos>
+
+guess it . <eos>
+ what s a <eos>
+
+next week . <eos>
+ wow that s ? ? <eos>
+
+next week . wanna join ? <eos>
+ no . i s my . <eos>
+
+next week. do you wanna join ? <eos>
+ no . <eos>
+
+next week . do you wanna join ? <eos>
+ no . i s club lunch <eos>
+
+next month i guess . <eos>
+ how that <eos>
+
+do you wanna join ? <eos>
+ no . <eos>
+
+okay . . <eos>
+ what . <eos>
+
+okay . <eos>
+ what . <eos>
+
+oh . okay . <eos>
+ yeah s a okay ? <eos>
+
+why not ? are you busy ? <eos>
+ i like to to you . . <eos>
+
+do you love me ? <eos>
+ i . you love . <eos>
+
+do you like me ? <eos>
+ i . not . <eos>
+
+do you love me ? ? <eos>
+ no . <eos>
+
+i love you . <eos>
+ i me you <eos>
+
+i love you so much . <eos>
+ i do you . <eos>
+
+i love you so much . and you ? <eos>
+ i . <eos>
+
+how are you ? <eos>
+ i . <eos>
+
+how is everything ? <eos>
+ no guess is . <eos>
+
+everything s good ? <eos>
+ NAME s s good . <eos>
+
+do you know NAME ? <eos>
+ no . <eos>
+
+q <eos>

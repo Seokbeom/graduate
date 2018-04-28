@@ -3,8 +3,15 @@ import time
 import numpy as np
 from keras.models import load_model
 
+from tensorflow import nn
+from sklearn.model_selection import train_test_split
+import keras.backend as K
+def perplexity(y_true, y_pred):
+    return K.pow(2.0, K.mean(nn.softmax_cross_entropy_with_logits_v2(logits=y_pred, labels=y_true, name='perplexity')))
 
+#
 modelname = 'movie_dialogue_15_T_9752__epoch_90_loss_1.299994_valloss_3.622185_acc_0.248388_QandA_NoAtte.h5'
+modelname='movie_dialogue_15_T_9752__epoch_100_loss_1.558343_valloss_3.466010_Perplexity_24.617961_OHE_OHE_NOA_.h5'
 INIT_TALK = 'how are you ?'
 INIT_TALK = None
 
@@ -89,12 +96,12 @@ def main(data_to_read, modelname, init = None):
     start = time.time()
 
     data_location = './extracted_data/'
-    model_location = './model/'
+    model_location = './model2/'
 
     read_data(data_location + data_to_read, False)
     word2onehot_dict, one2word_dict = one_hot_dictionary(data_location + data_to_read)
     n_features = len(word2onehot_dict)
-    model = load_model(model_location + modelname)#, custom_objects={'AttentionDecoder': AttentionDecoder})
+    model = load_model(model_location + modelname, custom_objects={'perplexity': perplexity})
 
     end = time.time()
     print('model loaded', (end - start) / 60, '분')

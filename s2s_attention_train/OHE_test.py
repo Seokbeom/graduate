@@ -19,7 +19,7 @@ modelname = 'movie_dialogue_10_T_9188__epoch_170_loss_0.512821_valloss_7.481432_
 modelname = 'movie_dialogue_15_T_9752__epoch_90_loss_1.007325_valloss_5.632553_acc_0.529697_QandA_OHE.h5'#QandA version, samplefunction using ...
 modelname = 'movie_dialogue_15_T_9752__epoch_80_loss_0.793774_valloss_4.280197_acc_0.573930_QandA_OHE.h5'
 modelname= 'movie_dialogue_15_T_9752__epoch_90_loss_1.007325_valloss_5.632553_acc_0.529697_QandA_OHE.h5'
-modelname= 'movie_dialogue_15_T_9752__epoch_70_loss_1.607346_valloss_5.215710_Perplexity_24.354326_OHE_OHE_ATT_.h5'
+modelname= 'movie_dialogue_15_T_9752__epoch_20_loss_1.436208_valloss_5.367472_Perplexity_23.984465_OHE_OHE_ATT_.h5'
 INIT_TALK = 'how are you ?'
 INIT_TALK = None
 
