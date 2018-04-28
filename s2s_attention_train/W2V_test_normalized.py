@@ -4,8 +4,16 @@ import numpy as np
 from keras.models import load_model
 from gensim.models import word2vec # Try alpha=0.05 and cbow_mean=1  https://stackoverflow.com/questions/34249586/the-accuracy-test-of-word2vec-in-gensim
 from sklearn.preprocessing import normalize
+from tensorflow import nn
+from sklearn.model_selection import train_test_split
+import keras.backend as K
+def perplexity(y_true, y_pred):
+    return K.pow(2.0, K.mean(nn.softmax_cross_entropy_with_logits_v2(logits=y_pred, labels=y_true, name='perplexity')))
+
 #############################
 modelname = 'movie_dialogue_15_T_9752__epoch_100_loss_0.862165_valloss_6.166180_acc_0.538809_W2VN.h5'
+modelname = 'movie_dialogue_15_T_9752__epoch_160_loss_0.722733_valloss_6.437106_Perplexity_22.350426_W2V_NOM_ATT_.h5'
+modelname = 'movie_dialogue_15_T_9752__epoch_150_loss_1.708725_valloss_3.150174_Perplexity_25.581892_W2V_ORI_NOA_.h5'
 
 INIT_TALK = 'how are you ?'
 INIT_TALK = None
@@ -87,8 +95,9 @@ def convert_3d_shape_word2vec(filename, sentences_list):
                 word = '<eos>'
             try:
                 temp = word_vec[word]
-                print(temp[0][0])
-                print( normalize(temp.reshape(1, -1))[0][0])
+                print(type(temp))
+                #print(temp[0][0])
+                #print( normalize(temp.reshape(1, -1))[0][0])
                 X[i, j] = normalize(temp.reshape(1, -1))
             except KeyError as E:
                 print(E)
@@ -100,12 +109,13 @@ def main(data_to_read, modelname, init=None):
     start = time.time()
 
     data_location = './extracted_data/'
-    model_location = './model/'
+    model_location = './model2/'
 
     read_data(data_location + data_to_read, False)  # to get max step
     word2onehot_dict, one2word_dict = one_hot_dictionary(data_location + data_to_read)
     #n_features = len(word2onehot_dict)
-    model = load_model(model_location + modelname, custom_objects={'AttentionDecoder': AttentionDecoder})
+    #model.load_weights(filepath, by_name=False)
+    model = load_model(model_location + modelname, custom_objects={'AttentionDecoder': AttentionDecoder, 'perplexity' :perplexity},)
 
     end = time.time()
     print('model loaded', (end - start) / 60, '분')
@@ -141,7 +151,7 @@ def main(data_to_read, modelname, init=None):
 
         first_eos = True
 
-        for stepidx in range(max_step):
+        for stepidx in range(len(result[0])): #range(max_step):
             #highest = sample(result[0][stepidx])
             highest = np.argmax(result[0][stepidx])
             word = one2word_dict[highest]

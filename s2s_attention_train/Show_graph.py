@@ -6,3 +6,6 @@
 #tensorboard --logdir C:/Users/seok0/Desktop/graduate_project/graduate/s2s_attention_train/logs
 
 
+
+
+tensorboard --logdir C:/Users/seok0/Desktop/graduate_project/graduate/s2s_attention_train/logstensorboard --logdir C:/Users/seok0/Desktop/graduate_project/graduate/s2s_attention_train/logs
