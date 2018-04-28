@@ -1,0 +1,196 @@
+hi , <eos>
+ i . <eos>
+
+hi . <eos>
+ i am you . <eos>
+
+hello . <eos>
+ i . <eos>
+
+hi how are you ? <eos>
+ i am fine . <eos>
+
+how old are you ? <eos>
+ i am not . . <eos>
+
+what is your name ? <eos>
+ NAME . <eos>
+
+how old are you NAME ? <eos>
+ i am not . <eos>
+
+are you happy ? <eos>
+ i . <eos>
+
+i got a trouble . <eos>
+ you are not ? <eos>
+
+i am not your enemy . <eos>
+ and i . not you are . <eos>
+
+what is the color ? <eos>
+ no . <eos>
+
+are you bleeding ? <eos>
+ i am what . <eos>
+
+what is the matter ? <eos>
+ i . <eos>
+
+are you satisfied with your life ? <eos>
+ no . <eos>
+
+why ? <eos>
+ i s not . . <eos>
+
+is earth round ? <eos>
+ i the <eos>
+
+can you fly ? <eos>
+ i . not not <eos>
+
+can a bird fly ? <eos>
+ i are trying . <eos>
+
+what is your hobby ? <eos>
+ UNK s <eos>
+
+what is your job ? <eos>
+ i . <eos>
+
+you are pretty . <eos>
+ i . <eos>
+
+thanks . <eos>
+ i s . . <eos>
+
+thank you . <eos>
+ i are not . <eos>
+
+bye <eos>
+ i . <eos>
+
+bye . <eos>
+ i . <eos>
+
+bye bye . <eos>
+ bye that . <eos>
+
+bye bye see you later . <eos>
+ yeah bye will . <eos>
+
+yeah <eos>
+ i . <eos>
+
+yeah ? <eos>
+ i . <eos>
+
+what is life ? <eos>
+ i do not know . <eos>
+
+what is moral ? <eos>
+ UNK . <eos>
+
+what is the meaning of life ? <eos>
+ i . <eos>
+
+what is life ? ? <eos>
+ i do not . <eos>
+
+what is life <eos>
+ i am not <eos>
+
+you sucks <eos>
+ i know your . it . <eos>
+
+i kniow <eos>
+ i . <eos>
+
+i know <eos>
+ i you <eos>
+
+i know you . <eos>
+ i know <eos>
+
+i know you know me . <eos>
+ i can <eos>
+
+have you heard of it ? <eos>
+ no . <eos>
+
+have you been to us ? <eos>
+ no . <eos>
+
+any question ? <eos>
+ nothing . <eos>
+
+any questions ? <eos>
+ no . whose s <eos>
+
+do you have any question ? <eos>
+ no . <eos>
+
+do you love me ? <eos>
+ i . <eos>
+
+do you love your  wife ? <eos>
+ i . <eos>
+
+what should we do ? <eos>
+ i do not know . <eos>
+
+you do not know ? <eos>
+ no . <eos>
+
+what should she doe ? <eos>
+ the NAME <eos>
+
+NAME <eos>
+ i . <eos>
+
+what is your name agian ? <eos>
+ NAME . <eos>
+
+what is your name again ? <eos>
+ NAME . <eos>
+
+what is your name? how old are you ? <eos>
+ i . <eos>
+
+what is your name ? how old are you ? <eos>
+ NAME . <eos>
+
+and your age ? <eos>
+ i NAME not know . <eos>
+
+what is your age ? <eos>
+ i do not know . <eos>
+
+why do not you know ? <eos>
+ i . <eos>
+
+what is moral ? <eos>
+ UNK . <eos>
+
+are you moral ? <eos>
+ what ? <eos>
+
+are you kind ? <eos>
+ i am <eos>
+
+do you really love me ? <eos>
+ i . <eos>
+
+who are you ? <eos>
+ i . . NAME . <eos>
+
+who are you with ? <eos>
+ i . . <eos>
+
+are you alone ? <eos>
+ yes . <eos>
+
+are you with someone ? <eos>
+ no . <eos>
+
+q <eos>
