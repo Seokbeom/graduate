@@ -15,6 +15,7 @@ modelname = 'movie_dialogue_15_T_9752__epoch_100_loss_0.862165_valloss_6.166180_
 modelname = 'movie_dialogue_15_T_9752__epoch_160_loss_0.722733_valloss_6.437106_Perplexity_22.350426_W2V_NOM_ATT_.h5'
 modelname = 'movie_dialogue_15_T_9752__epoch_150_loss_1.708725_valloss_3.150174_Perplexity_25.581892_W2V_ORI_NOA_.h5'
 modelname = 'movie_dialogue_15_T_9752__epoch_100_loss_0.913551_valloss_6.064095_Perplexity_22.876559_W2V_NOM_ATT_.h5'
+#modelname = 'movie_dialogue_15_T_9752__epoch_150_loss_0.741912_valloss_6.402792_Perplexity_22.388791_W2V_NOM_ATT_.h5'
 
 INIT_TALK = 'how are you ?'
 INIT_TALK = None
@@ -96,9 +97,9 @@ def convert_3d_shape_word2vec(filename, sentences_list):
                 word = '<eos>'
             try:
                 temp = word_vec[word]
-                print(type(temp))
-                print(temp[0])
-                print(temp[0][0])
+                #print(type(temp))
+                #print(temp[0])
+                #print(temp[0][0])
                 print( normalize(temp.reshape(1, -1))[0][0])
 
                 X[i, j] = normalize(temp.reshape(1, -1))

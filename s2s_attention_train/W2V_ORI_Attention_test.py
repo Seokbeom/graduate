@@ -11,7 +11,7 @@ def perplexity(y_true, y_pred):
 
 #############################
 modelname = 'movie_dialogue_15_T_9752__epoch_110_loss_1.170869_valloss_5.731023_acc_0.457372_W2V.h5'
-
+modelname='movie_dialogue_15_T_9752__epoch_70_loss_1.434820_valloss_5.393046_Perplexity_24.127697_W2V_ORI_ATT_.h5'
 INIT_TALK = 'how are you ?'
 INIT_TALK = None
 
@@ -103,7 +103,7 @@ def main(data_to_read, modelname, init=None):
     start = time.time()
 
     data_location = './extracted_data/'
-    model_location = './model/'
+    model_location = './model2/'
 
     read_data(data_location + data_to_read, False)  # to get max step
     word2onehot_dict, one2word_dict = one_hot_dictionary(data_location + data_to_read)
